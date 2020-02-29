@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/widget/page/find/page.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
-import 'package:flutter_wan/widget/page/my/home/page.dart';
+import 'package:flutter_wan/widget/page/my/page.dart';
 
 class MainState implements Cloneable<MainState>  {
 

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wan/widget/page/find/page.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
-import 'package:flutter_wan/widget/page/my/home/page.dart';
+import 'package:flutter_wan/widget/page/my/page.dart';
 void main(){
   runApp(createApp());
 }
