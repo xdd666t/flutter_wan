@@ -11,15 +11,14 @@ import 'state.dart';
 
 Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
-    HomeAction.initData: _initData,
+    Lifecycle.initState: _init,
   });
 }
 
-void _initData(Action action, Context<HomeState> ctx) {
+void _init(Action action, Context<HomeState> ctx) {
   _getBannerData(action, ctx);
-
-  ScreenUtil.init(ctx.context, width: 750, height: 1334);
 }
+
 
 //获取Banner数据
 void _getBannerData(Action action, Context<HomeState> ctx) async{

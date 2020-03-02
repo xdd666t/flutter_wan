@@ -31,7 +31,7 @@ Widget createApp(){
     home: routes.buildPage("main", null),  //作为默认页面
     onGenerateRoute: (RouteSettings settings) {
       return MaterialPageRoute<Object>(builder: (BuildContext context) {
-        UiAdapter(context);  //界面适配
+        uiAdapter(context);  //界面适配
         return routes.buildPage(settings.name, settings.arguments);
       });
     },
@@ -40,16 +40,14 @@ Widget createApp(){
 
 
 //界面适配
-class UiAdapter {
-
-  UiAdapter(BuildContext context){
+void uiAdapter(BuildContext context) {
     //填入设计稿中设备的屏幕尺寸
     //默认 width : 1080px , height:1920px , allowFontScaling:false
-    ScreenUtil.init(context);
+//    ScreenUtil.init(context);
     //假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
-    ScreenUtil.init(context, width: 750, height: 1334);
+//    ScreenUtil.init(context, width: 750, height: 1334);
     //设置字体大小根据系统的“字体大小”辅助选项来进行缩放,默认为false
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
-  }
+//    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
 
+  ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
 }

@@ -7,11 +7,11 @@ Reducer<HomeState> buildReducer() {
   return asReducer(
     <Object, Reducer<HomeState>>{
       HomeAction.updateBannerData: _onBannerData,
-      HomeAction.updateBannerData: _onBannerImage,
+      HomeAction.updateBannerImage: _onBannerImage,
+      HomeAction.updateIndex: _onBannerIndex,
     },
   );
 }
-
 
 
 HomeState _onBannerData(HomeState state, Action action) {
@@ -22,4 +22,9 @@ HomeState _onBannerData(HomeState state, Action action) {
 HomeState _onBannerImage(HomeState state, Action action) {
   return state.clone()
     ..bannerImages = action.payload;
+}
+
+HomeState _onBannerIndex(HomeState state, Action action) {
+  return state.clone()
+    ..bannerIndex = action.payload;
 }

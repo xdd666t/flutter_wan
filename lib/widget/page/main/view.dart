@@ -22,7 +22,7 @@ Widget _bottomNavigationBarUi() {
 
   return Scaffold(
     body:  PageView.builder(
-//        physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
+        physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
         controller: _pageController,
         onPageChanged: (index){
           //切换页面时的回调s
@@ -32,9 +32,10 @@ Widget _bottomNavigationBarUi() {
         itemCount: _mainState.tabPage.length,
         itemBuilder: (context, index) => _mainState.tabPage[index]
     ),
+//    body: _mainState.tabPage[_mainState.selectedIndex],
     bottomNavigationBar: BottomNavigationBar(
       items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("新闻")),
+        BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("主页")),
         BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("发现")),
         BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text("我的")),
       ],
