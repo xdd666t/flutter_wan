@@ -10,18 +10,27 @@ import 'state.dart';
 
 HomeState _homeState;
 Dispatch _dispatch;
+ViewService _viewService;
 
 Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   _homeState = state;
   _dispatch = dispatch;
+  _viewService = viewService;
   ScreenUtil.init(viewService.context, width: 750, height: 1334);
 
-  return Scaffold(
-    body: keepAliveWrapper(_swiperView()),
-  );
+  return keepAliveWrapper(Scaffold(
+    body: Column(
+      children: <Widget>[
+        _swiperView(), //banner控件
+        _articleWidget(), //文章控件
+      ],
+    ),
+  ));
 }
 
-//顶部轮播图
+
+
+//////顶部轮播图
 Widget _swiperView(){
   return Container(
     height: setWidth(400),
@@ -43,7 +52,7 @@ Widget _bannerImage(){
     },
     autoplay: _homeState.bannerImages.length != 0,
     autoplayDelay: 5000, //自动播放时间间隔
-    //原点指示器
+    //圆点指示器
     pagination: SwiperPagination(
       alignment: Alignment.bottomRight,
       margin: EdgeInsets.only(bottom: setWidth(100), right: setWidth(15)),
@@ -80,6 +89,18 @@ Widget _bannerText(){
 }
 
 
-//新闻列表
-
+////////////////文章组件
+Widget _articleWidget(){
+  return Flexible(
+    //去掉顶部空白间隙
+    child: MediaQuery.removePadding(
+      removeTop: true,
+      context: _viewService.context,
+      child: ListView.builder(
+        itemBuilder: _viewService.buildAdapter().itemBuilder,
+        itemCount: _viewService.buildAdapter().itemCount,
+      ),
+    )
+  );
+}
 

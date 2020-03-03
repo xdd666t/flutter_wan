@@ -9,6 +9,7 @@ Reducer<HomeState> buildReducer() {
       HomeAction.updateBannerData: _onBannerData,
       HomeAction.updateBannerImage: _onBannerImage,
       HomeAction.updateIndex: _onBannerIndex,
+      HomeAction.updateArticleItem: _onArticleItem,
     },
   );
 }
@@ -27,4 +28,9 @@ HomeState _onBannerImage(HomeState state, Action action) {
 HomeState _onBannerIndex(HomeState state, Action action) {
   return state.clone()
     ..bannerIndex = action.payload;
+}
+
+HomeState _onArticleItem(HomeState state, Action action) {
+  return state.clone()
+    ..articleList = action.payload;
 }
