@@ -30,6 +30,7 @@ dependencies:
   flutter_screenutil: ^1.0.2  # 界面适配
   flutter_swiper : ^1.1.6  #轮播图控件
   permission_handler: ^3.2.0 #权限申请
+  flutter_easyrefresh: ^2.0.9  #下拉刷新，下拉加载控件
 
 
 dev_dependencies:

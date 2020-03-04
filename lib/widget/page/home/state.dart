@@ -11,9 +11,11 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
   List<Widget> bannerImages; //所有轮播图
   int bannerIndex; //当前展示的轮播图下标
 
+
+  //文章列表数据
   List<HomeArticleBean> mList;  //总数据源
   List<HomeArticleItemState> articleList;  //item数据源
-
+  int articleIndex; //文章列表索引  处理分页逻辑
 
   @override
   HomeState clone() {
@@ -48,11 +50,11 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
 }
 
 HomeState initState(Map<String, dynamic> args) {
-  println("实例化............");
   return HomeState()
     ..banners = List()
     ..articleList = List()
     ..bannerImages = List()
+    ..articleIndex = 0
     ..bannerIndex = 0;
 }
 

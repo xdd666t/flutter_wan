@@ -26,6 +26,7 @@ Widget buildView(HomeArticleItemState state, Dispatch dispatch, ViewService view
           ),
           //第二层: 标题
           Container(
+            alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: setWidth(25), right: setWidth(25),top: setWidth(20)),
             child: Text(state.itemDtail.title, style: TextStyle(fontSize: setSp(32))),
           ),

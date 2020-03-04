@@ -1,5 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/material_footer.dart';
+import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_wan/widget/utils/keep_alive_page.dart';
@@ -16,24 +19,52 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   _homeState = state;
   _dispatch = dispatch;
   _viewService = viewService;
+  _homeState.articleIndex = 0;
   ScreenUtil.init(viewService.context, width: 750, height: 1334);
 
   return keepAliveWrapper(Scaffold(
-    body: Column(
-      children: <Widget>[
-        _swiperView(), //banner控件
-        _articleWidget(), //文章控件
-      ],
-    ),
+    body: _homeWidget()
   ));
 }
 
+
+//首页widget组装
+Widget _homeWidget(){
+  EasyRefreshController _controller = EasyRefreshController();
+  return EasyRefresh(
+    controller: _controller,
+    header: MaterialHeader(),
+    footer: MaterialFooter(),
+    child: ListView(
+      children: <Widget>[
+        _swiperView(), //banner控件
+        _articleWidget(), //文章控件
+      ]
+    ),
+    firstRefresh: true,
+    //下拉刷新
+    onRefresh: () async{
+      _homeState.articleIndex = 0;
+      _dispatch(HomeActionCreator.loadMoreArticle(_homeState.articleIndex));
+//      _controller.finishRefresh(success: true, noMore: false);
+    },
+    //上拉加载
+    onLoad: () async{
+      _homeState.articleIndex += 1 ;
+      _dispatch(HomeActionCreator.loadMoreArticle(_homeState.articleIndex));
+
+      await Future.delayed(Duration(seconds: 2), () {
+        _controller.finishLoad(success: true, noMore: false);
+      });
+    },
+  );
+}
 
 
 //////顶部轮播图
 Widget _swiperView(){
   return Container(
-    height: setWidth(400),
+    height: setHeight(400),
     child: Stack(
       children: <Widget>[
         _bannerImage(),
@@ -62,28 +93,31 @@ Widget _bannerImage(){
 }
 //顶部banner文字显示
 Widget _bannerText(){
-  return Container(
-    alignment: Alignment.bottomCenter,
+  return Offstage(
+    offstage: _homeState.banners.length == 0,
     child: Container(
-        height: setWidth(80),
-        width: double.infinity,
-        padding: EdgeInsets.all(5.0),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: <Color>[
-              Colors.black.withAlpha(100),
-              Colors.black.withAlpha(100),
-            ],
+      alignment: Alignment.bottomCenter,
+      child: Container(
+          height: setWidth(80),
+          width: double.infinity,
+          padding: EdgeInsets.all(5.0),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: <Color>[
+                Colors.black.withAlpha(100),
+                Colors.black.withAlpha(100),
+              ],
+            ),
           ),
-        ),
-        child: Center(
-          child: Text(
-            _homeState.banners.length == 0 ? "" : _homeState.banners[_homeState.bannerIndex].title,
-            style: TextStyle(color: Colors.white, fontSize: setSp(30)),
-          ),
-        )
+          child: Center(
+            child: Text(
+              _homeState.banners.length == 0 ? "" : _homeState.banners[_homeState.bannerIndex].title,
+              style: TextStyle(color: Colors.white, fontSize: setSp(30)),
+            ),
+          )
+      ),
     ),
   );
 }
@@ -91,15 +125,14 @@ Widget _bannerText(){
 
 ////////////////文章组件
 Widget _articleWidget(){
-  return Flexible(
-    //去掉顶部空白间隙
-    child: MediaQuery.removePadding(
-      removeTop: true,
-      context: _viewService.context,
-      child: ListView.builder(
-        itemBuilder: _viewService.buildAdapter().itemBuilder,
-        itemCount: _viewService.buildAdapter().itemCount,
-      ),
+  return MediaQuery.removePadding(
+    removeTop: true,
+    context: _viewService.context,
+    child: ListView.builder(
+      shrinkWrap: true, //为true可以解决子控件必须设置高度的问题
+      physics:NeverScrollableScrollPhysics(),//禁用滑动事件
+      itemBuilder: _viewService.buildAdapter().itemBuilder,
+      itemCount: _viewService.buildAdapter().itemCount,
     )
   );
 }

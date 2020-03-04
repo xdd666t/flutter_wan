@@ -14,6 +14,7 @@ import 'state.dart';
 Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
     Lifecycle.initState: _init,
+    HomeAction.loadMoreArticle: _loadMoreArticleData,
   });
 }
 
@@ -55,13 +56,38 @@ List<Widget> _getImageList(Context<HomeState> ctx) {
 //获取首页文章数据
 void _getArticleData(Action action, Context<HomeState> ctx) async{
   try{
-    Response response = await Dio().get(ApiUrl.GET_HOME_ARTICLE); //获取首页文章
+    Response response = await Dio().get(ApiUrl.GET_HOME_ARTICLE + "0/json"); //获取首页文章
     HomeArticleBean homeArticleBean = HomeArticleBean().fromJson(json.decode(response.toString()));
 
     List<HomeArticleDataData> items = homeArticleBean.data.datas;
     ctx.state.articleList = List.generate(items.length, (index){
       return HomeArticleItemState(itemDtail: items[index]);
     });
+    
+    ctx.dispatch(HomeActionCreator.updateArticleItem(ctx.state.articleList)); //更新列表
+  }catch(e){
+    println("获取首页文章数据失败: " + e.toString());
+  }
+}
+
+//加载更多首页文章数据
+void _loadMoreArticleData(Action action, Context<HomeState> ctx) async{
+  try{
+    int index = action.payload;
+    Response response = await Dio().get(ApiUrl.GET_HOME_ARTICLE + index.toString() + "/json"); //获取首页文章
+    HomeArticleBean homeArticleBean = HomeArticleBean().fromJson(json.decode(response.toString()));
+
+    List<HomeArticleDataData> items = homeArticleBean.data.datas;
+    List<HomeArticleItemState> tempList = List.generate(items.length, (index){
+      return HomeArticleItemState(itemDtail: items[index]);
+    });
+    if(index == 0) {
+      ctx.state.articleList = tempList;
+    }else{
+      ctx.state.articleList.addAll(tempList);
+    }
+    
+    println(ctx.state.articleList.length);
     
     ctx.dispatch(HomeActionCreator.updateArticleItem(ctx.state.articleList)); //更新列表
   }catch(e){

@@ -4,9 +4,16 @@ import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/widget/page/home/adapter/home_article_item/state.dart';
 
 //TODO replace with your own action
-enum HomeAction {updateBannerData, updateBannerImage, updateIndex, updateArticleItem}
+enum HomeAction {updateBannerData, updateBannerImage, updateIndex, updateArticleItem,
+  loadMoreArticle,
+}
 
 class HomeActionCreator {
+  //加载更多新闻
+  static Action loadMoreArticle(int index) {
+    return Action(HomeAction.loadMoreArticle, payload: index);
+  }
+
 
 
 
