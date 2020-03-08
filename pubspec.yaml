@@ -31,7 +31,8 @@ dependencies:
   flutter_swiper : ^1.1.6  #轮播图控件
   permission_handler: ^3.2.0 #权限申请
   flutter_easyrefresh: ^2.0.9  #下拉刷新，下拉加载控件
-
+  webview_flutter: 0.3.19+9 #官方webview
+  flutter_webview_plugin: ^0.3.10+1  #第三方webview
 
 dev_dependencies:
   flutter_test:

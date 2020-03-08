@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
@@ -15,6 +16,7 @@ Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
     Lifecycle.initState: _init,
     HomeAction.loadMoreArticle: _loadMoreArticleData,
+    HomeAction.openBannnerContent: _openBannnerContent,
   });
 }
 
@@ -86,11 +88,18 @@ void _loadMoreArticleData(Action action, Context<HomeState> ctx) async{
     }else{
       ctx.state.articleList.addAll(tempList);
     }
-    
-    println(ctx.state.articleList.length);
-    
     ctx.dispatch(HomeActionCreator.updateArticleItem(ctx.state.articleList)); //更新列表
   }catch(e){
     println("获取首页文章数据失败: " + e.toString());
   }
+}
+
+//打开banner文章内容
+void _openBannnerContent(Action action, Context<HomeState> ctx){
+  int index = action.payload;
+  ArticleDetailBean articleDetailBean = ArticleDetailBean();
+  articleDetailBean.title = ctx.state.banners[index].title;
+  articleDetailBean.url = ctx.state.banners[index].url;
+
+  Navigator.of(ctx.context).pushNamed("openArticle", arguments: {"articleDetail": articleDetailBean});
 }

@@ -6,6 +6,7 @@ import 'package:flutter_wan/widget/page/find/page.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
 import 'package:flutter_wan/widget/page/my/page.dart';
+import 'package:flutter_wan/widget/page/web/page.dart';
 void main(){
   runApp(createApp());
 }
@@ -16,7 +17,8 @@ Widget createApp(){
     pages: <String, Page<Object, dynamic>>{
       "main": MainPage(),
       //书架模块
-      "bookshelf": HomePage(),//新闻主页面
+      "home": HomePage(),//新闻主页面
+      "openArticle": WebViewPage(),//打开文章
       //发现模块
       "find": FindPage(),//发现模块主页面
       //我的模块

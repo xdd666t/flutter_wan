@@ -89,6 +89,9 @@ Widget _bannerImage(){
       margin: EdgeInsets.only(bottom: setWidth(100), right: setWidth(15)),
       builder: DotSwiperPaginationBuilder(size: setWidth(12), activeSize: setWidth(12))
     ),
+    onTap: (index){
+      _dispatch(HomeActionCreator.openBannnerContent(index));
+    },
   );
 }
 //顶部banner文字显示

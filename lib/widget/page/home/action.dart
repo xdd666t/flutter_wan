@@ -5,7 +5,8 @@ import 'package:flutter_wan/widget/page/home/adapter/home_article_item/state.dar
 
 //TODO replace with your own action
 enum HomeAction {updateBannerData, updateBannerImage, updateIndex, updateArticleItem,
-  loadMoreArticle,
+  loadMoreArticle, //加载更多新闻
+  openBannnerContent, //打开banner文章内容
 }
 
 class HomeActionCreator {
@@ -14,6 +15,10 @@ class HomeActionCreator {
     return Action(HomeAction.loadMoreArticle, payload: index);
   }
 
+  //打开banner
+  static Action openBannnerContent(int index) {
+    return Action(HomeAction.openBannnerContent, payload: index);
+  }
 
 
 
