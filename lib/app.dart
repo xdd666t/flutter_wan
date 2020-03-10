@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,11 +19,13 @@ Widget createApp(){
       "main": MainPage(),
       //书架模块
       "home": HomePage(),//新闻主页面
-      "openArticle": WebViewPage(),//打开文章
+
       //发现模块
       "find": FindPage(),//发现模块主页面
       //我的模块
       "my": MyPage(),//我的模块主页面
+      //展示文章内容，统一的容器
+      "webview": WebViewPage(),
     },
   );
 
@@ -32,11 +35,19 @@ Widget createApp(){
       primarySwatch: Colors.blue,
     ),
     home: routes.buildPage("main", null),  //作为默认页面
-    onGenerateRoute: (RouteSettings settings) {
-      return MaterialPageRoute<Object>(builder: (BuildContext context) {
-        uiAdapter(context);  //界面适配
+    onGenerateRoute: (RouteSettings settings) {  //切换页面效果设置
+
+//     ios页面切换风格
+      return CupertinoPageRoute(builder: (BuildContext context){
         return routes.buildPage(settings.name, settings.arguments);
       });
+
+//      Material页面切换风格
+//      return MaterialPageRoute<Object>(builder: (BuildContext context) {
+//        uiAdapter(context);  //界面适配
+//        return routes.buildPage(settings.name, settings.arguments);
+//      });
+
     },
   );
 }

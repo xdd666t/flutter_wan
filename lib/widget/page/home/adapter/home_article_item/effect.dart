@@ -18,5 +18,5 @@ void _openArticleContent(Action action, Context<HomeArticleItemState> ctx) {
   articleDetailBean.url = homeArticleDataData.link;
   articleDetailBean.title = homeArticleDataData.title;
 
-  Navigator.of(ctx.context).pushNamed("openArticle", arguments: {"articleDetail": articleDetailBean});
+  Navigator.of(ctx.context).pushNamed("webview", arguments: {"articleDetail": articleDetailBean});
 }

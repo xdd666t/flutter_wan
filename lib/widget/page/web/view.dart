@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart' hide WebViewState;
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -14,25 +15,27 @@ Widget buildView(WebViewState state, Dispatch dispatch, ViewService viewService)
     dispatch(WebViewActionCreator.onProgress(progress)); //更新进度条
   });
 
-  return WebviewScaffold(
-    appBar: AppBar(
-      title: Text(state.articleDetail.title),
-      backgroundColor: Colors.lightBlue,
-      bottom: PreferredSize(
-          child: _progressBar(state.progress, viewService.context),
-          preferredSize: Size.fromHeight(0.5),
-      ),
-    ),
-      url: state.articleDetail.url
-  );
+//  return WebviewScaffold(
+//    appBar: AppBar(
+//      title: Text(state.articleDetail.title),
+//      backgroundColor: Colors.lightBlue,
+//      bottom: PreferredSize(
+//          child: _progressBar(state.progress, viewService.context),
+//          preferredSize: Size.fromHeight(0.5),
+//      ),
+//    ),
+//      url: state.articleDetail.url
+//  );
 
 //  官方webview用法
-//  return Scaffold(
-//    appBar: AppBar(title: Text(state.articleDetail.title)),
-//    body: WebView(
-//      initialUrl: state.articleDetail.url,
-//    ),
-//  );
+  return Scaffold(
+    appBar: AppBar(title: Text(state.articleDetail.title)),
+    body: WebView(
+      initialUrl: state.articleDetail.url,
+    ),
+  );
+
+
 }
 
 
