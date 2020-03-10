@@ -101,5 +101,5 @@ void _openBannnerContent(Action action, Context<HomeState> ctx){
   articleDetailBean.title = ctx.state.banners[index].title;
   articleDetailBean.url = ctx.state.banners[index].url;
 
-  Navigator.of(ctx.context).pushReplacementNamed("webview", arguments: {"articleDetail": articleDetailBean});
+  Navigator.of(ctx.context).pushNamed("webview", arguments: {"articleDetail": articleDetailBean});
 }

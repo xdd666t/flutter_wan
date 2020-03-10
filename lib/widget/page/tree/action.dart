@@ -1,10 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum FindAction { action }
+enum TreeAction { action }
 
-class FindActionCreator {
+class TreeActionCreator {
   static Action onAction() {
-    return const Action(FindAction.action);
+    return const Action(TreeAction.action);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/widget/utils/ui_adapter.dart';
 
@@ -7,13 +8,13 @@ import 'state.dart';
 
 Widget buildView(HomeArticleItemState state, Dispatch dispatch, ViewService viewService) {
   return Container(
-    child: GestureDetector(
-      onTap: (){
-        //打开文章内容
-        dispatch(HomeArticleItemActionCreator.openArticleContent(state));
-      },
+    child: CupertinoButton(
+      padding: EdgeInsets.all(0),
       child: _cardWidget(state),
-    )
+      onPressed: (){//打开文章内容
+        dispatch(HomeArticleItemActionCreator.openArticleContent(state));
+      }
+    ),
   );
 }
 

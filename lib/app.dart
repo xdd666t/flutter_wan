@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_wan/widget/page/find/page.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
 import 'package:flutter_wan/widget/page/my/page.dart';
+import 'package:flutter_wan/widget/page/tree/page.dart';
 import 'package:flutter_wan/widget/page/web/page.dart';
 void main(){
   runApp(createApp());
@@ -19,9 +19,8 @@ Widget createApp(){
       "main": MainPage(),
       //书架模块
       "home": HomePage(),//新闻主页面
-
       //发现模块
-      "find": FindPage(),//发现模块主页面
+      "tree": TreePage(),//知识体系主页面
       //我的模块
       "my": MyPage(),//我的模块主页面
       //展示文章内容，统一的容器

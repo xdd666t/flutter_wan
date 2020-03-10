@@ -6,13 +6,13 @@ import 'package:flutter_wan/bean/home/home_article_bean.dart';
 
 class WebViewState implements Cloneable<WebViewState> {
   ArticleDetailBean articleDetail;
-  double progress;
+  bool isLoading;
 
   @override
   WebViewState clone() {
     return WebViewState()
         ..articleDetail = articleDetail
-        ..progress = progress;
+        ..isLoading = isLoading;
   }
 }
 
@@ -20,5 +20,6 @@ WebViewState initState(Map<String, dynamic> args) {
   //获取从列表传过来的值
   ArticleDetailBean articleDetailBean = args["articleDetail"];
   return WebViewState()
-      ..articleDetail = articleDetailBean;
+      ..articleDetail = articleDetailBean
+      ..isLoading = true;
 }
