@@ -8,8 +8,8 @@ import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
-import 'package:flutter_wan/widget/page/home/adapter/home_article_item/state.dart';
 import 'action.dart';
+import 'home_article_item/state.dart';
 import 'state.dart';
 
 Effect<HomeState> buildEffect() {

@@ -21,6 +21,7 @@ Widget _bottomNavigationBarUi() {
   var _pageController = PageController();
 
   return Scaffold(
+    appBar: AppBar(title: Text("玩Android")),
     body:  PageView.builder(
         physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
         controller: _pageController,

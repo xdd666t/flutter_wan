@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_wan/widget/page/home/adapter/home_article_item/component.dart';
 
-import 'adapter/adapter.dart';
+import 'adapter.dart';
 import 'effect.dart';
 import 'reducer.dart';
 import 'state.dart';

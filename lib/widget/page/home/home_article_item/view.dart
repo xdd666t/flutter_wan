@@ -1,10 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_wan/widget/page/home/home_article_item/state.dart';
 import 'package:flutter_wan/widget/utils/ui_adapter.dart';
 
 import 'action.dart';
-import 'state.dart';
 
 Widget buildView(HomeArticleItemState state, Dispatch dispatch, ViewService viewService) {
   return Container(
