@@ -7,8 +7,8 @@ class HomeArticleAdapter extends SourceFlowAdapter<HomeState> {
 
   HomeArticleAdapter()
       : super(
-          pool: <String, Component<Object>>{
-            articleType: HomeArticleItemComponent(),
-          },
-          );
+    pool: <String, Component<Object>>{
+      articleType: HomeArticleItemComponent(),
+    },
+  );
 }

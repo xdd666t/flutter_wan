@@ -7,6 +7,7 @@ import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
 import 'package:flutter_wan/widget/page/my/page.dart';
 import 'package:flutter_wan/widget/page/tree/page.dart';
+import 'package:flutter_wan/widget/page/tree/tree_detail/page.dart';
 import 'package:flutter_wan/widget/page/web/page.dart';
 void main(){
   runApp(createApp());
@@ -21,6 +22,7 @@ Widget createApp(){
       "home": HomePage(),//新闻主页面
       //发现模块
       "tree": TreePage(),//知识体系主页面
+      "tree_detail": TreeDetailPage(), //知识体系细节
       //我的模块
       "my": MyPage(),//我的模块主页面
       //展示文章内容，统一的容器

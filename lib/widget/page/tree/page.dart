@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_wan/widget/page/tree/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -13,7 +14,7 @@ class TreePage extends Page<TreeState, Map<String, dynamic>> {
             reducer: buildReducer(),
             view: buildView,
             dependencies: Dependencies<TreeState>(
-                adapter: null,
+                adapter: NoneConn<TreeState>() + TreeAdapter(),
                 slots: <String, Dependent<TreeState>>{
                 }),
             middleware: <Middleware<TreeState>>[

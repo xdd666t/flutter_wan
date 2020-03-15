@@ -40,7 +40,7 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
 
   @override
   // TODO: implement itemCount
-  int get itemCount => articleList.length;
+  int get itemCount => articleList.length == null ? 0 : articleList.length;
 
   @override
   void setItemData(int index, Object data) {
