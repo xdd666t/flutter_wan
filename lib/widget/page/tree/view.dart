@@ -6,8 +6,12 @@ import 'action.dart';
 import 'state.dart';
 
 Widget buildView(TreeState state, Dispatch dispatch, ViewService viewService) {
-  //保活子页面
-  return keepAliveWrapper(_bodyWidget(viewService));
+  if(state.itemList != null){
+    //保活子页面
+    return keepAliveWrapper(_bodyWidget(viewService));
+  }else{
+    return Center(child: CircularProgressIndicator(),);
+  }
 }
 
 Widget _bodyWidget(var viewService){

@@ -28,5 +28,6 @@ TreeDetailState initState(Map<String, dynamic> args) {
     tabs.add(Tab(text: child.name));
   }
   return TreeDetailState()
-      ..topList = tabs;
+      ..topList = tabs
+      ..treeInfoData = tempTreeInfo;
 }

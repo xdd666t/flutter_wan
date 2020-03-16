@@ -24,7 +24,7 @@ Widget _topTab(TreeDetailState state){
       ),
       body: TabBarView(
         children: state.topList.asMap().keys.map((int index){
-          return TreeDetailTabPage().buildPage({"qq": state.treeInfoData.children[index]});
+          return TreeDetailTabPage().buildPage({"id": state.treeInfoData.children[index].id.toString() });
         }).toList()
       ),
     )

@@ -10,5 +10,7 @@ class ApiUrl{
 
   // 获取体系数据
   static String GET_TREE = "https://www.wanandroid.com/tree/json";
+  //体系文章详情
+  static String GET_TREE_DETAIL = "https://www.wanandroid.com/article/list/0/json";
 
 }

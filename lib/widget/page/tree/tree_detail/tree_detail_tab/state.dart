@@ -1,13 +1,15 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/widget/page/tree/tree_detail/tree_detail_tab/adapter.dart';
-import 'package:flutter_wan/widget/page/tree/tree_detail/tree_detail_tab/tree_tab_item/state.dart';
+import 'package:flutter_wan/widget/page/tree/tree_detail/tree_tab_item/state.dart';
 
 class TreeDetailTabState extends MutableSource implements Cloneable<TreeDetailTabState> {
+  String id;
   List<TreeTabItemState> items;
 
   @override
   TreeDetailTabState clone() {
-    return TreeDetailTabState();
+    return TreeDetailTabState()
+        ..items = items;
   }
 
   @override
@@ -34,11 +36,7 @@ class TreeDetailTabState extends MutableSource implements Cloneable<TreeDetailTa
 }
 
 TreeDetailTabState initState(Map<String, dynamic> args) {
-  List<TreeTabItemState> list = List();
-  for(int i=0; i<10; i++){
-    list.add(TreeTabItemState());
-  }
-
+  var id = args["id"]; //获取TabBar穿过来的id
   return TreeDetailTabState()
-      ..items = list;
+      ..id = id;
 }

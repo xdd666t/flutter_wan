@@ -26,7 +26,6 @@ void _init(Action action, Context<TreeState> ctx) async {
   List<TreeItemState> itemList = List.generate(treeItem.length, (index){
     return TreeItemState(item: treeItem[index]);
   });
-  println(treeItem.length);
   //更新数据
   ctx.dispatch(TreeActionCreator.updateTree(itemList));
 }

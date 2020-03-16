@@ -37,6 +37,5 @@ class TreeState extends MutableSource implements Cloneable<TreeState> {
 }
 
 TreeState initState(Map<String, dynamic> args) {
-  return TreeState()
-    ..itemList = List();
+  return TreeState();
 }
