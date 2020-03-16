@@ -10,7 +10,7 @@ Widget buildView(TreeState state, Dispatch dispatch, ViewService viewService) {
     //保活子页面
     return keepAliveWrapper(_bodyWidget(viewService));
   }else{
-    return Center(child: CircularProgressIndicator(),);
+    return Center(child: CircularProgressIndicator(),); //增加个加载动画
   }
 }
 
