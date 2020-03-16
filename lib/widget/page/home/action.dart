@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_wan/bean/home/banner_bean.dart';
-import 'package:flutter_wan/widget/page/home/adapter/home_article_item/state.dart';
+
+import 'home_article_item/state.dart';
 
 //TODO replace with your own action
 enum HomeAction {updateBannerData, updateBannerImage, updateIndex, updateArticleItem,

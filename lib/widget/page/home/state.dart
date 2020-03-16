@@ -2,9 +2,9 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
-import 'package:flutter_wan/widget/page/home/adapter/home_article_item/state.dart';
 
-import 'adapter/adapter.dart';
+import 'adapter.dart';
+import 'home_article_item/state.dart';
 
 class HomeState extends MutableSource implements Cloneable<HomeState> {
   List<BannerData> banners; //轮播所有数据
@@ -40,7 +40,7 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
 
   @override
   // TODO: implement itemCount
-  int get itemCount => articleList.length;
+  int get itemCount => articleList.length == null ? 0 : articleList.length;
 
   @override
   void setItemData(int index, Object data) {

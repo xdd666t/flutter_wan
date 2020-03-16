@@ -21,6 +21,7 @@ Widget _bottomNavigationBarUi() {
   var _pageController = PageController();
 
   return Scaffold(
+    appBar: AppBar(title: Text("玩Android")),
     body:  PageView.builder(
         physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
         controller: _pageController,
@@ -36,7 +37,7 @@ Widget _bottomNavigationBarUi() {
     bottomNavigationBar: BottomNavigationBar(
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("主页")),
-        BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("发现")),
+        BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("知识体系")),
         BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text("我的")),
       ],
       currentIndex: _mainState.selectedIndex,

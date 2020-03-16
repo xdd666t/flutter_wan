@@ -5,18 +5,18 @@ import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-class FindPage extends Page<FindState, Map<String, dynamic>> {
-  FindPage()
+class TreeDetailPage extends Page<TreeDetailState, Map<String, dynamic>> {
+  TreeDetailPage()
       : super(
             initState: initState,
             effect: buildEffect(),
             reducer: buildReducer(),
             view: buildView,
-            dependencies: Dependencies<FindState>(
+            dependencies: Dependencies<TreeDetailState>(
                 adapter: null,
-                slots: <String, Dependent<FindState>>{
+                slots: <String, Dependent<TreeDetailState>>{
                 }),
-            middleware: <Middleware<FindState>>[
+            middleware: <Middleware<TreeDetailState>>[
             ],);
 
 }

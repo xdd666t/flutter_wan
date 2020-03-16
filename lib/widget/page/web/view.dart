@@ -3,46 +3,40 @@ import 'dart:convert';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart' hide WebViewState;
+import 'package:webview_flutter/webview_flutter.dart';
 
 import 'action.dart';
 import 'state.dart';
 
 Widget buildView(WebViewState state, Dispatch dispatch, ViewService viewService) {
-  FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
-  flutterWebviewPlugin.onProgressChanged.listen((progress){
-    println(progress);
-    dispatch(WebViewActionCreator.onProgress(progress)); //更新进度条
-  });
 
-  return WebviewScaffold(
-    appBar: AppBar(
-      title: Text(state.articleDetail.title),
-      backgroundColor: Colors.lightBlue,
-      bottom: PreferredSize(
-          child: _progressBar(state.progress, viewService.context),
-          preferredSize: Size.fromHeight(0.5),
-      ),
-    ),
-      url: state.articleDetail.url
-  );
 
 //  官方webview用法
-//  return Scaffold(
-//    appBar: AppBar(title: Text(state.articleDetail.title)),
-//    body: WebView(
-//      initialUrl: state.articleDetail.url,
-//    ),
-//  );
-}
+  return Scaffold(
+    appBar: AppBar(title: Text(state.articleDetail.title)),
+    body: Stack(
+      children: <Widget>[
+        WebView(
+          initialUrl: state.articleDetail.url,
+          onPageFinished: (url){
+            dispatch(WebViewActionCreator.isLoading(false)); //完成网页加载,关闭加载条
+          },
+        ),
+        //加载动画
+        Offstage(
+          offstage: !state.isLoading,
+          child: Center(
+            child: CircularProgressIndicator(), //圆形加载动画
+          ),
+        )
+      ],
+    )
 
 
-_progressBar(double progress,BuildContext context) {
-
-  return LinearProgressIndicator(
-    backgroundColor: Colors.white70.withOpacity(0),
-    value: progress == 1.0 ? 0 : progress,
-    valueColor: new AlwaysStoppedAnimation<Color>(Colors.cyanAccent),
   );
+
+
 }
+
 
 

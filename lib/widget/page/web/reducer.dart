@@ -7,7 +7,7 @@ Reducer<WebViewState> buildReducer() {
   return asReducer(
     <Object, Reducer<WebViewState>>{
       WebViewAction.action: _onAction,
-      WebViewAction.onProgress: _onProgress,
+      WebViewAction.isLoading: _isLoading,
     },
   );
 }
@@ -18,8 +18,8 @@ WebViewState _onAction(WebViewState state, Action action) {
 }
 
 
-WebViewState _onProgress(WebViewState state, Action action) {
+WebViewState _isLoading(WebViewState state, Action action) {
   WebViewState newState = state.clone();
-  newState.progress = action.payload;
+  newState.isLoading = action.payload;
   return newState;
 }
