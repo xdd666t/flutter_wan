@@ -13,4 +13,7 @@ class ApiUrl{
   //体系文章详情
   static String GET_TREE_DETAIL = "https://www.wanandroid.com/article/list/0/json";
 
+  //获取导航数据
+  static String GET_NAVI_INFO = "https://www.wanandroid.com/navi/json";
+
 }

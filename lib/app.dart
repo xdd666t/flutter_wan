@@ -5,7 +5,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
-import 'package:flutter_wan/widget/page/my/page.dart';
+import 'package:flutter_wan/widget/page/navi/page.dart';
 import 'package:flutter_wan/widget/page/tree/page.dart';
 import 'package:flutter_wan/widget/page/tree/tree_detail/page.dart';
 import 'package:flutter_wan/widget/page/web/page.dart';
@@ -24,7 +24,7 @@ Widget createApp(){
       "tree": TreePage(),//知识体系主页面
       "tree_detail": TreeDetailPage(), //知识体系细节
       //我的模块
-      "my": MyPage(),//我的模块主页面
+      "my": NaviPage(),//我的模块主页面
       //展示文章内容，统一的容器
       "webview": WebViewPage(),
     },

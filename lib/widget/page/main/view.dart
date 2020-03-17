@@ -38,7 +38,7 @@ Widget _bottomNavigationBarUi() {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("主页")),
         BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("知识体系")),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text("我的")),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text("导航")),
       ],
       currentIndex: _mainState.selectedIndex,
       selectedItemColor: Colors.lightBlue,

@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
-import 'package:flutter_wan/widget/page/my/page.dart';
+import 'package:flutter_wan/widget/page/navi/page.dart';
 import 'package:flutter_wan/widget/page/tree/page.dart';
 
 class MainState implements Cloneable<MainState>  {
@@ -30,7 +30,7 @@ MainState initState(Map<String, dynamic> args) {
   mainState.tabPage = [
     HomePage().buildPage(null),
     TreePage().buildPage(null),
-    MyPage().buildPage(null)
+    NaviPage().buildPage(null)
   ];
 
   return mainState;
