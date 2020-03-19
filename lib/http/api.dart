@@ -16,4 +16,8 @@ class ApiUrl{
   //获取导航数据
   static String GET_NAVI_INFO = "https://www.wanandroid.com/navi/json";
 
+  //获取项目数据
+  static String GET_PROJECT_INFO = "https://www.wanandroid.com/project/tree/json";
+  static String GET_PROJECT_DETAIL = "https://www.wanandroid.com/project/list/1/json";
+
 }

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
 import 'package:flutter_wan/widget/page/navi/page.dart';
+import 'package:flutter_wan/widget/page/project/page.dart';
 import 'package:flutter_wan/widget/page/tree/page.dart';
 import 'package:flutter_wan/widget/page/tree/tree_detail/page.dart';
 import 'package:flutter_wan/widget/page/web/page.dart';
@@ -23,8 +24,10 @@ Widget createApp(){
       //发现模块
       "tree": TreePage(),//知识体系主页面
       "tree_detail": TreeDetailPage(), //知识体系细节
-      //我的模块
-      "my": NaviPage(),//我的模块主页面
+      //导航模块
+      "navi": NaviPage(),//我的模块主页面
+      //项目模块
+      "project": ProjectPage(),
       //展示文章内容，统一的容器
       "webview": WebViewPage(),
     },

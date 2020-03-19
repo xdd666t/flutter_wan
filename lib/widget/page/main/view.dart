@@ -21,7 +21,7 @@ Widget _bottomNavigationBarUi() {
   var _pageController = PageController();
 
   return Scaffold(
-    appBar: AppBar(title: Text("玩Android")),
+    appBar: AppBar(title: Text("玩Android"), elevation: 0,),
     body:  PageView.builder(
         physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
         controller: _pageController,
@@ -35,13 +35,16 @@ Widget _bottomNavigationBarUi() {
     ),
 //    body: _mainState.tabPage[_mainState.selectedIndex],
     bottomNavigationBar: BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("主页")),
         BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("知识体系")),
         BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text("导航")),
+        BottomNavigationBarItem(icon: Icon(Icons.tab), title: Text("项目"))
       ],
       currentIndex: _mainState.selectedIndex,
       selectedItemColor: Colors.lightBlue,
+      unselectedItemColor: Colors.black54,
       onTap: (int index) {
         _dispatch(MainActionCreator.selectTab(index));
         _pageController.jumpToPage(index);
