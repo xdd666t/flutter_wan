@@ -29,4 +29,4 @@
   ![](https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322172901.png)
   
 - ios
-  - 下载项目，直接跑吧。本人没ios也没mac，没法打包呀
+  - 下载项目，直接跑吧。本人没iPhone也没Mac，没法打包呀
