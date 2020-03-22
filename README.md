@@ -20,13 +20,17 @@
 
 - [ ] 侧栏的一列功能填坑
 
-  
+
 
 ### app安装地址
 
 - android
 
   ![](https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322172901.png)
+
+- ios
+
+  - 下载项目，直接跑吧。本人没iPhone也没Mac，没法打包呀
 
 ### app界面
 
@@ -39,6 +43,3 @@
 <img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181047.jpg" style="zoom:25%;" />
 
 <img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181115.jpg" style="zoom:25%;" />
-
-
-
