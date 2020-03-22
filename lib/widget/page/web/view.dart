@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart' hide WebViewState;
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'action.dart';
