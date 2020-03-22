@@ -34,12 +34,12 @@
 
 ### app界面
 
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322180926.jpg" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322180926.jpg" width = "337" height = "600" />
 
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322180842.jpg" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322180842.jpg"  width = "337" height = "600" />
 
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181013.jpg" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181013.jpg"  width = "337" height = "600" />
 
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181047.jpg" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181047.jpg"  width = "337" height = "600" />
 
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181115.jpg" style="zoom:25%;" />
+<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181115.jpg"  width = "337" height = "600" />
