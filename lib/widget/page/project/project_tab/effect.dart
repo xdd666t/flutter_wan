@@ -19,7 +19,7 @@ void _onAction(Action action, Context<ProjectTabState> ctx) {
 }
 
 void _init(Action action, Context<ProjectTabState> ctx) async {
-  Response response = await Dio().get(ApiUrl.GET_PROJECT_DETAIL, queryParameters: {"id": ctx.state.id});
+  Response response = await Dio().get(ApiUrl.GET_PROJECT_DETAIL, queryParameters: {"cid": ctx.state.id});
   ProjectDetailBean projectDetailBean = ProjectDetailBean().fromJson(json.decode(response.toString()));
   List<ProjectTabItemState> items = List.generate(projectDetailBean.data.datas.length, (index){
     return ProjectTabItemState(itemDetail: projectDetailBean.data.datas[index]);

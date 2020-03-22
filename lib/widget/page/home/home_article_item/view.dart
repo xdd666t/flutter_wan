@@ -15,8 +15,10 @@ Widget buildView(HomeArticleItemState state, Dispatch dispatch, ViewService view
 //整个item布局
 Widget _itemWidget(state, dispatch){
   return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(setWidth(20))),
     margin: EdgeInsets.all(5),
     child: InkWell( //点击效果
+      borderRadius: BorderRadius.circular(setWidth(20)),
       child: _itemContentWidget(state),
       onTap: () => dispatch(HomeArticleItemActionCreator.openArticleContent(state)),
     ),

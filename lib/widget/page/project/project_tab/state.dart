@@ -39,7 +39,6 @@ class ProjectTabState extends MutableSource implements Cloneable<ProjectTabState
 
 ProjectTabState initState(Map<String, dynamic> args) {
   int id = args["id"];
-  println(id);
   return ProjectTabState()
       ..id = id;
 }

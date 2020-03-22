@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_wan/widget/utils/ui_adapter.dart';
 import 'action.dart';
 import 'state.dart';
 
@@ -21,7 +22,11 @@ Widget _bottomNavigationBarUi() {
   var _pageController = PageController();
 
   return Scaffold(
-    appBar: AppBar(title: Text("玩Android"), elevation: 0,),
+    appBar: AppBar(
+      title: Text("玩Android"),
+      elevation: 0, //去掉阴影
+    ),
+    drawer: _drawerWidget(),
     body:  PageView.builder(
         physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
         controller: _pageController,
@@ -39,7 +44,7 @@ Widget _bottomNavigationBarUi() {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("主页")),
         BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("知识体系")),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle), title: Text("导航")),
+        BottomNavigationBarItem(icon: Icon(Icons.poll), title: Text("导航")),
         BottomNavigationBarItem(icon: Icon(Icons.tab), title: Text("项目"))
       ],
       currentIndex: _mainState.selectedIndex,
@@ -53,3 +58,45 @@ Widget _bottomNavigationBarUi() {
   );
 }
 
+
+Widget _drawerWidget(){
+  return Drawer(
+    child: Column(
+      children: <Widget>[
+        Container(
+          child: Image.asset("images/ttxs.png"),
+        ),
+
+        Expanded(child: ListView(children: _itemDrawer(),),)
+      ],
+    )
+  );
+}
+
+List<Widget> _itemDrawer(){
+  List<Widget> list = List();
+  var listTitle = [
+    "我的收藏",
+    "设置",
+    "关于",
+    "反馈"
+  ];
+  var listIcon = [
+    Icon(Icons.favorite),
+    Icon(Icons.settings),
+    Icon(Icons.code),
+    Icon(Icons.announcement)
+  ];
+  for(var i=0; i<listTitle.length; i++){
+    list.add(InkWell(
+      child: ListTile(
+        leading: listIcon[i],
+        title: Text(listTitle[i]),
+      ),
+      onTap: (){
+
+      },
+    ));
+  }
+  return list;
+}

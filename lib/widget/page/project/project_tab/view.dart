@@ -1,12 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_wan/widget/utils/keep_alive_page.dart';
 
 import 'action.dart';
 import 'state.dart';
 
 Widget buildView(ProjectTabState state, Dispatch dispatch, ViewService viewService) {
   if(state.items != null){
-    return _itemWidget(viewService);
+    return keepAliveWrapper(_itemWidget(viewService));
   }else{
     return Center(child: CircularProgressIndicator(),);
   }

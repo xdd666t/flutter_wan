@@ -15,7 +15,9 @@ Widget buildView(TreeTabItemState state, Dispatch dispatch, ViewService viewServ
 Widget _itemWidget(TreeTabItemState state,Dispatch dispatch){
   return Card(
     margin: EdgeInsets.all(5),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(setWidth(20))),
     child: InkWell( //点击效果
+      borderRadius: BorderRadius.circular(setWidth(20)),
       child: _itemContentWidget(state),
       onTap: () => dispatch(TreeTabItemActionCreator.openArticleContent(state.itemDtail)),
     ),

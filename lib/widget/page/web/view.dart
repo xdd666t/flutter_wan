@@ -18,6 +18,10 @@ Widget buildView(WebViewState state, Dispatch dispatch, ViewService viewService)
       children: <Widget>[
         WebView(
           initialUrl: state.articleDetail.url,
+          javascriptMode: JavascriptMode.unrestricted,
+          onPageStarted: (url){
+            dispatch(WebViewActionCreator.isLoading(true)); //k开始网页加载,打开加载条
+          },
           onPageFinished: (url){
             dispatch(WebViewActionCreator.isLoading(false)); //完成网页加载,关闭加载条
           },

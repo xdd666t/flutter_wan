@@ -15,7 +15,5 @@ void _onAction(Action action, Context<TreeItemState> ctx) {
 }
 
 void _toTreeDetail(Action action, Context<TreeItemState> ctx) {
-  println(ctx.state.item);
-
   Navigator.of(ctx.context).pushNamed("tree_detail", arguments: {"treeDetail": action.payload});
 }

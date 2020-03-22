@@ -14,14 +14,14 @@ Widget buildView(TreeItemState state, Dispatch dispatch, ViewService viewService
 
 //item布局总样式(处理点击效果,点击事件等)
 Widget _itemWidget(state, dispatch){
-  return Container(
-      child: Card(
-          child: InkWell(
-            onTap: (){
-              dispatch(TreeItemActionCreator.toTreeDetail(state.item));
-            },
-            child: _itemContentWidget(state),
-          )
+  return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(setWidth(20))),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(setWidth(20)),
+        onTap: (){
+          dispatch(TreeItemActionCreator.toTreeDetail(state.item));
+        },
+        child: _itemContentWidget(state),
       )
   );
 }

@@ -34,6 +34,8 @@ dependencies:
   webview_flutter: 0.3.19+9 #官方webview
   flutter_webview_plugin: ^0.3.10+1  #第三方webview
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -49,6 +51,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - images/ttxs.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -80,3 +84,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
