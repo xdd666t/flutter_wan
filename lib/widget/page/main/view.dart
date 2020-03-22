@@ -64,7 +64,7 @@ Widget _drawerWidget(){
     child: Column(
       children: <Widget>[
         Container(
-          child: Image.asset("images/ttxs.png"),
+          child: Image.asset("images/ttxs.jpg"),
         ),
 
         Expanded(child: ListView(children: _itemDrawer(),),)

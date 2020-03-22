@@ -1,5 +1,3 @@
-# 玩Android
-
 - 注：该项目为Flutter + fish_redux，页面基本均是fish_redux搭建
 
 ### 第一版
@@ -24,3 +22,8 @@
 
   
 
+### app安装地址
+
+- android
+
+  ![](https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322172901.png)
