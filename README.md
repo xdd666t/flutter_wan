@@ -1,4 +1,7 @@
 # 玩Android
+
+- 注：该项目为Flutter + fish_redux，页面基本均是fish_redux搭建
+
 ### 第一版
 
 - [x] ~~首页banner展示，首页文章分页加载，完成下拉刷新，上拉加载~~
