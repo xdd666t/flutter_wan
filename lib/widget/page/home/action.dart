@@ -17,7 +17,7 @@ class HomeActionCreator {
   }
 
   //打开banner
-  static Action openBannnerContent(int index) {
+  static Action openBannerContent(int index) {
     return Action(HomeAction.openBannerContent, payload: index);
   }
 
