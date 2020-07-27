@@ -16,7 +16,7 @@ Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
     Lifecycle.initState: _init,
     HomeAction.loadMoreArticle: _loadMoreArticleData,
-    HomeAction.openBannnerContent: _openBannnerContent,
+    HomeAction.openBannerContent: _openBannnerContent,
   });
 }
 
