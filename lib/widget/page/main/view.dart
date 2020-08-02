@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/widget/utils/ui_adapter.dart';
+
 import 'action.dart';
 import 'state.dart';
 
@@ -27,22 +27,23 @@ Widget _bottomNavigationBarUi() {
       elevation: 0, //去掉阴影
     ),
     drawer: _drawerWidget(),
-    body:  PageView.builder(
-        physics: NeverScrollableScrollPhysics(), //禁止页面左右滑动切换
+    body: PageView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        //禁止页面左右滑动切换
         controller: _pageController,
-        onPageChanged: (index){
+        onPageChanged: (index) {
           //切换页面时的回调s
           _dispatch(MainActionCreator.selectTab(index));
         },
         //回调函数
         itemCount: _mainState.tabPage.length,
-        itemBuilder: (context, index) => _mainState.tabPage[index]
-    ),
+        itemBuilder: (context, index) => _mainState.tabPage[index]),
 //    body: _mainState.tabPage[_mainState.selectedIndex],
     bottomNavigationBar: BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.account_balance), title: Text("主页")),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance), title: Text("主页")),
         BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("知识体系")),
         BottomNavigationBarItem(icon: Icon(Icons.poll), title: Text("导航")),
         BottomNavigationBarItem(icon: Icon(Icons.tab), title: Text("项目"))
@@ -58,44 +59,38 @@ Widget _bottomNavigationBarUi() {
   );
 }
 
-
-Widget _drawerWidget(){
+Widget _drawerWidget() {
   return Drawer(
-    child: Column(
-      children: <Widget>[
-        Container(
-          child: Image.asset("images/ttxs.jpg"),
+      child: Column(
+    children: <Widget>[
+      Container(
+        child: Image.asset("images/ttxs.jpg"),
+      ),
+      Expanded(
+        child: ListView(
+          children: _itemDrawer(),
         ),
-
-        Expanded(child: ListView(children: _itemDrawer(),),)
-      ],
-    )
-  );
+      )
+    ],
+  ));
 }
 
-List<Widget> _itemDrawer(){
+List<Widget> _itemDrawer() {
   List<Widget> list = List();
-  var listTitle = [
-    "我的收藏",
-    "设置",
-    "关于",
-    "反馈"
-  ];
+  var listTitle = ["我的收藏", "设置", "关于", "反馈"];
   var listIcon = [
     Icon(Icons.favorite),
     Icon(Icons.settings),
     Icon(Icons.code),
     Icon(Icons.announcement)
   ];
-  for(var i=0; i<listTitle.length; i++){
+  for (var i = 0; i < listTitle.length; i++) {
     list.add(InkWell(
       child: ListTile(
         leading: listIcon[i],
         title: Text(listTitle[i]),
       ),
-      onTap: (){
-
-      },
+      onTap: () {},
     ));
   }
   return list;
