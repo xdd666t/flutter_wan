@@ -7,7 +7,7 @@ import 'home_article_item/state.dart';
 //TODO replace with your own action
 enum HomeAction {updateBannerData, updateBannerImage, updateIndex, updateArticleItem,
   loadMoreArticle, //加载更多新闻
-  openBannnerContent, //打开banner文章内容
+  openBannerContent, //打开banner文章内容
 }
 
 class HomeActionCreator {
@@ -17,8 +17,8 @@ class HomeActionCreator {
   }
 
   //打开banner
-  static Action openBannnerContent(int index) {
-    return Action(HomeAction.openBannnerContent, payload: index);
+  static Action openBannerContent(int index) {
+    return Action(HomeAction.openBannerContent, payload: index);
   }
 
 

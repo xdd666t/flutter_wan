@@ -90,7 +90,7 @@ Widget _bannerImage(){
       builder: DotSwiperPaginationBuilder(size: setWidth(12), activeSize: setWidth(12))
     ),
     onTap: (index){
-      _dispatch(HomeActionCreator.openBannnerContent(index));
+      _dispatch(HomeActionCreator.openBannerContent(index));
     },
   );
 }

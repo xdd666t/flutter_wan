@@ -16,7 +16,7 @@ Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
     Lifecycle.initState: _init,
     HomeAction.loadMoreArticle: _loadMoreArticleData,
-    HomeAction.openBannnerContent: _openBannnerContent,
+    HomeAction.openBannerContent: _openBannnerContent,
   });
 }
 
@@ -38,7 +38,7 @@ void _getBannerData(Action action, Context<HomeState> ctx) async {
     ctx.dispatch(HomeActionCreator.updateBannerData(ctx.state.banners));
     ctx.dispatch(HomeActionCreator.updateBannerImage(ctx.state.bannerImages));
   } catch (e) {
-    println("获取首页bannner数据失败: " + e.toString());
+    println("获取首页banner数据失败: " + e.toString());
   }
 }
 
