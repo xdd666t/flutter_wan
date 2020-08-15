@@ -3,7 +3,7 @@ import 'package:flutter_wan/widget/page/project/project_tab/state.dart';
 import 'package:flutter_wan/widget/page/project/project_tab_item/component.dart';
 
 class ProjectTabAdapter extends SourceFlowAdapter<ProjectTabState> {
-  static String project_tab_item = "project_tab_item";
+  static const String project_tab_item = "project_tab_item";
 
   ProjectTabAdapter()
       : super(

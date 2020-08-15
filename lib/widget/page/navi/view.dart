@@ -12,8 +12,6 @@ Widget buildView(NaviState state, Dispatch dispatch, ViewService viewService) {
 Widget _itemWidget(NaviState state, ViewService viewService){
   if(state.items != null) {
     //更新内部item数据
-
-
     return ListView.builder(
       itemBuilder: viewService.buildAdapter().itemBuilder,
       itemCount: viewService.buildAdapter().itemCount,

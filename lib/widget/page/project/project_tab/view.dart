@@ -19,6 +19,4 @@ Widget _itemWidget(ViewService viewService){
     itemBuilder: viewService.buildAdapter().itemBuilder,
     itemCount: viewService.buildAdapter().itemCount,
   );
-
-//  return Text("测试.............");
 }
