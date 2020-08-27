@@ -21,6 +21,9 @@ class TreeDetailState implements Cloneable<TreeDetailState> {
 TreeDetailState initState(Map<String, dynamic> args) {
   TreeInfoData tempTreeInfo = args["treeDetail"];
 
+  String name = args["name"];
+  print(name);
+
   //设置顶部tab
   List<Tab> tabs = List();
   for(int i=0; i<tempTreeInfo.children.length; i++){
