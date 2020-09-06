@@ -13,10 +13,6 @@ class MainState implements Cloneable<MainState>  {
   MainState({this.selectedIndex});
 
   @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
-
-  @override
   MainState clone() {
     return MainState()
       ..selectedIndex = selectedIndex
@@ -27,7 +23,6 @@ class MainState implements Cloneable<MainState>  {
 MainState initState(Map<String, dynamic> args) {
   MainState mainState = MainState();
   mainState.selectedIndex = 0;
-  mainState.tabPage = List();
   mainState.tabPage = [
     HomePage().buildPage(null),
     TreePage().buildPage(null),
