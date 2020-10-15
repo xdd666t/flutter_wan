@@ -5,9 +5,17 @@ import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'home_article_item/state.dart';
 
 //TODO replace with your own action
-enum HomeAction {updateBannerData, updateBannerImage, updateIndex, updateArticleItem,
-  loadMoreArticle, //加载更多新闻
-  openBannerContent, //打开banner文章内容
+enum HomeAction {
+  //获取轮播图图片Url(Ui更新)
+  updateBannerData,
+  //获取轮播图图片Url(Ui更新)
+  updateBannerImage,
+  updateIndex,
+  updateArticleItem,
+  //加载更多新闻
+  loadMoreArticle,
+  //打开banner文章内容
+  openBannerContent,
 }
 
 class HomeActionCreator {
@@ -16,19 +24,17 @@ class HomeActionCreator {
     return Action(HomeAction.loadMoreArticle, payload: index);
   }
 
-  //打开banner
+
   static Action openBannerContent(int index) {
     return Action(HomeAction.openBannerContent, payload: index);
   }
 
 
-
-  //获取轮播图图片Url(Ui更新)
   static Action updateBannerData(List<BannerData> bannerData) {
     return Action(HomeAction.updateBannerData, payload: bannerData);
   }
 
-  //获取轮播图图片Url(Ui更新)
+
   static Action updateBannerImage(List<Widget> bannerImage) {
     return Action(HomeAction.updateBannerImage, payload: bannerImage);
   }
@@ -42,5 +48,4 @@ class HomeActionCreator {
   static Action updateArticleItem(List<HomeArticleItemState> itemList) {
     return Action(HomeAction.updateArticleItem, payload: itemList);
   }
-
 }

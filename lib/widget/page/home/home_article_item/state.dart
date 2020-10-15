@@ -8,11 +8,7 @@ class HomeArticleItemState implements Cloneable<HomeArticleItemState> {
 
   @override
   HomeArticleItemState clone() {
-    return HomeArticleItemState()
-        ..itemDetail = itemDetail;
+    return HomeArticleItemState()..itemDetail = itemDetail;
   }
 }
 
-HomeArticleItemState initState(Map<String, dynamic> args) {
-  return HomeArticleItemState();
-}

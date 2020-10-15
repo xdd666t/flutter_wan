@@ -9,16 +9,15 @@ import 'view.dart';
 class HomePage extends Page<HomeState, Map<String, dynamic>> {
   HomePage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<HomeState>(
-                adapter: NoneConn<HomeState>() + HomeArticleAdapter(),
-                slots: <String, Dependent<HomeState>>{
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<HomeState>(
+              adapter: NoneConn<HomeState>() + HomeArticleAdapter(),
+              slots: <String, Dependent<HomeState>>{
 //                  "HomeArticleItem": HomeArticleItemConnector() + HomeArticleItemComponent(),
-                }),
-            middleware: <Middleware<HomeState>>[
-            ],);
-
+              }),
+          middleware: <Middleware<HomeState>>[],
+        );
 }

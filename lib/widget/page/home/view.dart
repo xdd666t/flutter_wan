@@ -20,7 +20,6 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   _dispatch = dispatch;
   _viewService = viewService;
   _homeState.articleIndex = 0;
-  ScreenUtil.init(viewService.context, width: 750, height: 1334);
 
   return keepAliveWrapper(Scaffold(
     body: _homeWidget()
@@ -126,7 +125,7 @@ Widget _bannerText(){
 }
 
 
-////////////////文章组件
+///文章组件
 Widget _articleWidget(){
   return MediaQuery.removePadding(
     removeTop: true,
