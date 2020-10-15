@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
+import 'package:flutter_wan/app/config/route.dart';
 import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
@@ -16,7 +17,7 @@ Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
     Lifecycle.initState: _init,
     HomeAction.loadMoreArticle: _loadMoreArticleData,
-    HomeAction.openBannerContent: _openBannnerContent,
+    HomeAction.openBannerContent: _openBannerContent,
   });
 }
 
@@ -65,7 +66,7 @@ void _getArticleData(Action action, Context<HomeState> ctx) async {
 
     List<HomeArticleDataData> items = homeArticleBean.data.datas;
     ctx.state.articleList = List.generate(items.length, (index) {
-      return HomeArticleItemState(itemDtail: items[index]);
+      return HomeArticleItemState(itemDetail: items[index]);
     });
 
     ctx.dispatch(
@@ -86,7 +87,7 @@ void _loadMoreArticleData(Action action, Context<HomeState> ctx) async {
 
     List<HomeArticleDataData> items = homeArticleBean.data.datas;
     List<HomeArticleItemState> tempList = List.generate(items.length, (index) {
-      return HomeArticleItemState(itemDtail: items[index]);
+      return HomeArticleItemState(itemDetail: items[index]);
     });
     if (index == 0) {
       ctx.state.articleList = tempList;
@@ -101,12 +102,15 @@ void _loadMoreArticleData(Action action, Context<HomeState> ctx) async {
 }
 
 //打开banner文章内容
-void _openBannnerContent(Action action, Context<HomeState> ctx) {
+void _openBannerContent(Action action, Context<HomeState> ctx) {
   int index = action.payload;
   ArticleDetailBean articleDetailBean = ArticleDetailBean();
   articleDetailBean.title = ctx.state.banners[index].title;
   articleDetailBean.url = ctx.state.banners[index].url;
 
-  Navigator.of(ctx.context)
-      .pushNamed("webview", arguments: {"articleDetail": articleDetailBean});
+  Navigator.pushNamed(
+    ctx.context,
+    RouteConfig.webViewPage,
+    arguments: {"articleDetail": articleDetailBean},
+  );
 }

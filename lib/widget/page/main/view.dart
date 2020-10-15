@@ -6,14 +6,10 @@ import 'state.dart';
 
 MainState _mainState;
 Dispatch _dispatch;
-ViewService _viewService;
 
 Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   _mainState = state;
   _dispatch = dispatch;
-  _viewService = viewService;
-  // page 转换成 widget 通过 buildPage 实现，参数表示要传递的参数，无需传递则为 null 即可
-
   return _bottomNavigationBarUi();
 }
 

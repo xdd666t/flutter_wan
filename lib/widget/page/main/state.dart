@@ -5,12 +5,12 @@ import 'package:flutter_wan/widget/page/navi/page.dart';
 import 'package:flutter_wan/widget/page/project/page.dart';
 import 'package:flutter_wan/widget/page/tree/page.dart';
 
-class MainState implements Cloneable<MainState>  {
+class MainState implements Cloneable<MainState> {
+  ///底部导航栏tab标识
+  int selectedIndex = 0;
 
-  int selectedIndex = 0;  //底部导航栏tab标识
-  List<Widget> tabPage;  //tab页面
-
-  MainState({this.selectedIndex});
+  ///tab页面
+  List<Widget> tabPage;
 
   @override
   MainState clone() {
@@ -21,14 +21,12 @@ class MainState implements Cloneable<MainState>  {
 }
 
 MainState initState(Map<String, dynamic> args) {
-  MainState mainState = MainState();
-  mainState.selectedIndex = 0;
-  mainState.tabPage = [
-    HomePage().buildPage(null),
-    TreePage().buildPage(null),
-    NaviPage().buildPage(null),
-    ProjectPage().buildPage(null)
-  ];
-
-  return mainState;
+  return MainState()
+    ..selectedIndex = 0
+    ..tabPage = [
+      HomePage().buildPage(null),
+      TreePage().buildPage(null),
+      NaviPage().buildPage(null),
+      ProjectPage().buildPage(null)
+    ];
 }

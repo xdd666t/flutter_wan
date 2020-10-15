@@ -2,14 +2,14 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 
 class HomeArticleItemState implements Cloneable<HomeArticleItemState> {
-  HomeArticleDataData itemDtail;
+  HomeArticleDataData itemDetail;
 
-  HomeArticleItemState({this.itemDtail});
+  HomeArticleItemState({this.itemDetail});
 
   @override
   HomeArticleItemState clone() {
     return HomeArticleItemState()
-        ..itemDtail = itemDtail;
+        ..itemDetail = itemDetail;
   }
 }
 

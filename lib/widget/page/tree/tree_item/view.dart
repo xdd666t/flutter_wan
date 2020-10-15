@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/widget/utils/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/ui_adapter.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -15,9 +15,9 @@ Widget buildView(TreeItemState state, Dispatch dispatch, ViewService viewService
 //item布局总样式(处理点击效果,点击事件等)
 Widget _itemWidget(state, dispatch){
   return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(setWidth(20))),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(auto(20))),
       child: InkWell(
-        borderRadius: BorderRadius.circular(setWidth(20)),
+        borderRadius: BorderRadius.circular(auto(20)),
         onTap: (){
           dispatch(TreeItemActionCreator.toTreeDetail(state.item));
         },
@@ -37,14 +37,14 @@ Widget _itemContentWidget(state){
       //第一层文字
       Container(
         alignment: Alignment.topLeft,
-        margin: EdgeInsets.all(setWidth(20)),
+        margin: EdgeInsets.all(auto(20)),
         child: Text(state.item.name),
       ),
 
       //第二层各种类别
       Container(
         alignment: Alignment.topLeft,
-        margin: EdgeInsets.only(left: setWidth(20), right: setWidth(20), bottom: setWidth(20)),
+        margin: EdgeInsets.only(left: auto(20), right: auto(20), bottom: auto(20)),
         child: Text(sortName),
       )
     ],

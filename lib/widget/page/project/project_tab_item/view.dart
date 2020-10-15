@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/widget/utils/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/ui_adapter.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -9,16 +9,16 @@ Widget buildView(
     ProjectTabItemState state, Dispatch dispatch, ViewService viewService) {
   return Card(
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(setWidth(20))),
+        borderRadius: BorderRadius.circular(auto(20))),
     child: InkWell(
-      borderRadius: BorderRadius.circular(setWidth(20)),
+      borderRadius: BorderRadius.circular(auto(20)),
       child: Row(
         children: <Widget>[
           //左边图片
           Container(
-            margin: EdgeInsets.all(setWidth(20)),
-            width: setWidth(180),
-            height: setWidth(350),
+            margin: EdgeInsets.all(auto(20)),
+            width: auto(180),
+            height: auto(350),
             child: Image.network(
               state.itemDetail.envelopePic,
               fit: BoxFit.fill,
@@ -27,8 +27,8 @@ Widget buildView(
           //右边的纵向布局
           Expanded(
               child: Container(
-            margin: EdgeInsets.all(setWidth(20)),
-            height: setWidth(350),
+            margin: EdgeInsets.all(auto(20)),
+            height: auto(350),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[

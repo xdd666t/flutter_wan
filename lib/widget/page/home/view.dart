@@ -5,8 +5,8 @@ import 'package:flutter_easyrefresh/material_footer.dart';
 import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_wan/widget/utils/keep_alive_page.dart';
-import 'package:flutter_wan/widget/utils/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/keep_alive_page.dart';
+import 'package:flutter_wan/app/utils/ui_adapter.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -86,8 +86,8 @@ Widget _bannerImage(){
     //圆点指示器
     pagination: SwiperPagination(
       alignment: Alignment.bottomRight,
-      margin: EdgeInsets.only(bottom: setWidth(100), right: setWidth(15)),
-      builder: DotSwiperPaginationBuilder(size: setWidth(12), activeSize: setWidth(12))
+      margin: EdgeInsets.only(bottom: auto(100), right: auto(15)),
+      builder: DotSwiperPaginationBuilder(size: auto(12), activeSize: auto(12))
     ),
     onTap: (index){
       _dispatch(HomeActionCreator.openBannerContent(index));
@@ -101,7 +101,7 @@ Widget _bannerText(){
     child: Container(
       alignment: Alignment.bottomCenter,
       child: Container(
-          height: setWidth(80),
+          height: auto(80),
           width: double.infinity,
           padding: EdgeInsets.all(5.0),
           decoration: BoxDecoration(
