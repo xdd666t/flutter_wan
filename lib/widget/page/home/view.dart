@@ -41,7 +41,6 @@ Widget _homeWidget(
     firstRefresh: true,
     //下拉刷新
     onRefresh: () async {
-      state.articleIndex = 0;
       dispatch(HomeActionCreator.onListRefresh());
     },
     //上拉加载

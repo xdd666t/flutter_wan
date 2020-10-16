@@ -30,9 +30,12 @@ void _onListLoad(Action action, Context<HomeState> ctx) {
   ctx.dispatch(HomeActionCreator.onRefresh());
 }
 
-void _onListRefresh(Action action, Context<HomeState> ctx) {
-  _getBannerData(action, ctx);
-  _getArticleData(action, ctx);
+void _onListRefresh(Action action, Context<HomeState> ctx) async {
+  ctx.state.articleIndex += 1;
+  ctx.dispatch(HomeActionCreator.onRefresh());
+
+  await Future.delayed(Duration(seconds: 2));
+  ctx.state.easyRefreshController.finishLoad(success: true, noMore: false);
 }
 
 void _init(Action action, Context<HomeState> ctx) {
