@@ -18,7 +18,21 @@ Effect<HomeState> buildEffect() {
     Lifecycle.initState: _init,
     HomeAction.loadMoreArticle: _loadMoreArticleData,
     HomeAction.openBannerContent: _openBannerContent,
+    //上拉加载
+    HomeAction.onListLoad: _onListLoad,
+    //下拉刷新
+    HomeAction.onListRefresh: _onListRefresh,
   });
+}
+
+void _onListLoad(Action action, Context<HomeState> ctx) {
+  ctx.state.articleIndex = 0;
+  ctx.dispatch(HomeActionCreator.onRefresh());
+}
+
+void _onListRefresh(Action action, Context<HomeState> ctx) {
+  _getBannerData(action, ctx);
+  _getArticleData(action, ctx);
 }
 
 void _init(Action action, Context<HomeState> ctx) {

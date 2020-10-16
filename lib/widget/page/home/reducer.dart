@@ -10,8 +10,13 @@ Reducer<HomeState> buildReducer() {
       HomeAction.updateBannerImage: _onBannerImage,
       HomeAction.updateIndex: _onBannerIndex,
       HomeAction.updateArticleItem: _onArticleItem,
+      HomeAction.onRefresh: _onRefresh,
     },
   );
+}
+
+HomeState _onRefresh(HomeState state, Action action) {
+  return state.clone();
 }
 
 

@@ -16,24 +16,39 @@ enum HomeAction {
   loadMoreArticle,
   //打开banner文章内容
   openBannerContent,
+  //上拉加载
+  onListLoad,
+  //下拉刷新
+  onListRefresh,
+  //界面刷新
+  onRefresh,
 }
 
 class HomeActionCreator {
+  static Action onRefresh() {
+    return Action(HomeAction.onRefresh);
+  }
+
+  static Action onListLoad() {
+    return Action(HomeAction.onListLoad);
+  }
+
+  static Action onListRefresh() {
+    return Action(HomeAction.onListRefresh);
+  }
+
   //加载更多新闻
   static Action loadMoreArticle(int index) {
     return Action(HomeAction.loadMoreArticle, payload: index);
   }
 
-
   static Action openBannerContent(int index) {
     return Action(HomeAction.openBannerContent, payload: index);
   }
 
-
   static Action updateBannerData(List<BannerData> bannerData) {
     return Action(HomeAction.updateBannerData, payload: bannerData);
   }
-
 
   static Action updateBannerImage(List<Widget> bannerImage) {
     return Action(HomeAction.updateBannerImage, payload: bannerImage);
