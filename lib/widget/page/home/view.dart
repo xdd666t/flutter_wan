@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/material_footer.dart';
 import 'package:flutter_easyrefresh/material_header.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_wan/app/utils/keep_alive_page.dart';
 import 'package:flutter_wan/app/utils/ui_adapter.dart';
@@ -21,35 +20,30 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   _viewService = viewService;
   _homeState.articleIndex = 0;
 
-  return keepAliveWrapper(Scaffold(
-    body: _homeWidget()
-  ));
+  return keepAliveWrapper(Scaffold(body: _homeWidget()));
 }
 
-
 //首页widget组装
-Widget _homeWidget(){
+Widget _homeWidget() {
   EasyRefreshController _controller = EasyRefreshController();
   return EasyRefresh(
     controller: _controller,
     header: MaterialHeader(),
     footer: MaterialFooter(),
-    child: ListView(
-      children: <Widget>[
-        _swiperView(), //banner控件
-        _articleWidget(), //文章控件
-      ]
-    ),
+    child: ListView(children: <Widget>[
+      _swiperView(), //banner控件
+      _articleWidget(), //文章控件
+    ]),
     firstRefresh: true,
     //下拉刷新
-    onRefresh: () async{
+    onRefresh: () async {
       _homeState.articleIndex = 0;
       _dispatch(HomeActionCreator.loadMoreArticle(_homeState.articleIndex));
 //      _controller.finishRefresh(success: true, noMore: false);
     },
     //上拉加载
-    onLoad: () async{
-      _homeState.articleIndex += 1 ;
+    onLoad: () async {
+      _homeState.articleIndex += 1;
       _dispatch(HomeActionCreator.loadMoreArticle(_homeState.articleIndex));
 
       await Future.delayed(Duration(seconds: 2), () {
@@ -59,42 +53,43 @@ Widget _homeWidget(){
   );
 }
 
-
 //////顶部轮播图
-Widget _swiperView(){
+Widget _swiperView() {
   return Container(
-    height: setHeight(400),
-    child: Stack(
-      children: <Widget>[
-        _bannerImage(),
-        _bannerText(),
-      ],
-    )
-  );
+      height: setHeight(400),
+      child: Stack(
+        children: <Widget>[
+          _bannerImage(),
+          _bannerText(),
+        ],
+      ));
 }
+
 //顶部banner图片显示
-Widget _bannerImage(){
+Widget _bannerImage() {
   return Swiper(
     itemCount: _homeState.bannerImages.length,
-    itemBuilder:  (BuildContext context, int index) {
+    itemBuilder: (BuildContext context, int index) {
       _dispatch(HomeActionCreator.updateBannerIndex(index)); //更新当前被选中的index
       return _homeState.bannerImages[index];
     },
     autoplay: _homeState.bannerImages.length != 0,
-    autoplayDelay: 5000, //自动播放时间间隔
+    autoplayDelay: 5000,
+    //自动播放时间间隔
     //圆点指示器
     pagination: SwiperPagination(
-      alignment: Alignment.bottomRight,
-      margin: EdgeInsets.only(bottom: auto(100), right: auto(15)),
-      builder: DotSwiperPaginationBuilder(size: auto(12), activeSize: auto(12))
-    ),
-    onTap: (index){
+        alignment: Alignment.bottomRight,
+        margin: EdgeInsets.only(bottom: auto(100), right: auto(15)),
+        builder:
+            DotSwiperPaginationBuilder(size: auto(12), activeSize: auto(12))),
+    onTap: (index) {
       _dispatch(HomeActionCreator.openBannerContent(index));
     },
   );
 }
+
 //顶部banner文字显示
-Widget _bannerText(){
+Widget _bannerText() {
   return Offstage(
     offstage: _homeState.banners.length == 0,
     child: Container(
@@ -115,27 +110,25 @@ Widget _bannerText(){
           ),
           child: Center(
             child: Text(
-              _homeState.banners.length == 0 ? "" : _homeState.banners[_homeState.bannerIndex].title,
+              _homeState.banners.length == 0
+                  ? ""
+                  : _homeState.banners[_homeState.bannerIndex].title,
               style: TextStyle(color: Colors.white, fontSize: setSp(30)),
             ),
-          )
-      ),
+          )),
     ),
   );
 }
 
-
 ///文章组件
-Widget _articleWidget(){
+Widget _articleWidget() {
   return MediaQuery.removePadding(
-    removeTop: true,
-    context: _viewService.context,
-    child: ListView.builder(
-      shrinkWrap: true, //为true可以解决子控件必须设置高度的问题
-      physics:NeverScrollableScrollPhysics(),//禁用滑动事件
-      itemBuilder: _viewService.buildAdapter().itemBuilder,
-      itemCount: _viewService.buildAdapter().itemCount,
-    )
-  );
+      removeTop: true,
+      context: _viewService.context,
+      child: ListView.builder(
+        shrinkWrap: true, //为true可以解决子控件必须设置高度的问题
+        physics: NeverScrollableScrollPhysics(), //禁用滑动事件
+        itemBuilder: _viewService.buildAdapter().itemBuilder,
+        itemCount: _viewService.buildAdapter().itemCount,
+      ));
 }
-
