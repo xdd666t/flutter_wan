@@ -31,9 +31,9 @@ class RouteConfig {
   ///展示文章内容，统一的容器
   static const String webViewPage = 'page/webview';
 
+  ///将你的路由名称和页面映射在一起，比如：RouteConfig.homePage: HomePage(),
   static final AbstractRoutes routes = PageRoutes(
     pages: <String, Page<Object, dynamic>>{
-      ///将你的路由名称和页面映射在一起，比如：RouteConfig.homePage : HomePage(),
       RouteConfig.mainPage: MainPage(),
       RouteConfig.homePage: HomePage(),
       RouteConfig.treePage: TreePage(),
