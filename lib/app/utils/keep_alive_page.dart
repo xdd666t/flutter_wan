@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 
-
 //页面保活方法
-Widget keepAliveWrapper(Widget child) => KeepAliveWidget(child);
+Widget keepAlivePage(Widget child) => AliveWidget(child);
 
-class KeepAliveWidget extends StatefulWidget {
+class AliveWidget extends StatefulWidget {
   final Widget child;
-  const KeepAliveWidget(this.child);
+
+  AliveWidget(this.child);
 
   @override
   State<StatefulWidget> createState() {
-    return  _KeepAliveState();
+    return _KeepAliveState();
   }
 }
 
-class _KeepAliveState extends State<KeepAliveWidget> with AutomaticKeepAliveClientMixin {
+class _KeepAliveState extends State<AliveWidget>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -24,4 +25,3 @@ class _KeepAliveState extends State<KeepAliveWidget> with AutomaticKeepAliveClie
     return widget.child;
   }
 }
-

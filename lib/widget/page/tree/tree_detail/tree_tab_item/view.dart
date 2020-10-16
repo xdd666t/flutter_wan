@@ -8,7 +8,7 @@ import 'state.dart';
 
 Widget buildView(TreeTabItemState state, Dispatch dispatch, ViewService viewService) {
 
-  return keepAliveWrapper(_itemWidget(state, dispatch));
+  return _itemWidget(state, dispatch);
 }
 
 //整个item布局

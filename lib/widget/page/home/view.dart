@@ -20,7 +20,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   _viewService = viewService;
   _homeState.articleIndex = 0;
 
-  return keepAliveWrapper(Scaffold(body: _homeWidget()));
+  return Scaffold(body: _homeWidget());
 }
 
 //首页widget组装
@@ -56,7 +56,7 @@ Widget _homeWidget() {
 //////顶部轮播图
 Widget _swiperView() {
   return Container(
-      height: setHeight(400),
+      height: auto(400),
       child: Stack(
         children: <Widget>[
           _bannerImage(),

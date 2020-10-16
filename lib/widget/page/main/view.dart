@@ -1,94 +1,39 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_wan/app/utils/ui_adapter.dart';
+import 'package:flutter_wan/widget/page/main/widget/main_body.dart';
+import 'package:flutter_wan/widget/page/main/widget/main_bottom_navigation.dart';
+import 'package:flutter_wan/widget/page/main/widget/main_drawer.dart';
 
 import 'action.dart';
 import 'state.dart';
 
-MainState _mainState;
-Dispatch _dispatch;
-
 Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
-  _mainState = state;
-  _dispatch = dispatch;
-  return _bottomNavigationBarUi();
-}
-
-// 底部tab界面
-Widget _bottomNavigationBarUi() {
-  var _pageController = PageController();
+  //此处初始化一次即可,effect里面初始化会报错
+  initUiAdapter(viewService.context);
 
   return Scaffold(
-    appBar: AppBar(
-      title: Text("玩Android"),
-      elevation: 0, //去掉阴影
-    ),
-    drawer: _drawerWidget(),
-    body: PageView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      //禁止页面左右滑动切换
-      controller: _pageController,
-      onPageChanged: (index) {
-        //切换页面时的回调s
-        _dispatch(MainActionCreator.selectTab(index));
+    appBar: AppBar(title: Text("玩Android")),
+    //侧边抽屉模块
+    drawer: MainDrawer(
+      data: state,
+      onTap: (String tag) {
+        dispatch(MainActionCreator.clickDrawer(tag));
       },
-      //回调函数
-      itemCount: _mainState.tabPage.length,
-      itemBuilder: (context, index) => _mainState.tabPage[index],
     ),
-//    body: _mainState.tabPage[_mainState.selectedIndex],
-    bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance), title: Text("主页")),
-        BottomNavigationBarItem(icon: Icon(Icons.print), title: Text("知识体系")),
-        BottomNavigationBarItem(icon: Icon(Icons.poll), title: Text("导航")),
-        BottomNavigationBarItem(icon: Icon(Icons.tab), title: Text("项目"))
-      ],
-      currentIndex: _mainState.selectedIndex,
-      selectedItemColor: Colors.lightBlue,
-      unselectedItemColor: Colors.black54,
+    //页面主体
+    body: MainBody(
+      data: state,
+      onChanged: (int index) {
+        dispatch(MainActionCreator.selectTab(index));
+      },
+    ),
+    //底部导航
+    bottomNavigationBar: MainBottomNavigation(
+      data: state,
       onTap: (int index) {
-        _dispatch(MainActionCreator.selectTab(index));
-        _pageController.jumpToPage(index);
+        dispatch(MainActionCreator.selectTab(index));
       },
     ),
   );
-}
-
-Widget _drawerWidget() {
-  return Drawer(
-      child: Column(
-    children: <Widget>[
-      Container(
-        child: Image.asset("images/ttxs.jpg"),
-      ),
-      Expanded(
-        child: ListView(
-          children: _itemDrawer(),
-        ),
-      )
-    ],
-  ));
-}
-
-List<Widget> _itemDrawer() {
-  List<Widget> list = List();
-  var listTitle = ["我的收藏", "设置", "关于", "反馈"];
-  var listIcon = [
-    Icon(Icons.favorite),
-    Icon(Icons.settings),
-    Icon(Icons.code),
-    Icon(Icons.announcement)
-  ];
-  for (var i = 0; i < listTitle.length; i++) {
-    list.add(InkWell(
-      child: ListTile(
-        leading: listIcon[i],
-        title: Text(listTitle[i]),
-      ),
-      onTap: () {},
-    ));
-  }
-  return list;
 }

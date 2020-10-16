@@ -8,7 +8,7 @@ import 'state.dart';
 
 Widget buildView(ProjectState state, Dispatch dispatch, ViewService viewService) {
   if(state.projectBean != null) {
-    return keepAliveWrapper(_tabWidget(state));
+    return _tabWidget(state);
   }else{
     return Center(child: CircularProgressIndicator(),);
   }

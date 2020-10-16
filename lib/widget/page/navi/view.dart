@@ -6,7 +6,7 @@ import 'action.dart';
 import 'state.dart';
 
 Widget buildView(NaviState state, Dispatch dispatch, ViewService viewService) {
-  return keepAliveWrapper(_itemWidget(state, viewService));
+  return _itemWidget(state, viewService);
 }
 
 Widget _itemWidget(NaviState state, ViewService viewService){

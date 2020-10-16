@@ -8,7 +8,7 @@ import 'state.dart';
 Widget buildView(TreeState state, Dispatch dispatch, ViewService viewService) {
   if(state.itemList != null){
     //保活子页面
-    return keepAliveWrapper(_bodyWidget(viewService));
+    return _bodyWidget(viewService);
   }else{
     return Center(child: CircularProgressIndicator(),); //增加个加载动画
   }

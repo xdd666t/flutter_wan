@@ -4,6 +4,8 @@ import 'package:fish_redux/fish_redux.dart';
 enum MainAction {
   //切换tab
   selectTab,
+  //侧边栏item点击
+  clickDrawer,
   //统一刷新事件
   onRefresh,
 }
@@ -15,5 +17,9 @@ class MainActionCreator {
 
   static Action onRefresh() {
     return Action(MainAction.onRefresh);
+  }
+
+  static Action clickDrawer(String tag) {
+    return Action(MainAction.clickDrawer, payload: tag);
   }
 }
