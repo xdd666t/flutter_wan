@@ -6,28 +6,49 @@ import 'state.dart';
 
 Widget buildView(
     TreeDetailState state, Dispatch dispatch, ViewService viewService) {
-  return _topTab(state);
+  return TreeDetailView(data: state);
 }
 
-//设置顶部tab widget
-Widget _topTab(TreeDetailState state) {
-  return DefaultTabController(
-    length: state.topList.length,
-    initialIndex: 0,
-    child: Scaffold(
+///fish_redux初始化自定义TabBar控制器
+class _TreeDetailViewState extends State<TreeDetailView>
+    with SingleTickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+    //演示初始化自定义的TabBar控制器
+    widget.data.tabController = TabController(
+      vsync: this,
+      length: widget.data.topList.length,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        title: Text(state.treeInfoData.name),
+        title: Text(widget.data.treeInfoData.name),
         bottom: TabBar(
-          tabs: state.topList,
-          isScrollable: state.topList.length < 5 ? false : true,
+          controller: widget.data.tabController,
+          tabs: widget.data.topList,
+          isScrollable: widget.data.topList.length < 5 ? false : true,
         ),
       ),
       body: TabBarView(
-          children: state.topList.asMap().keys.map((int index) {
-        return TreeDetailTabPage().buildPage({
-          "id": state.treeInfoData.children[index].id.toString(),
-        });
-      }).toList()),
-    ),
-  );
+          controller: widget.data.tabController,
+          children: widget.data.topList.asMap().keys.map((int index) {
+            return TreeDetailTabPage().buildPage({
+              "id": widget.data.treeInfoData.children[index].id.toString(),
+            });
+          }).toList()),
+    );
+  }
+}
+
+class TreeDetailView extends StatefulWidget {
+  TreeDetailView({this.data});
+
+  final TreeDetailState data;
+
+  @override
+  _TreeDetailViewState createState() => _TreeDetailViewState();
 }

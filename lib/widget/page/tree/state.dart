@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_wan/widget/component/article_list/state.dart';
 import 'package:flutter_wan/widget/page/tree/adapter.dart';
 import 'package:flutter_wan/widget/page/tree/tree_item/state.dart';
 

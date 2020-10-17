@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/cupertino.dart' hide Action;
+import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_wan/app/config/route.dart';
 import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
@@ -7,19 +7,18 @@ import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'action.dart';
 import 'state.dart';
 
-Effect<TreeTabItemState> buildEffect() {
-  return combineEffects(<Object, Effect<TreeTabItemState>>{
-    //打开文章
-    TreeTabItemAction.openArticleContent: _openArticleContent,
+Effect<ArticleItemState> buildEffect() {
+  return combineEffects(<Object, Effect<ArticleItemState>>{
+    ArticleItemAction.openArticleContent: _openArticleContent,
   });
 }
 
-void _openArticleContent(Action action, Context<TreeTabItemState> ctx) {
+void _openArticleContent(Action action, Context<ArticleItemState> ctx) {
   //传递过来的数据
-  HomeArticleDataData homeArticleDataData = action.payload;
+  HomeArticleDataData data = ctx.state.itemDetail;
   ArticleDetailBean articleDetailBean = ArticleDetailBean();
-  articleDetailBean.url = homeArticleDataData.link;
-  articleDetailBean.title = homeArticleDataData.title;
+  articleDetailBean.url = data.link;
+  articleDetailBean.title = data.title;
 
   Navigator.pushNamed(
     ctx.context,

@@ -13,7 +13,7 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   initUiAdapter(viewService.context);
 
   return Scaffold(
-    appBar: AppBar(title: Text("玩Android")),
+    appBar: AppBar(title: Text("玩Android"), elevation: 0),
     //侧边抽屉模块
     drawer: MainDrawer(
       data: state,

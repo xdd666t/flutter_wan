@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_wan/widget/component/article_list/component.dart';
 
 import 'adapter.dart';
 import 'effect.dart';
@@ -16,7 +17,7 @@ class HomePage extends Page<HomeState, Map<String, dynamic>> {
           dependencies: Dependencies<HomeState>(
               adapter: NoneConn<HomeState>() + HomeArticleAdapter(),
               slots: <String, Dependent<HomeState>>{
-//                  "HomeArticleItem": HomeArticleItemConnector() + HomeArticleItemComponent(),
+                 "ArticleList": ArticleConnector() + ArticleListComponent(),
               }),
           middleware: <Middleware<HomeState>>[],
         );

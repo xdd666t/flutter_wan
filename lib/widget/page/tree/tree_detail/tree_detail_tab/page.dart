@@ -9,16 +9,13 @@ import 'view.dart';
 class TreeDetailTabPage extends Page<TreeDetailTabState, Map<String, dynamic>> {
   TreeDetailTabPage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<TreeDetailTabState>(
-                adapter: NoneConn<TreeDetailTabState>() + TreeDetailTabAdapter(),
-                slots: <String, Dependent<TreeDetailTabState>>{
-
-                }),
-            middleware: <Middleware<TreeDetailTabState>>[
-            ],);
-
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<TreeDetailTabState>(
+              adapter: NoneConn<TreeDetailTabState>() + TreeDetailTabAdapter(),
+              slots: <String, Dependent<TreeDetailTabState>>{}),
+          middleware: <Middleware<TreeDetailTabState>>[],
+        );
 }

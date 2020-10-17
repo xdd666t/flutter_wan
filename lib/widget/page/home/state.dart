@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
+import 'package:flutter_wan/widget/component/article_list/state.dart';
 
 import 'adapter.dart';
 import 'home_article_item/state.dart';
@@ -29,9 +30,13 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
   //刷新控制器
   EasyRefreshController easyRefreshController;
 
+  //文章数据源
+  ArticleListState subState;
+
   @override
   HomeState clone() {
     return HomeState()
+      ..subState = subState
       ..banners = banners
       ..easyRefreshController = easyRefreshController
       ..articleIndex = articleIndex
@@ -55,10 +60,25 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
 
 HomeState initState(Map<String, dynamic> args) {
   return HomeState()
+    ..subState = ArticleListState()
     ..easyRefreshController = EasyRefreshController()
     ..banners = List()
     ..articleList = List()
     ..bannerImages = List()
     ..articleIndex = 0
     ..bannerIndex = 0;
+}
+
+///文章列表连接器
+class ArticleConnector extends ConnOp<HomeState, ArticleListState>
+    with ReselectMixin<HomeState, ArticleListState> {
+  @override
+  ArticleListState computed(HomeState state) {
+    return state.subState.clone();
+  }
+
+  @override
+  void set(HomeState state, ArticleListState subState) {
+    state.subState = subState;
+  }
 }

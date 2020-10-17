@@ -35,11 +35,16 @@ class TreeItemStyle extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             margin: EdgeInsets.only(
-                left: auto(20), right: auto(20), bottom: auto(20)),
+              left: auto(20),
+              right: auto(20),
+              bottom: auto(20),
+            ),
             child: Wrap(
-              spacing: auto(20),
-              runSpacing: auto(10),
-              children: data.item.children.map((e) => Text(e.name)).toList(),
+              spacing: auto(25),
+              runSpacing: auto(20),
+              children: data.item.children.map((e) {
+                return Text(e.name, style: TextStyle(height: 1));
+              }).toList(),
             ),
           ),
         ],

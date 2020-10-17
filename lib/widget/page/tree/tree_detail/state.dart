@@ -9,28 +9,27 @@ class TreeDetailState implements Cloneable<TreeDetailState> {
   //顶部tab数据
   List<Tab> topList;
 
+  //TabBar适配器
+  TabController tabController;
+
   @override
   TreeDetailState clone() {
-    // TODO: implement clone
     return TreeDetailState()
-        ..treeInfoData = treeInfoData
-        ..topList = topList;
+      ..tabController = tabController
+      ..treeInfoData = treeInfoData
+      ..topList = topList;
   }
 }
 
 TreeDetailState initState(Map<String, dynamic> args) {
   TreeInfoData tempTreeInfo = args["treeDetail"];
-
-  String name = args["name"];
-  print(name);
-
   //设置顶部tab
   List<Tab> tabs = List();
-  for(int i=0; i<tempTreeInfo.children.length; i++){
+  for (int i = 0; i < tempTreeInfo.children.length; i++) {
     var child = tempTreeInfo.children[i];
     tabs.add(Tab(text: child.name));
   }
   return TreeDetailState()
-      ..topList = tabs
-      ..treeInfoData = tempTreeInfo;
+    ..topList = tabs
+    ..treeInfoData = tempTreeInfo;
 }

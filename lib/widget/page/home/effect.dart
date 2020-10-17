@@ -8,6 +8,7 @@ import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
+import 'package:flutter_wan/widget/component/article_list/item/state.dart';
 
 import 'action.dart';
 import 'home_article_item/state.dart';
@@ -33,7 +34,6 @@ void _switchBanner(Action action, Context<HomeState> ctx) {
   ctx.dispatch(HomeActionCreator.onRefresh());
 }
 
-
 void _onListRefresh(Action action, Context<HomeState> ctx) {
   ctx.state.articleIndex = 0;
   _loadArticle(ctx);
@@ -45,13 +45,13 @@ void _onListLoad(Action action, Context<HomeState> ctx) async {
 }
 
 //加载文章数据
-void _loadArticle(Context<HomeState> ctx) async{
+void _loadArticle(Context<HomeState> ctx) async {
   try {
     int index = ctx.state.articleIndex;
     Response response = await Dio()
         .get(ApiUrl.GET_HOME_ARTICLE + index.toString() + "/json"); //获取首页文章
     HomeArticleBean homeArticleBean =
-    HomeArticleBean().fromJson(json.decode(response.toString()));
+        HomeArticleBean().fromJson(json.decode(response.toString()));
 
     List<HomeArticleDataData> items = homeArticleBean.data.datas;
     List<HomeArticleItemState> tempList = List.generate(items.length, (index) {
@@ -114,13 +114,14 @@ void _getArticleData(Context<HomeState> ctx) async {
         await Dio().get(ApiUrl.GET_HOME_ARTICLE + "0/json"); //获取首页文章
     HomeArticleBean homeArticleBean =
         HomeArticleBean().fromJson(json.decode(response.toString()));
-
     List<HomeArticleDataData> items = homeArticleBean.data.datas;
-    ctx.state.articleList = List.generate(items.length, (index) {
-      return HomeArticleItemState(itemDetail: items[index]);
+    var itemList = List.generate(items.length, (index) {
+      return ArticleItemState(itemDetail: items[index]);
     });
 
-    ctx.dispatch(HomeActionCreator.onRefresh()); //更新列表
+    //更新列表
+    ctx.state.subState.articleList = itemList;
+    ctx.dispatch(HomeActionCreator.onRefresh());
   } catch (e) {
     println("获取首页文章数据失败: " + e.toString());
   }
