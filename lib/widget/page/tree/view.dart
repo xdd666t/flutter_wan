@@ -1,20 +1,18 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/app/utils/keep_alive_page.dart';
 
-import 'action.dart';
 import 'state.dart';
 
 Widget buildView(TreeState state, Dispatch dispatch, ViewService viewService) {
-  if(state.itemList != null){
-    //保活子页面
-    return _bodyWidget(viewService);
-  }else{
-    return Center(child: CircularProgressIndicator(),); //增加个加载动画
+  if (state.itemList.length != 0) {
+    return _body(viewService);
+  } else {
+    //增加加载动画
+    return Center(child: CircularProgressIndicator());
   }
 }
 
-Widget _bodyWidget(var viewService){
+Widget _body(ViewService viewService) {
   return ListView.builder(
     itemBuilder: viewService.buildAdapter().itemBuilder,
     itemCount: viewService.buildAdapter().itemCount,

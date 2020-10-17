@@ -6,10 +6,7 @@ class TreeAdapter extends SourceFlowAdapter<TreeState> {
   static String treeItem = "treeItem"; //体系item
 
   TreeAdapter()
-      : super(
-          pool: <String, Component<Object>>{
-            treeItem : TreeItemComponent(),
-          }
-  );
+      : super(pool: <String, Component<Object>>{
+          treeItem: TreeItemComponent(),
+        });
 }
-

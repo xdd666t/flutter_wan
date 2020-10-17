@@ -30,7 +30,7 @@ dependencies:
   flutter_screenutil: ^1.0.2  # 界面适配
   flutter_swiper : ^1.1.6  #轮播图控件
   permission_handler: ^3.2.0 #权限申请
-  flutter_easyrefresh: ^2.0.9  #下拉刷新，下拉加载控件
+  flutter_easyrefresh: ^2.1.6  #下拉刷新，下拉加载控件
   webview_flutter: ^1.0.3 #官方webview
   # 解耦 https://pub.dev/packages/flutter_hooks
   flutter_hooks: ^0.14.1

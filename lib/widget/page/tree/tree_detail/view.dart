@@ -4,12 +4,13 @@ import 'package:flutter_wan/widget/page/tree/tree_detail/tree_detail_tab/page.da
 
 import 'state.dart';
 
-Widget buildView(TreeDetailState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+    TreeDetailState state, Dispatch dispatch, ViewService viewService) {
   return _topTab(state);
 }
 
 //设置顶部tab widget
-Widget _topTab(TreeDetailState state){
+Widget _topTab(TreeDetailState state) {
   return DefaultTabController(
     length: state.topList.length,
     initialIndex: 0,
@@ -18,14 +19,15 @@ Widget _topTab(TreeDetailState state){
         title: Text(state.treeInfoData.name),
         bottom: TabBar(
           tabs: state.topList,
-          isScrollable: true, //按钮过多,滚动
+          isScrollable: state.topList.length < 5 ? false : true,
         ),
       ),
       body: TabBarView(
-        children: state.topList.asMap().keys.map((int index){
-          return TreeDetailTabPage().buildPage({"id": state.treeInfoData.children[index].id.toString() });
-        }).toList()
-      ),
-    )
+          children: state.topList.asMap().keys.map((int index) {
+        return TreeDetailTabPage().buildPage({
+          "id": state.treeInfoData.children[index].id.toString(),
+        });
+      }).toList()),
+    ),
   );
 }

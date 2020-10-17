@@ -9,15 +9,13 @@ import 'view.dart';
 class TreePage extends Page<TreeState, Map<String, dynamic>> {
   TreePage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<TreeState>(
-                adapter: NoneConn<TreeState>() + TreeAdapter(),
-                slots: <String, Dependent<TreeState>>{
-                }),
-            middleware: <Middleware<TreeState>>[
-            ],);
-
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<TreeState>(
+              adapter: NoneConn<TreeState>() + TreeAdapter(),
+              slots: <String, Dependent<TreeState>>{}),
+          middleware: <Middleware<TreeState>>[],
+        );
 }

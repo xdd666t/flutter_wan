@@ -1,19 +1,15 @@
 import 'package:fish_redux/fish_redux.dart';
 
 import 'effect.dart';
-import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
 class TreeItemComponent extends Component<TreeItemState> {
   TreeItemComponent()
       : super(
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<TreeItemState>(
-                adapter: null,
-                slots: <String, Dependent<TreeItemState>>{
-                }),);
-
+          effect: buildEffect(),
+          view: buildView,
+          dependencies: Dependencies<TreeItemState>(
+              adapter: null, slots: <String, Dependent<TreeItemState>>{}),
+        );
 }

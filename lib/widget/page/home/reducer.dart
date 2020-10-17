@@ -6,10 +6,6 @@ import 'state.dart';
 Reducer<HomeState> buildReducer() {
   return asReducer(
     <Object, Reducer<HomeState>>{
-      HomeAction.updateBannerData: _onBannerData,
-      HomeAction.updateBannerImage: _onBannerImage,
-      HomeAction.updateIndex: _onBannerIndex,
-      HomeAction.updateArticleItem: _onArticleItem,
       HomeAction.onRefresh: _onRefresh,
     },
   );
@@ -19,23 +15,7 @@ HomeState _onRefresh(HomeState state, Action action) {
   return state.clone();
 }
 
-
-HomeState _onBannerData(HomeState state, Action action) {
-  return state.clone()
-    ..banners = action.payload;
-}
-
-HomeState _onBannerImage(HomeState state, Action action) {
-  return state.clone()
-    ..bannerImages = action.payload;
-}
-
 HomeState _onBannerIndex(HomeState state, Action action) {
   return state.clone()
     ..bannerIndex = action.payload;
-}
-
-HomeState _onArticleItem(HomeState state, Action action) {
-  return state.clone()
-    ..articleList = action.payload;
 }

@@ -33,6 +33,8 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
   HomeState clone() {
     return HomeState()
       ..banners = banners
+      ..easyRefreshController = easyRefreshController
+      ..articleIndex = articleIndex
       ..bannerImages = bannerImages
       ..bannerIndex = bannerIndex
       ..articleList = articleList;
@@ -42,13 +44,13 @@ class HomeState extends MutableSource implements Cloneable<HomeState> {
   Object getItemData(int index) => articleList[index];
 
   @override
-  String getItemType(int index)  => HomeArticleAdapter.articleType;
+  String getItemType(int index) => HomeArticleAdapter.articleType;
 
   @override
-  int get itemCount => articleList.length == null ? 0 : articleList.length;
+  int get itemCount => articleList.length ?? 0;
 
   @override
-  void setItemData(int index, Object data)  => articleList[index] = data;
+  void setItemData(int index, Object data) => articleList[index] = data;
 }
 
 HomeState initState(Map<String, dynamic> args) {
