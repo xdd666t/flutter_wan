@@ -9,15 +9,13 @@ import 'view.dart';
 class ProjectTabPage extends Page<ProjectTabState, Map<String, dynamic>> {
   ProjectTabPage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<ProjectTabState>(
-                adapter: NoneConn<ProjectTabState>() + ProjectTabAdapter(),
-                slots: <String, Dependent<ProjectTabState>>{
-                }),
-            middleware: <Middleware<ProjectTabState>>[
-            ],);
-
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<ProjectTabState>(
+              adapter: NoneConn<ProjectTabState>() + ProjectTabAdapter(),
+              slots: <String, Dependent<ProjectTabState>>{}),
+          middleware: <Middleware<ProjectTabState>>[],
+        );
 }

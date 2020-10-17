@@ -11,12 +11,9 @@ import 'state.dart';
 
 Effect<ProjectTabState> buildEffect() {
   return combineEffects(<Object, Effect<ProjectTabState>>{
-    ProjectTabAction.action: _onAction,
     Lifecycle.initState: _init,
   });
 }
-
-void _onAction(Action action, Context<ProjectTabState> ctx) {}
 
 void _init(Action action, Context<ProjectTabState> ctx) async {
   Response response = await Dio().get(
@@ -30,5 +27,7 @@ void _init(Action action, Context<ProjectTabState> ctx) async {
     return ProjectTabItemState(itemDetail: projectDetailBean.data.datas[index]);
   });
 
-  ctx.dispatch(ProjectTabActionCreator.updateItem(items));
+  //刷新数据
+  ctx.state.items = items;
+  ctx.dispatch(ProjectTabActionCreator.onRefresh());
 }

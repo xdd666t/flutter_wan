@@ -19,7 +19,7 @@ class _ProjectViewState extends State<ProjectView>
   @override
   void initState() {
     super.initState();
-    ///演示:初始化自定义的TabBar控制器
+    //演示:初始化自定义的TabBar控制器
     widget.data.tabController = TabController(
       vsync: this,
       length: widget.data.projectBean.data.length,

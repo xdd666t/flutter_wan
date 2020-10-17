@@ -6,13 +6,11 @@ import 'state.dart';
 Reducer<ProjectTabState> buildReducer() {
   return asReducer(
     <Object, Reducer<ProjectTabState>>{
-      ProjectTabAction.updateItem: _updateItem,
+      ProjectTabAction.onRefresh: _onRefresh,
     },
   );
 }
 
-ProjectTabState _updateItem(ProjectTabState state, Action action) {
-  final ProjectTabState newState = state.clone();
-  newState.items = action.payload;
-  return newState;
+ProjectTabState _onRefresh(ProjectTabState state, Action action) {
+  return state.clone();
 }

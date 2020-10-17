@@ -1,17 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum ProjectTabAction { action,
-  updateItem, //更新item数据
+enum ProjectTabAction {
+  //刷新数据
+  onRefresh,
 }
 
 class ProjectTabActionCreator {
-  static Action onAction() {
-    return const Action(ProjectTabAction.action);
+  static Action onRefresh() {
+    return Action(ProjectTabAction.onRefresh);
   }
-
-  static Action updateItem(var list) {
-    return Action(ProjectTabAction.updateItem, payload: list);
-  }
-
 }

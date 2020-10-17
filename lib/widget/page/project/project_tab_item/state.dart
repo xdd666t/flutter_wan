@@ -8,11 +8,6 @@ class ProjectTabItemState implements Cloneable<ProjectTabItemState> {
 
   @override
   ProjectTabItemState clone() {
-    return ProjectTabItemState()
-        ..itemDetail = itemDetail;
+    return ProjectTabItemState()..itemDetail = itemDetail;
   }
-}
-
-ProjectTabItemState initState(Map<String, dynamic> args) {
-  return ProjectTabItemState();
 }

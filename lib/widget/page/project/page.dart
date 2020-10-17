@@ -8,15 +8,12 @@ import 'view.dart';
 class ProjectPage extends Page<ProjectState, Map<String, dynamic>> {
   ProjectPage()
       : super(
-            initState: initState,
-            effect: buildEffect(),
-            reducer: buildReducer(),
-            view: buildView,
-            dependencies: Dependencies<ProjectState>(
-                adapter: null,
-                slots: <String, Dependent<ProjectState>>{
-                }),
-            middleware: <Middleware<ProjectState>>[
-            ],);
-
+          initState: initState,
+          effect: buildEffect(),
+          reducer: buildReducer(),
+          view: buildView,
+          dependencies: Dependencies<ProjectState>(
+              adapter: null, slots: <String, Dependent<ProjectState>>{}),
+          middleware: <Middleware<ProjectState>>[],
+        );
 }

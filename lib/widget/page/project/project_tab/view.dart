@@ -1,13 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/app/utils/ui_adapter.dart';
 
 import 'state.dart';
 
 Widget buildView(
     ProjectTabState state, Dispatch dispatch, ViewService viewService) {
   if (state.items != null) {
-    return _itemWidget(viewService);
+    return _body(viewService);
   } else {
     return Center(
       child: CircularProgressIndicator(),
@@ -15,7 +14,7 @@ Widget buildView(
   }
 }
 
-Widget _itemWidget(ViewService viewService) {
+Widget _body(ViewService viewService) {
   return ListView.builder(
     itemBuilder: viewService.buildAdapter().itemBuilder,
     itemCount: viewService.buildAdapter().itemCount,

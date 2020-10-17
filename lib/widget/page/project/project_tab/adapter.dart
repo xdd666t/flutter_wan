@@ -10,5 +10,5 @@ class ProjectTabAdapter extends SourceFlowAdapter<ProjectTabState> {
           pool: <String, Component<Object>>{
             project_tab_item: ProjectTabItemComponent()
           },
-          );
+        );
 }

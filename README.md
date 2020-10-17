@@ -4,8 +4,13 @@
 - 初版的fish_redux的玩Android是我刚学flutter时写的，代码写的比较混乱，重构代码，
 也是为了让大家更清晰了解fish_redux结构，也给出TabBar控制器在fish_redux初始化的解决方案，大家可以看看
 - view模块中，页面使用widget组合的方式去构造的，只传入必要的数据源和保留一些点击回调
+    - 为什么用widget组合方式构造页面：非常复杂的界面，必须将页面分成一个个小模块，然后再将其组合，
+    每个小模块Widget内部应当对自身的的职能，能逻辑自洽的处理
+    - 组合widget关键点：一般来说，我们并不关注widget内部页面的实现，只需要关的的是widget需要的数据源，
+    以及widget对交互的返回；例如：我点击widget后，widget回调事件，并传达一些数据给我；至于内部怎么实现，
+    外部并不关心，请勿将dispatch传递到封装的widget内部，这会使我们关注的事件被封装在内部
 
-
+## 说明
 - 注：该项目为Flutter + fish_redux，页面基本均是fish_redux搭建
 - fish-redux使用
   - 教程：[掘金：fish_redux使用详解---看完就会用！](https://juejin.im/post/6860029460524040199)
