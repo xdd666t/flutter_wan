@@ -1,12 +1,14 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum NaviItemAction { action,
-  updateNaviDetailItem,
+enum NaviItemAction {
+  //打开文章
+  openArticle,
 }
 
 class NaviItemActionCreator {
-  static Action updateNaviDetailItem(var items) {
-    return Action(NaviItemAction.updateNaviDetailItem, payload: items);
+
+
+  static Action openArticle(var item) {
+    return Action(NaviItemAction.openArticle, payload: item);
   }
 }

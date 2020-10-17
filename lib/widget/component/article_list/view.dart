@@ -24,10 +24,12 @@ Widget _body(
       //下拉刷新
       dispatch(ArticleListActionCreator.onListRefresh());
     },
-    onLoad: () async {
-      //上拉加载
-      dispatch(ArticleListActionCreator.onListLoad());
-    },
+    onLoad: state.type == 0
+        ? () async {
+            //上拉加载
+            dispatch(ArticleListActionCreator.onListLoad());
+          }
+        : null,
   );
 }
 

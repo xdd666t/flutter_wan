@@ -1,5 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_wan/widget/page/tree/tree_detail/tree_detail_tab/adapter.dart';
+import 'package:flutter_wan/widget/component/article_list/component.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -14,8 +14,10 @@ class TreeDetailTabPage extends Page<TreeDetailTabState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<TreeDetailTabState>(
-              adapter: NoneConn<TreeDetailTabState>() + TreeDetailTabAdapter(),
-              slots: <String, Dependent<TreeDetailTabState>>{}),
+              adapter: null,
+              slots: <String, Dependent<TreeDetailTabState>>{
+                "ArticleList": ArticleConnector() + ArticleListComponent(),
+              }),
           middleware: <Middleware<TreeDetailTabState>>[],
         );
 }

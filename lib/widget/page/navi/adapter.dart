@@ -7,10 +7,6 @@ class NaviAdapter extends SourceFlowAdapter<NaviState> {
 
   NaviAdapter()
       : super(
-          pool: <String, Component<Object>>{
-            navi_item: NaviItemComponent()
-          },
-          );
+          pool: <String, Component<Object>>{navi_item: NaviItemComponent()},
+        );
 }
-
-

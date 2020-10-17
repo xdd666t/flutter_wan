@@ -1,31 +1,39 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_wan/widget/page/tree/tree_detail/tree_detail_tab/adapter.dart';
-import 'package:flutter_wan/widget/page/tree/tree_detail/tree_tab_item/state.dart';
+import 'package:flutter_wan/widget/component/article_list/state.dart';
 
-class TreeDetailTabState extends MutableSource
-    implements Cloneable<TreeDetailTabState> {
-  String id;
-  List<TreeTabItemState> items;
+class TreeDetailTabState implements Cloneable<TreeDetailTabState> {
+  //文章id
+  int id;
 
-  @override
-  TreeDetailTabState clone() => TreeDetailTabState()..items = items;
+  //文章数据源
+  ArticleListState subState;
 
   @override
-  Object getItemData(int index) => items[index];
-
-  @override
-  String getItemType(int index) => TreeDetailTabAdapter.item_tree_tab;
-
-  @override
-  int get itemCount => items.length;
-
-  @override
-  void setItemData(int index, Object data) => items[index] = data;
+  TreeDetailTabState clone() {
+    return TreeDetailTabState()..subState = subState;
+  }
 }
 
 TreeDetailTabState initState(Map<String, dynamic> args) {
   var id = args["id"]; //获取TabBar穿过来的id
   return TreeDetailTabState()
     ..id = id
-    ..items = [];
+    ..subState = ArticleListState(
+      type: 1,
+      articleId: id,
+    );
+}
+
+///文章列表连接器
+class ArticleConnector extends ConnOp<TreeDetailTabState, ArticleListState>
+    with ReselectMixin<TreeDetailTabState, ArticleListState> {
+  @override
+  ArticleListState computed(TreeDetailTabState state) {
+    return state.subState.clone();
+  }
+
+  @override
+  void set(TreeDetailTabState state, ArticleListState subState) {
+    state.subState = subState;
+  }
 }

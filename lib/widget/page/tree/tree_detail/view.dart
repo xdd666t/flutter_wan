@@ -34,12 +34,15 @@ class _TreeDetailViewState extends State<TreeDetailView>
         ),
       ),
       body: TabBarView(
-          controller: widget.data.tabController,
-          children: widget.data.topList.asMap().keys.map((int index) {
+        controller: widget.data.tabController,
+        children: widget.data.topList.asMap().keys.map(
+          (int index) {
             return TreeDetailTabPage().buildPage({
-              "id": widget.data.treeInfoData.children[index].id.toString(),
+              "id": widget.data.treeInfoData.children[index].id,
             });
-          }).toList()),
+          },
+        ).toList(),
+      ),
     );
   }
 }

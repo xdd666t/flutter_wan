@@ -11,6 +11,7 @@ class HomeBanner extends StatelessWidget {
     this.onChanged,
   });
 
+  ///数据源
   final HomeState data;
 
   ///滑动改变banner
@@ -26,7 +27,7 @@ class HomeBanner extends StatelessWidget {
 
   Widget _banner() {
     return Container(
-      height: auto(400),
+      height: auto(350),
       child: Stack(
         children: <Widget>[
           //图片

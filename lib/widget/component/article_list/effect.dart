@@ -20,16 +20,22 @@ Effect<ArticleListState> buildEffect() {
 
 void _onListRefresh(Action action, Context<ArticleListState> ctx) {
   ctx.state.articleIndex = 0;
-  _loadArticle(ctx);
+  if (ctx.state.type == 0) {
+    _loadHomeArticle(ctx);
+  } else {
+    _loadAllArticle(ctx);
+  }
 }
 
 void _onListLoad(Action action, Context<ArticleListState> ctx) async {
   ctx.state.articleIndex += 1;
-  _loadArticle(ctx);
+  if (ctx.state.type == 0) {
+    _loadHomeArticle(ctx);
+  }
 }
 
 //加载文章数据
-void _loadArticle(Context<ArticleListState> ctx) async {
+void _loadHomeArticle(Context<ArticleListState> ctx) async {
   try {
     int index = ctx.state.articleIndex;
     Response response = await Dio()
@@ -57,4 +63,25 @@ void _loadArticle(Context<ArticleListState> ctx) async {
   } catch (e) {
     println("获取首页文章数据失败: " + e.toString());
   }
+}
+
+//加载文章数据
+void _loadAllArticle(Context<ArticleListState> ctx) async {
+  Response response = await Dio().get(
+    ApiUrl.GET_TREE_DETAIL,
+    queryParameters: {"cid": ctx.state.articleId},
+  );
+  ctx.state.easyRefreshController.finishRefresh();
+
+  HomeArticleBean homeArticleBean =
+      HomeArticleBean().fromJson(json.decode(response.toString()));
+  List<HomeArticleDataData> items = homeArticleBean.data.datas;
+  var itemList = List.generate(items.length, (index) {
+    return ArticleItemState(itemDetail: items[index]);
+  });
+
+  //更新列表
+  ctx.state.articleList = itemList;
+  //更新列表
+  ctx.dispatch(ArticleListActionCreator.onRefresh());
 }
