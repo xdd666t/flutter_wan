@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_wan/app/utils/ui_adapter.dart';
 
 import 'state.dart';
 

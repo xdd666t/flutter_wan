@@ -1,17 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/bean/project/project_bean.dart';
 
-//TODO replace with your own action
-enum ProjectAction { action, updateProject, //更新project数据
+enum ProjectAction {
+  //更新project数据
+  onRefresh,
 }
 
 class ProjectActionCreator {
-  static Action onAction() {
-    return const Action(ProjectAction.action);
+  static Action onRefresh() {
+    return Action(ProjectAction.onRefresh);
   }
-
-  static Action updateProject(ProjectBean projectBean) {
-    return Action(ProjectAction.updateProject, payload: projectBean);
-  }
-
 }

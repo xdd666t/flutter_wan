@@ -27,7 +27,7 @@ class HomeBanner extends StatelessWidget {
 
   Widget _banner() {
     return Container(
-      height: auto(350),
+      height: auto(370),
       child: Stack(
         children: <Widget>[
           //图片

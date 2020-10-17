@@ -7,66 +7,59 @@ import 'state.dart';
 Widget buildView(
     ProjectState state, Dispatch dispatch, ViewService viewService) {
   if (state.projectBean != null) {
-    return _tabWidget(state);
+    return ProjectView(data: state);
   } else {
-    return Center(
-      child: CircularProgressIndicator(),
-    );
+    return Center(child: CircularProgressIndicator());
   }
 }
 
-class TreeDetailView extends StatefulWidget {
-  TreeDetailView({
-    this.data,
-  });
-
-  final ProjectState data;
-
-  @override
-  _TreeDetailViewState createState() => _TreeDetailViewState();
-}
-
-class _TreeDetailViewState extends State<TreeDetailView> {
+///为了清晰展示TabController初始化,就不单独提取成Widget放在新文件里了
+class _ProjectViewState extends State<ProjectView>
+    with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
-    //初始化tabView控制器
-    //在此演示，在fish_redux中初始化自定义的TabBar控制器
+    ///演示:初始化自定义的TabBar控制器
+    widget.data.tabController = TabController(
+      vsync: this,
+      length: widget.data.projectBean.data.length,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: <Widget>[
+        //Tab标题
+        Container(
+          color: Colors.blue,
+          child: TabBar(
+            controller: widget.data.tabController,
+            tabs: widget.data.tabList,
+            isScrollable: true,
+          ),
+        ),
+
+        //Tab内容
+        Expanded(
+          child: TabBarView(
+              controller: widget.data.tabController,
+              children: widget.data.projectBean.data.asMap().keys.map((index) {
+                return ProjectTabPage().buildPage(
+                  {"id": widget.data.projectBean.data[index].id},
+                );
+              }).toList()),
+        )
+      ],
+    );
   }
 }
 
-Widget _tabWidget(ProjectState state) {
-  return DefaultTabController(
-    length: state.projectBean.data.length,
-    initialIndex: 0,
-    child: Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.blue,
-            //Tab标题
-            child: TabBar(
-              tabs: state.tabList,
-              isScrollable: true,
-            ),
-          ),
+class ProjectView extends StatefulWidget {
+  ProjectView({this.data});
 
-          //Tab内容
-          Expanded(
-            child: TabBarView(
-                children: state.projectBean.data.asMap().keys.map((index) {
-              return ProjectTabPage()
-                  .buildPage({"id": state.projectBean.data[index].id});
-            }).toList()),
-          )
-        ],
-      ),
-    ),
-  );
+  final ProjectState data;
+
+  @override
+  _ProjectViewState createState() => _ProjectViewState();
 }
