@@ -1,4 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/cupertino.dart' hide Action;
+import 'package:flutter_wan/app/config/route.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -14,6 +16,10 @@ Effect<MainState> buildEffect() {
 
 void _clickDrawer(Action action, Context<MainState> ctx) {
   switch (action.payload) {
+    case 'person':
+      //如果不是登录状态,则去跳转登录界面
+      Navigator.pushNamed(ctx.context, RouteConfig.loginPage);
+      break;
     case 'myCollect':
       break;
     case 'setting':
@@ -24,7 +30,6 @@ void _clickDrawer(Action action, Context<MainState> ctx) {
       break;
   }
 }
-
 
 void _selectTab(Action action, Context<MainState> ctx) {
   ctx.state.selectedIndex = action.payload;

@@ -51,6 +51,7 @@ MainState initState(Map<String, dynamic> args) {
           keepAlivePage(ProjectPage().buildPage(null))
     ]
     ..drawerItems = [
+      BtnInfo(title: '登录', tag: 'person', icon: Icon(Icons.person)),
       BtnInfo(title: '我的收藏', tag: 'myCollect', icon: Icon(Icons.favorite)),
       BtnInfo(title: '设置', tag: 'setting', icon: Icon(Icons.settings)),
       BtnInfo(title: '关于', tag: 'about', icon: Icon(Icons.code)),

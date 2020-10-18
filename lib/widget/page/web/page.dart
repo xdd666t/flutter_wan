@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 
+import 'effect.dart';
 import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
@@ -10,6 +11,7 @@ class WebViewPage extends Page<WebViewState, Map<String, dynamic>> {
       : super(
           initState: initState,
           reducer: buildReducer(),
+          effect: buildEffect(),
           view: buildView,
           dependencies: Dependencies<WebViewState>(
               adapter: null, slots: <String, Dependent<WebViewState>>{}),

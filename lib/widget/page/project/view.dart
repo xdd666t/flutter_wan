@@ -31,26 +31,32 @@ class _ProjectViewState extends State<ProjectView>
     return Column(
       children: <Widget>[
         //Tab标题
-        Container(
-          color: Colors.blue,
-          child: TabBar(
-            controller: widget.data.tabController,
-            tabs: widget.data.tabList,
-            isScrollable: true,
-          ),
-        ),
+        buildTitle(),
 
         //Tab内容
-        Expanded(
-          child: TabBarView(
-              controller: widget.data.tabController,
-              children: widget.data.projectBean.data.asMap().keys.map((index) {
-                return ProjectTabPage().buildPage(
-                  {"id": widget.data.projectBean.data[index].id},
-                );
-              }).toList()),
-        )
+        Expanded(child: buildContent())
       ],
+    );
+  }
+
+  TabBarView buildContent() {
+    return TabBarView(
+        controller: widget.data.tabController,
+        children: widget.data.projectBean.data.asMap().keys.map((index) {
+          return ProjectTabPage().buildPage(
+            {"id": widget.data.projectBean.data[index].id},
+          );
+        }).toList());
+  }
+
+  Container buildTitle() {
+    return Container(
+      color: Colors.blue,
+      child: TabBar(
+        controller: widget.data.tabController,
+        tabs: widget.data.tabList,
+        isScrollable: true,
+      ),
     );
   }
 }

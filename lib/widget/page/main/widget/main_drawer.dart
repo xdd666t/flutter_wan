@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
+import 'package:flutter_wan/app/utils/ui_adapter.dart';
 import 'package:flutter_wan/widget/page/main/state.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -24,7 +27,11 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           //顶部背景
-          Container(child: Image.asset("images/ttxs.jpg")),
+          Container(
+            height: auto(370),
+            width: double.infinity,
+            child: Image.asset("images/ttxs.jpg", fit: BoxFit.fill),
+          ),
 
           //功能Item
           Expanded(child: functionItem()),
