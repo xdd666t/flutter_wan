@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
 import 'package:flutter_wan/app/utils/ui_adapter.dart';
 
-class LoginView extends StatelessWidget {
-  LoginView({
+class RegisterView extends StatelessWidget {
+  RegisterView({
     this.onLogin,
     this.onPassword,
-    this.onRegister,
+    this.onRePassword,
     this.onUserName,
   });
 
@@ -18,8 +18,8 @@ class LoginView extends StatelessWidget {
   ///监听输入密码信息
   final ParamSingleCallback<String> onPassword;
 
-  ///点击注册回调
-  final ParamVoidCallback onRegister;
+  ///监听再次输入密码信息
+  final ParamSingleCallback<String> onRePassword;
 
   ///点击登录回调
   final ParamVoidCallback onLogin;
@@ -39,8 +39,8 @@ class LoginView extends StatelessWidget {
         //密码
         _buildPassword(),
 
-        //注册
-        _buildRegister(),
+        //再次输入密码
+        _buildRePassword(),
 
         //登录按钮
         _buildLogin(),
@@ -57,30 +57,12 @@ class LoginView extends StatelessWidget {
         vertical: auto(160),
       ),
       child: RawMaterialButton(
-        onPressed: onLogin,
+        onPressed: () {},
         fillColor: Colors.blue,
         shape: StadiumBorder(),
         child: Text(
-          '登录',
+          '注册',
           style: TextStyle(fontSize: auto(36), color: Colors.white),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildRegister() {
-    return Container(
-      margin: EdgeInsets.only(right: auto(40)),
-      child: InkWell(
-        onTap: () {},
-        customBorder: StadiumBorder(),
-        child: Container(
-          padding:
-              EdgeInsets.symmetric(horizontal: auto(35), vertical: auto(8)),
-          child: Text(
-            '注册',
-            style: TextStyle(color: Colors.blue, fontSize: setSp(30)),
-          ),
         ),
       ),
     );
@@ -97,6 +79,22 @@ class LoginView extends StatelessWidget {
         hintText: '请输入密码',
         icon: Icons.admin_panel_settings,
         onChanged: onPassword,
+        isPassword: true,
+      ),
+    );
+  }
+
+  Widget _buildRePassword() {
+    return Container(
+      margin: EdgeInsets.symmetric(
+        vertical: auto(50),
+        horizontal: auto(50),
+      ),
+      child: textField(
+        labelText: 'RePassword',
+        hintText: '请二次确认密码',
+        icon: Icons.admin_panel_settings,
+        onChanged: onRePassword,
         isPassword: true,
       ),
     );

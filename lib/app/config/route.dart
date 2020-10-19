@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/main/login/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
+import 'package:flutter_wan/widget/page/main/register/page.dart';
 import 'package:flutter_wan/widget/page/navi/page.dart';
 import 'package:flutter_wan/widget/page/project/page.dart';
 import 'package:flutter_wan/widget/page/tree/page.dart';
@@ -14,8 +15,11 @@ class RouteConfig {
   ///主模块
   static const String mainPage = 'page/main';
 
-  //登录
+  ///登录
   static const String loginPage = 'page/main/login';
+
+  ///注册
+  static const String registerPage = 'page/main/login/register';
 
   ///新闻主页面
   static const String homePage = 'page/home';
@@ -46,6 +50,7 @@ class RouteConfig {
       RouteConfig.projectPage: ProjectPage(),
       RouteConfig.webViewPage: WebViewPage(),
       RouteConfig.loginPage: LoginPage(),
+      RouteConfig.registerPage: RegisterPage(),
     },
   );
 }

@@ -1,32 +1,33 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/widget/page/main/login/action.dart';
-import 'package:flutter_wan/widget/page/main/login/widget/login_view.dart';
+import 'package:flutter_wan/widget/page/main/register/widget/register_view.dart';
 
+import 'action.dart';
 import 'state.dart';
 
-Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(RegisterState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(title: Text('登录')),
     body: _body(state, dispatch),
   );
 }
 
-Widget _body(LoginState state, Dispatch dispatch) {
+
+Widget _body(RegisterState state, Dispatch dispatch) {
   return SingleChildScrollView(
-    child: LoginView(
+    child: RegisterView(
       onUserName: (String msg) {
         //用户名
       },
       onPassword: (String msg) {
         //密码
       },
-      onRegister: () {
+      onRePassword: (String msg) {
         //注册
       },
       onLogin: () {
         //登录
-        dispatch(LoginActionCreator.onLogin());
+
       },
     ),
   );
