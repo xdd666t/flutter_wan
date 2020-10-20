@@ -36,6 +36,8 @@ dependencies:
   flutter_hooks: ^0.14.1
   # https://pub.dev/packages/shared_preferences
   shared_preferences: ^0.5.12+2
+  # https://pub.dev/packages/fluttertoast
+  fluttertoast: ^7.1.1
 
 
 dev_dependencies:

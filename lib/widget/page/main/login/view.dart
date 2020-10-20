@@ -17,12 +17,15 @@ Widget _body(LoginState state, Dispatch dispatch) {
     child: LoginView(
       onUserName: (String msg) {
         //用户名
+        state.userName = msg;
       },
       onPassword: (String msg) {
         //密码
+        state.password = msg;
       },
       onRegister: () {
         //注册
+        dispatch(LoginActionCreator.onRegister());
       },
       onLogin: () {
         //登录

@@ -72,7 +72,7 @@ class LoginView extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(right: auto(40)),
       child: InkWell(
-        onTap: () {},
+        onTap: onRegister,
         customBorder: StadiumBorder(),
         child: Container(
           padding:
