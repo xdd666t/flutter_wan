@@ -6,6 +6,7 @@ import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_wan/app/config/route.dart';
 import 'package:flutter_wan/app/utils/show/toast_util.dart';
 import 'package:flutter_wan/app/utils/tool/string_util.dart';
+import 'package:flutter_wan/bean/user/login_info_bean.dart';
 import 'package:flutter_wan/http/api.dart';
 
 import 'action.dart';
@@ -23,17 +24,25 @@ void _onRegister(Action action, Context<LoginState> ctx) {
   Navigator.pushNamed(ctx.context, RouteConfig.registerPage);
 }
 
-void _onLogin(Action action, Context<LoginState> ctx) {
+void _onLogin(Action action, Context<LoginState> ctx) async {
   if (!_isAccess(ctx)) {
     return;
   }
   //登录操作
   var data = {
-    'userName': ctx.state.userName,
+    'username': ctx.state.userName,
+    // 'username': 'xdd613',
     'password': ctx.state.password,
+    // 'password': '1q2w3e4r',
   };
-  var result = Dio().post(ApiUrl.LOGIN, data: data);
-  print(result.toString());
+  var result = await Dio().post(ApiUrl.LOGIN, queryParameters: data);
+  var loginInfo = LoginInfoBean.fromJson(json.decode(result.toString()));
+  print(data);
+  print(result);
+  if (loginInfo.errorCode == -1) {
+    showToast(loginInfo.errorMsg);
+    return;
+  }
 }
 
 bool _isAccess(Context<LoginState> ctx) {
