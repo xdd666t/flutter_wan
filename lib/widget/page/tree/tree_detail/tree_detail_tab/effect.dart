@@ -20,9 +20,9 @@ void _init(Action action, Context<TreeDetailTabState> ctx) async {
       .get(ApiUrl.GET_TREE_DETAIL, queryParameters: {"cid": ctx.state.id});
   //解析的数据类型,和首页的bean结构一样
   HomeArticleBean homeArticleBean =
-      HomeArticleBean().fromJson(json.decode(response.toString()));
+      HomeArticleBean.fromJson(json.decode(response.toString()));
 
-  List<HomeArticleDataData> articleList = homeArticleBean.data.datas;
+  List<Datas> articleList = homeArticleBean.data.datas;
   var items = List.generate(articleList.length, (index) {
     return ArticleItemState(itemDetail: articleList[index]);
   });

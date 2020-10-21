@@ -14,7 +14,7 @@ class NaviItemView extends StatelessWidget {
   final NaviItemState data;
 
   ///回调点击信息
-  final ParamSingleCallback<NaviInfoDataArticle> onTap;
+  final ParamSingleCallback<Articles> onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class NaviItemView extends StatelessWidget {
     );
   }
 
-  Widget itemStyle(NaviInfoDataArticle item) {
+  Widget itemStyle(Articles item) {
     return InkWell(
       //设置点击效果
       borderRadius: BorderRadius.circular(auto(30)),

@@ -10,7 +10,7 @@ Widget buildView(
     ProjectTabItemState state, Dispatch dispatch, ViewService viewService) {
   return ProjectItemDetail(
     data: state,
-    onTap: (ProjectDetailDataData item) {
+    onTap: (Datas item) {
       dispatch(ProjectTabItemActionCreator.openArticle(item));
     },
   );

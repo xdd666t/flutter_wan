@@ -4,7 +4,7 @@ import 'package:flutter_wan/bean/tree/tree_info_bean.dart';
 
 class TreeDetailState implements Cloneable<TreeDetailState> {
   //数据
-  TreeInfoData treeInfoData;
+  Data treeInfoData;
 
   //顶部tab数据
   List<Tab> topList;
@@ -22,7 +22,7 @@ class TreeDetailState implements Cloneable<TreeDetailState> {
 }
 
 TreeDetailState initState(Map<String, dynamic> args) {
-  TreeInfoData tempTreeInfo = args["treeDetail"];
+  Data tempTreeInfo = args["treeDetail"];
   //设置顶部tab
   List<Tab> tabs = List();
   for (int i = 0; i < tempTreeInfo.children.length; i++) {

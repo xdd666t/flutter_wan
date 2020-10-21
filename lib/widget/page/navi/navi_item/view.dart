@@ -14,7 +14,7 @@ Widget buildView(
 Widget _body(NaviItemState state, Dispatch dispatch) {
   return NaviItemView(
     data: state,
-    onTap: (NaviInfoDataArticle item){
+    onTap: (Articles item){
       dispatch(NaviItemActionCreator.openArticle(item));
     },
   );

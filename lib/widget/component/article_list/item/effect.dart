@@ -15,7 +15,7 @@ Effect<ArticleItemState> buildEffect() {
 
 void _openArticleContent(Action action, Context<ArticleItemState> ctx) {
   //传递过来的数据
-  HomeArticleDataData data = ctx.state.itemDetail;
+  Datas data = ctx.state.itemDetail;
   ArticleDetailBean articleDetailBean = ArticleDetailBean();
   articleDetailBean.url = data.link;
   articleDetailBean.title = data.title;

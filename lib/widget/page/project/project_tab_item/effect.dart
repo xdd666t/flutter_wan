@@ -14,7 +14,7 @@ Effect<ProjectTabItemState> buildEffect() {
 }
 
 void _openArticle(Action action, Context<ProjectTabItemState> ctx) {
-  ProjectDetailDataData item = action.payload;
+  Datas item = action.payload;
   ArticleDetailBean articleDetailBean = ArticleDetailBean();
   articleDetailBean.title = item.title;
   articleDetailBean.url = item.link;

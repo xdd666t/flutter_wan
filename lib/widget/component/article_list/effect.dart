@@ -41,9 +41,9 @@ void _loadHomeArticle(Context<ArticleListState> ctx) async {
     Response response = await Dio()
         .get(ApiUrl.GET_HOME_ARTICLE + index.toString() + "/json"); //获取首页文章
     HomeArticleBean homeArticleBean =
-        HomeArticleBean().fromJson(json.decode(response.toString()));
+        HomeArticleBean.fromJson(json.decode(response.toString()));
 
-    List<HomeArticleDataData> items = homeArticleBean.data.datas;
+    List<Datas> items = homeArticleBean.data.datas;
     List<ArticleItemState> tempList = List.generate(items.length, (index) {
       return ArticleItemState(itemDetail: items[index]);
     });
@@ -74,8 +74,8 @@ void _loadAllArticle(Context<ArticleListState> ctx) async {
   ctx.state.easyRefreshController.finishRefresh();
 
   HomeArticleBean homeArticleBean =
-      HomeArticleBean().fromJson(json.decode(response.toString()));
-  List<HomeArticleDataData> items = homeArticleBean.data.datas;
+      HomeArticleBean.fromJson(json.decode(response.toString()));
+  List<Datas> items = homeArticleBean.data.datas;
   var itemList = List.generate(items.length, (index) {
     return ArticleItemState(itemDetail: items[index]);
   });

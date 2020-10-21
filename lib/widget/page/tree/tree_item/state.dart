@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/bean/tree/tree_info_bean.dart';
 
 class TreeItemState implements Cloneable<TreeItemState> {
-  TreeInfoData item;
+  Data item;
 
   TreeItemState({this.item});
 

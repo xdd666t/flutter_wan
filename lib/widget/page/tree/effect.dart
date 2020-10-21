@@ -18,8 +18,8 @@ Effect<TreeState> buildEffect() {
 void _init(Action action, Context<TreeState> ctx) async {
   Response response = await Dio().get(ApiUrl.GET_TREE);
   TreeInfoBean treeInfoBean =
-      TreeInfoBean().fromJson(json.decode(response.toString()));
-  List<TreeInfoData> treeItem = treeInfoBean.data;
+      TreeInfoBean.fromJson(json.decode(response.toString()));
+  List<Data> treeItem = treeInfoBean.data;
   List<TreeItemState> itemList = List.generate(treeItem.length, (index) {
     return TreeItemState(item: treeItem[index]);
   });

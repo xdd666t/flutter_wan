@@ -40,7 +40,7 @@ void _getBannerData(Action action, Context<HomeState> ctx) async {
   try {
     Response response = await Dio().get(ApiUrl.GET_BANNER_URL); //获取banner数据
     BannerBean bannerBean =
-        BannerBean().fromJson(json.decode(response.toString()));
+        BannerBean.fromJson(json.decode(response.toString()));
     ctx.state.banners = bannerBean.data;
     ctx.state.bannerImages = _getImageList(ctx);
 
@@ -69,8 +69,8 @@ void _getArticleData(Context<HomeState> ctx) async {
     Response response =
         await Dio().get(ApiUrl.GET_HOME_ARTICLE + "0/json"); //获取首页文章
     HomeArticleBean homeArticleBean =
-        HomeArticleBean().fromJson(json.decode(response.toString()));
-    List<HomeArticleDataData> items = homeArticleBean.data.datas;
+        HomeArticleBean.fromJson(json.decode(response.toString()));
+    List<Datas> items = homeArticleBean.data.datas;
     var itemList = List.generate(items.length, (index) {
       return ArticleItemState(itemDetail: items[index]);
     });

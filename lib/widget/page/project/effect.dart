@@ -16,7 +16,7 @@ Effect<ProjectState> buildEffect() {
 
 void _init(Action action, Context<ProjectState> ctx) async{
   Response response = await Dio().get(ApiUrl.GET_PROJECT_INFO);
-  ProjectBean projectBean = ProjectBean().fromJson(json.decode(response.toString()));
+  ProjectBean projectBean = ProjectBean.fromJson(json.decode(response.toString()));
   var list = projectBean.data;
   //处理tab
   List<Tab> tabs = [];

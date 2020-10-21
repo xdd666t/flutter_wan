@@ -14,7 +14,7 @@ class ProjectItemDetail extends StatelessWidget {
   final ProjectTabItemState data;
 
   ///回调点击数据
-  final ParamSingleCallback<ProjectDetailDataData> onTap;
+  final ParamSingleCallback<Datas> onTap;
 
   @override
   Widget build(BuildContext context) {

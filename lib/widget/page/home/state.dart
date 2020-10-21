@@ -1,12 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
-import 'package:flutter_wan/bean/home/home_article_bean.dart';
+import 'package:flutter_wan/bean/home/home_article_bean.dart' hide Data;
 import 'package:flutter_wan/widget/component/article_list/state.dart';
 
 class HomeState implements Cloneable<HomeState> {
   //轮播所有数据
-  List<BannerData> banners;
+  List<Data> banners;
 
   //所有轮播图
   List<Widget> bannerImages;

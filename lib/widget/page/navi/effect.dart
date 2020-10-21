@@ -18,7 +18,7 @@ Effect<NaviState> buildEffect() {
 void _init(Action action, Context<NaviState> ctx) async {
   Response response = await Dio().get(ApiUrl.GET_NAVI_INFO);
   NaviInfoBean naviInfoBean =
-      NaviInfoBean().fromJson(json.decode(response.toString()));
+      NaviInfoBean.fromJson(json.decode(response.toString()));
 
   List<NaviItemState> items = List.generate(naviInfoBean.data.length, (index) {
     return NaviItemState(itemDetail: naviInfoBean.data[index]);

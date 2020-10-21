@@ -14,7 +14,7 @@ Effect<NaviItemState> buildEffect() {
 }
 
 void _openArticle(Action action, Context<NaviItemState> ctx) {
-  NaviInfoDataArticle item = action.payload;
+  Articles item = action.payload;
   ArticleDetailBean articleDetailBean = ArticleDetailBean();
   articleDetailBean.title = item.title;
   articleDetailBean.url = item.link;

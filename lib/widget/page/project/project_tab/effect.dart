@@ -21,7 +21,7 @@ void _init(Action action, Context<ProjectTabState> ctx) async {
     queryParameters: {"cid": ctx.state.id},
   );
   ProjectDetailBean projectDetailBean =
-      ProjectDetailBean().fromJson(json.decode(response.toString()));
+      ProjectDetailBean.fromJson(json.decode(response.toString()));
   List<ProjectTabItemState> items =
       List.generate(projectDetailBean.data.datas.length, (index) {
     return ProjectTabItemState(itemDetail: projectDetailBean.data.datas[index]);
