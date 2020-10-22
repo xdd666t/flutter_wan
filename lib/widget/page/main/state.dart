@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/app/utils/keep_alive_page.dart';
+import 'package:flutter_wan/app/utils/ui/keep_alive_page.dart';
 import 'package:flutter_wan/bean/common/btn_info.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
 import 'package:flutter_wan/widget/page/navi/page.dart';

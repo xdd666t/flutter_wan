@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
-import 'package:flutter_wan/app/utils/ui_adapter.dart';
+import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
 
 class RegisterView extends StatelessWidget {
   RegisterView({

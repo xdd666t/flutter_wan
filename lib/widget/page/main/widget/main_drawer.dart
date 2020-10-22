@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
-import 'package:flutter_wan/app/utils/ui_adapter.dart';
+import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/widget/page/main/state.dart';
 
 class MainDrawer extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/app/utils/ui_adapter.dart';
+import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void showToast(msg) {
