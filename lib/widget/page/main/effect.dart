@@ -20,6 +20,7 @@ Effect<MainState> buildEffect() {
 
 void _init(Action action, Context<MainState> ctx) async {
   await ViewUtil.initFinish();
+
   showToast("1111111111111");
 }
 
