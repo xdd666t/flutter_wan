@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
-import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/widget/page/home/state.dart';
 
 class HomeBanner extends StatelessWidget {

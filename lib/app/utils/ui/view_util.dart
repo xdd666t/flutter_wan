@@ -11,8 +11,6 @@ class ViewUtil {
 
     Future.delayed(Duration(seconds: 1));
 
-
-    await Future.any("");
 }
 
 

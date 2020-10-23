@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
-import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/bean/navi/navi_info_bean.dart';
 import 'package:flutter_wan/widget/page/navi/navi_item/state.dart';
 

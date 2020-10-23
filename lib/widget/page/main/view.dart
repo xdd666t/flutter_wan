@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/widget/page/main/widget/main_body.dart';
 import 'package:flutter_wan/widget/page/main/widget/main_bottom_navigation.dart';
 import 'package:flutter_wan/widget/page/main/widget/main_drawer.dart';

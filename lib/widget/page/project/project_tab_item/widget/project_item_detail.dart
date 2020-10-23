@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
-import 'file:///F:/GitHub/flutter_wan/lib/app/utils/ui/ui_adapter.dart';
+import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/bean/project/project_detail_bean.dart';
 import 'package:flutter_wan/widget/page/project/project_tab_item/state.dart';
 
