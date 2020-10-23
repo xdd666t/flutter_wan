@@ -4,14 +4,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
 class ViewUtil {
-  static Future initFinish<T>() async {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp)  {
-      print(timeStamp);
+  ///界面初始化完成好的
+  static Future<void> initFinish() async {
+    Completer completer = new Completer();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      completer.complete();
     });
 
-    Future.delayed(Duration(seconds: 1));
-
+    return completer.future;
+  }
 }
-
-
-
