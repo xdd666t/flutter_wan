@@ -18,16 +18,19 @@ Widget _body(RegisterState state, Dispatch dispatch) {
     child: RegisterView(
       onUserName: (String msg) {
         //用户名
+        state.userName = msg;
       },
       onPassword: (String msg) {
         //密码
+        state.password = msg;
       },
       onRePassword: (String msg) {
-        //注册
+        //确认密码
+        state.rePassword = msg;
       },
-      onLogin: () {
-        //登录
-
+      onRegister: () {
+        //注册
+        dispatch(RegisterActionCreator.onRegister());
       },
     ),
   );

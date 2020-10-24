@@ -5,6 +5,8 @@ enum WebViewAction {
   isLoading,
   //刷新
   onRefresh,
+  //收藏操作
+  favorite,
 }
 
 class WebViewActionCreator {

@@ -22,4 +22,7 @@ class ApiUrl {
 
   ///登录
   static const String LOGIN = "$_BASE_URL/user/login";
+
+  ///注册
+  static const String REGISTER = "$_BASE_URL/user/register";
 }

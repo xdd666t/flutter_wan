@@ -6,7 +6,7 @@ import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 
 class RegisterView extends StatelessWidget {
   RegisterView({
-    this.onLogin,
+    this.onRegister,
     this.onPassword,
     this.onRePassword,
     this.onUserName,
@@ -22,7 +22,7 @@ class RegisterView extends StatelessWidget {
   final ParamSingleCallback<String> onRePassword;
 
   ///点击登录回调
-  final ParamVoidCallback onLogin;
+  final ParamVoidCallback onRegister;
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +42,13 @@ class RegisterView extends StatelessWidget {
         //再次输入密码
         _buildRePassword(),
 
-        //登录按钮
-        _buildLogin(),
+        //注册按钮
+        _buildRegister(),
       ],
     );
   }
 
-  Widget _buildLogin() {
+  Widget _buildRegister() {
     return Container(
       height: auto(100),
       width: ScreenUtil.screenWidth,
@@ -57,7 +57,7 @@ class RegisterView extends StatelessWidget {
         vertical: auto(160),
       ),
       child: RawMaterialButton(
-        onPressed: () {},
+        onPressed: onRegister,
         fillColor: Colors.blue,
         shape: StadiumBorder(),
         child: Text(

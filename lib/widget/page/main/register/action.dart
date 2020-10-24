@@ -1,10 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum RegisterAction { action }
+enum RegisterAction {
+  //注册
+  onRegister,
+}
 
 class RegisterActionCreator {
-  static Action onAction() {
-    return const Action(RegisterAction.action);
+  static Action onRegister() {
+    return const Action(RegisterAction.onRegister);
   }
 }

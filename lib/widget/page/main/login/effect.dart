@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_wan/app/config/route.dart';
+import 'package:flutter_wan/app/utils/cache/sp_util.dart';
 import 'package:flutter_wan/app/utils/show/toast_util.dart';
 import 'package:flutter_wan/app/utils/tool/string_util.dart';
 import 'package:flutter_wan/bean/user/login_info_bean.dart';
@@ -37,12 +38,19 @@ void _onLogin(Action action, Context<LoginState> ctx) async {
   };
   var result = await Dio().post(ApiUrl.LOGIN, queryParameters: data);
   var loginInfo = LoginInfoBean.fromJson(json.decode(result.toString()));
-  print(data);
-  print(result);
-  if (loginInfo.errorCode == -1) {
+  if (loginInfo.errorCode == 0) {
+    showToast("登录成功");
+    _saveUserInfo(ctx.state);
+    //Navigator.pop(ctx.context);
+  }else{
     showToast(loginInfo.errorMsg);
-    return;
   }
+}
+
+//保存用户信息
+void _saveUserInfo(LoginState state) async{
+  SpUtil.put('userName', state.userName);
+  SpUtil.put('password', state.password);
 }
 
 bool _isAccess(Context<LoginState> ctx) {
