@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
+import 'package:flutter_wan/http/http.dart';
 
 import 'action.dart';
 import 'item/state.dart';
@@ -38,11 +39,14 @@ void _onListLoad(Action action, Context<ArticleListState> ctx) async {
 void _loadHomeArticle(Context<ArticleListState> ctx) async {
   try {
     int index = ctx.state.articleIndex;
-    Response response = await Dio()
-        .get(ApiUrl.GET_HOME_ARTICLE + index.toString() + "/json"); //获取首页文章
+    //获取首页文章
+    Response response = await Dio().get(
+      ApiUrl.GET_HOME_ARTICLE + index.toString() + "/json",
+      options: await getOptions(),
+    );
+    //解析数据
     HomeArticleBean homeArticleBean =
         HomeArticleBean.fromJson(json.decode(response.toString()));
-
     List<Datas> items = homeArticleBean.data.datas;
     List<ArticleItemState> tempList = List.generate(items.length, (index) {
       return ArticleItemState(itemDetail: items[index]);
@@ -57,19 +61,20 @@ void _loadHomeArticle(Context<ArticleListState> ctx) async {
       await Future.delayed(Duration(milliseconds: 500));
       ctx.state.easyRefreshController.finishLoad();
     }
-
     //更新列表
     ctx.dispatch(ArticleListActionCreator.onRefresh());
   } catch (e) {
+    ctx.state.easyRefreshController.finishRefresh();
     println("获取首页文章数据失败: " + e.toString());
   }
 }
 
-//加载文章数据
+//加载知识体系模块数据
 void _loadAllArticle(Context<ArticleListState> ctx) async {
   Response response = await Dio().get(
     ApiUrl.GET_TREE_DETAIL,
     queryParameters: {"cid": ctx.state.articleId},
+    options: await getOptions(),
   );
   ctx.state.easyRefreshController.finishRefresh();
 

@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/widget/page/home/page.dart';
+import 'package:flutter_wan/widget/page/main/collect/page.dart';
 import 'package:flutter_wan/widget/page/main/login/page.dart';
 import 'package:flutter_wan/widget/page/main/page.dart';
 import 'package:flutter_wan/widget/page/main/register/page.dart';
@@ -39,6 +40,9 @@ class RouteConfig {
   ///展示文章内容，统一的容器
   static const String webViewPage = 'page/webview';
 
+  ///收藏主页
+  static const String collectPage = 'page/main/collect';
+
   ///将你的路由名称和页面映射在一起，比如：RouteConfig.homePage: HomePage(),
   static final AbstractRoutes routes = PageRoutes(
     pages: <String, Page<Object, dynamic>>{
@@ -51,6 +55,7 @@ class RouteConfig {
       RouteConfig.webViewPage: WebViewPage(),
       RouteConfig.loginPage: LoginPage(),
       RouteConfig.registerPage: RegisterPage(),
+      RouteConfig.collectPage: CollectPage(),
     },
   );
 }

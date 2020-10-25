@@ -5,6 +5,8 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_wan/bean/project/project_bean.dart';
 import 'package:flutter_wan/http/api.dart';
+import 'package:flutter_wan/http/http.dart';
+
 import 'action.dart';
 import 'state.dart';
 
@@ -14,13 +16,17 @@ Effect<ProjectState> buildEffect() {
   });
 }
 
-void _init(Action action, Context<ProjectState> ctx) async{
-  Response response = await Dio().get(ApiUrl.GET_PROJECT_INFO);
-  ProjectBean projectBean = ProjectBean.fromJson(json.decode(response.toString()));
+void _init(Action action, Context<ProjectState> ctx) async {
+  Response response = await Dio().get(
+    ApiUrl.GET_PROJECT_INFO,
+    options: await getOptions(),
+  );
+  ProjectBean projectBean =
+      ProjectBean.fromJson(json.decode(response.toString()));
   var list = projectBean.data;
   //处理tab
   List<Tab> tabs = [];
-  for(var i=0; i<list.length; i++){
+  for (var i = 0; i < list.length; i++) {
     tabs.add(Tab(text: list[i].name));
   }
 
@@ -29,5 +35,3 @@ void _init(Action action, Context<ProjectState> ctx) async{
   ctx.state.projectBean = projectBean;
   ctx.dispatch(ProjectActionCreator.onRefresh());
 }
-
-

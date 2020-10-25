@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_wan/bean/navi/navi_info_bean.dart';
 import 'package:flutter_wan/http/api.dart';
+import 'package:flutter_wan/http/http.dart';
 import 'package:flutter_wan/widget/page/navi/navi_item/state.dart';
 
 import 'action.dart';
@@ -16,7 +17,10 @@ Effect<NaviState> buildEffect() {
 }
 
 void _init(Action action, Context<NaviState> ctx) async {
-  Response response = await Dio().get(ApiUrl.GET_NAVI_INFO);
+  Response response = await Dio().get(
+    ApiUrl.GET_NAVI_INFO,
+    options: await getOptions(),
+  );
   NaviInfoBean naviInfoBean =
       NaviInfoBean.fromJson(json.decode(response.toString()));
 

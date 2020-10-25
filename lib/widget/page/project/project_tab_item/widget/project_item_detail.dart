@@ -109,11 +109,26 @@ class ProjectItemDetail extends StatelessWidget {
   }
 
   Widget _rightTitle() {
-    return Text(
-      data.itemDetail.title,
-      style: TextStyle(fontSize: setSp(34)),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: auto(350),
+          child: Text(
+            data.itemDetail.title,
+            style: TextStyle(fontSize: setSp(34)),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+
+        //显示收藏
+        Icon(
+          Icons.favorite,
+          color:
+              data.itemDetail.collect ? Colors.deepOrangeAccent : Colors.grey,
+        ),
+      ],
     );
   }
 

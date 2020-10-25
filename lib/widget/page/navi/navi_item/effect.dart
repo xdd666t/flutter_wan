@@ -15,9 +15,12 @@ Effect<NaviItemState> buildEffect() {
 
 void _openArticle(Action action, Context<NaviItemState> ctx) {
   Articles item = action.payload;
-  ArticleDetailBean articleDetailBean = ArticleDetailBean();
-  articleDetailBean.title = item.title;
-  articleDetailBean.url = item.link;
+  ArticleDetailBean articleDetailBean = ArticleDetailBean(
+    url: item.link,
+    title: item.title,
+    id: item.id,
+    isCollect: item.collect,
+  );
 
   Navigator.pushNamed(
     ctx.context,

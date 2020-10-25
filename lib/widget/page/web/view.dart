@@ -11,6 +11,7 @@ Widget buildView(
     data: state,
     onCollect: (){
       //收藏
+      dispatch(WebViewActionCreator.collect());
     },
     onPageStart: () {
       //页面开始加载,打开加载条

@@ -25,4 +25,14 @@ class ApiUrl {
 
   ///注册
   static const String REGISTER = "$_BASE_URL/user/register";
+
+  ///收藏文章列表
+  static const String COLLECT_ARTICLE_LIST = "$_BASE_URL/lg/collect/list/";
+
+  ///收藏文章
+  static const String COLLECT = "$_BASE_URL/lg/collect/";
+
+  ///取消收藏文章
+  static const String CANCEL_COLLECT =
+      "$_BASE_URL/lg/uncollect_originId/";
 }

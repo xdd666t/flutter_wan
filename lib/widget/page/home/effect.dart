@@ -8,6 +8,7 @@ import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
+import 'package:flutter_wan/http/http.dart';
 import 'package:flutter_wan/widget/component/article_list/item/state.dart';
 
 import 'action.dart';
@@ -66,8 +67,10 @@ List<Widget> _getImageList(Context<HomeState> ctx) {
 //获取首页文章数据
 void _getArticleData(Context<HomeState> ctx) async {
   try {
-    Response response =
-        await Dio().get(ApiUrl.GET_HOME_ARTICLE + "0/json"); //获取首页文章
+    Response response = await Dio().get(
+      ApiUrl.GET_HOME_ARTICLE + "0/json",
+      options: await getOptions(),
+    ); //获取首页文章
     HomeArticleBean homeArticleBean =
         HomeArticleBean.fromJson(json.decode(response.toString()));
     List<Datas> items = homeArticleBean.data.datas;
@@ -86,9 +89,13 @@ void _getArticleData(Context<HomeState> ctx) async {
 //打开banner文章内容
 void _openBannerContent(Action action, Context<HomeState> ctx) {
   int index = action.payload;
-  ArticleDetailBean articleDetailBean = ArticleDetailBean();
-  articleDetailBean.title = ctx.state.banners[index].title;
-  articleDetailBean.url = ctx.state.banners[index].url;
+  var data = ctx.state.banners[index];
+  ArticleDetailBean articleDetailBean = ArticleDetailBean(
+    url: data.url,
+    title: data.title,
+    id: data.id,
+    isCollect: null,
+  );
 
   Navigator.pushNamed(
     ctx.context,

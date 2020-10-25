@@ -28,13 +28,20 @@ class CommonWebView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(data.articleDetail.title),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: onCollect,
-          ),
-        ],
+        title: Text(data.detail.title),
+        actions: data.detail.isCollect == null
+            ? null
+            : [
+                IconButton(
+                  icon: Icon(
+                    Icons.favorite,
+                    color: data.detail.isCollect ?? false
+                        ? Colors.deepOrangeAccent
+                        : Colors.white,
+                  ),
+                  onPressed: onCollect,
+                ),
+              ],
       ),
       body: _body(),
     );
@@ -44,7 +51,7 @@ class CommonWebView extends StatelessWidget {
     return Stack(
       children: <Widget>[
         WebView(
-          initialUrl: data.articleDetail.url,
+          initialUrl: data.detail.url,
           javascriptMode: JavascriptMode.unrestricted,
           onPageStarted: (url) {
             onPageStart();

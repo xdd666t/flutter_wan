@@ -6,10 +6,14 @@ enum WebViewAction {
   //刷新
   onRefresh,
   //收藏操作
-  favorite,
+  collect,
 }
 
 class WebViewActionCreator {
+  static Action collect() {
+    return Action(WebViewAction.collect);
+  }
+
   static Action isLoading(bool isLoading) {
     return Action(WebViewAction.isLoading, payload: isLoading);
   }

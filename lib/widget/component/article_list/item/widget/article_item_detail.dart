@@ -89,14 +89,30 @@ class ArticleItemDetail extends StatelessWidget {
 
   Widget _buildSort() {
     return Container(
-      margin: EdgeInsets.only(left: auto(25), top: auto(30)),
+      margin: EdgeInsets.only(left: auto(25), top: auto(30), right: auto(25)),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           //写俩层，方便以后要处理字体颜色
-          Text('分类: '),
-          Text(
-            '${data.itemDetail.superChapterName}/${data.itemDetail.chapterName}',
-            style: TextStyle(color: Colors.lightBlueAccent),
+          RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: '分类：',
+                style: TextStyle(color: Colors.black),
+              ),
+              TextSpan(
+                text:
+                    '${data.itemDetail.superChapterName}/${data.itemDetail.chapterName}',
+                style: TextStyle(color: Colors.lightBlueAccent),
+              )
+            ]),
+          ),
+
+          //显示收藏
+          Icon(
+            Icons.favorite,
+            color:
+                data.itemDetail.collect ? Colors.deepOrangeAccent : Colors.grey,
           ),
         ],
       ),

@@ -41,7 +41,7 @@ void _onLogin(Action action, Context<LoginState> ctx) async {
   if (loginInfo.errorCode == 0) {
     showToast("登录成功");
     _saveUserInfo(ctx.state);
-    //Navigator.pop(ctx.context);
+    Navigator.pop(ctx.context, true);
   }else{
     showToast(loginInfo.errorMsg);
   }
