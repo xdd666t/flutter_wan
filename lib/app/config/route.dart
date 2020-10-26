@@ -1,14 +1,14 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter_wan/widget/page/home/page.dart';
-import 'package:flutter_wan/widget/page/main/collect/page.dart';
-import 'package:flutter_wan/widget/page/main/login/page.dart';
-import 'package:flutter_wan/widget/page/main/page.dart';
-import 'package:flutter_wan/widget/page/main/register/page.dart';
-import 'package:flutter_wan/widget/page/navi/page.dart';
-import 'package:flutter_wan/widget/page/project/page.dart';
-import 'package:flutter_wan/widget/page/tree/page.dart';
-import 'package:flutter_wan/widget/page/tree/tree_detail/page.dart';
-import 'package:flutter_wan/widget/page/web/page.dart';
+import 'package:flutter_wan/module/home/page.dart';
+import 'package:flutter_wan/module/main/collect/page.dart';
+import 'package:flutter_wan/module/main/login/page.dart';
+import 'package:flutter_wan/module/main/page.dart';
+import 'package:flutter_wan/module/main/register/page.dart';
+import 'package:flutter_wan/module/navi/page.dart';
+import 'package:flutter_wan/module/project/page.dart';
+import 'package:flutter_wan/module/tree/page.dart';
+import 'package:flutter_wan/module/tree/tree_detail/page.dart';
+import 'package:flutter_wan/module/web/page.dart';
 
 ///路由管理
 class RouteConfig {
