@@ -5,20 +5,29 @@ import 'package:flutter_wan/app/typedef/function.dart';
 import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/view/widget/input/input_actions.dart';
 
+///此控件基本都已相关元素减少依赖
+///此控件进行少量导包修改即可移植其它项目使用
 class SearchBar extends StatefulWidget {
   SearchBar({
     this.inputFormatters,
-    this.hintText,
+    this.hintText = '请输入',
+    this.hintColor = const Color(0xFFCCCCCC),
+    this.textColor = const Color(0xFF333333),
     this.keyboardType,
     this.autofocus,
     this.onChanged,
+    this.iconColor = const Color(0xFFCCCCCC),
   });
 
   ///限制输入条件
   final List<TextInputFormatter> inputFormatters;
 
-  ///提示
+  ///提示文字和样式颜色
   final String hintText;
+  final Color hintColor;
+
+  ///显示文字颜色
+  final Color textColor;
 
   ///唤起不同的键盘类型
   final TextInputType keyboardType;
@@ -26,6 +35,10 @@ class SearchBar extends StatefulWidget {
   ///是否自动聚焦焦点
   final bool autofocus;
 
+  ///icon颜色
+  final Color iconColor;
+
+  ///回调输入的数据
   final ParamSingleCallback<String> onChanged;
 
   @override
@@ -97,7 +110,7 @@ class _SearchBarState extends State<SearchBar>
             child: Icon(
               CupertinoIcons.clear_circled_solid,
               size: auto(38),
-              color: Color(0xFF999999).withOpacity(0.7),
+              color: widget.iconColor,
             ),
           ),
         ),
@@ -119,7 +132,7 @@ class _SearchBarState extends State<SearchBar>
           autofocus: widget.autofocus ?? false,
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: Color(0xFF333333),
+            color: widget.textColor,
             fontSize: setSp(28),
           ),
           inputFormatters: widget.inputFormatters,
@@ -127,9 +140,9 @@ class _SearchBarState extends State<SearchBar>
           decoration: InputDecoration(
             ///较小空间时，使组件正常渲染，包括文本垂直居中
             isDense: true,
-            hintText: widget.hintText ?? "请输入",
+            hintText: widget.hintText,
             hintStyle: TextStyle(
-              color: Color(0xFF999999),
+              color: widget.hintColor,
               fontSize: setSp(24),
             ),
             border: InputBorder.none,
@@ -154,7 +167,7 @@ class _SearchBarState extends State<SearchBar>
   Widget _buildSearchIcon() {
     return Container(
       margin: EdgeInsets.only(left: auto(29)),
-      child: Icon(Icons.search, color: Color(0xFF999999)),
+      child: Icon(Icons.search, color: widget.iconColor),
     );
   }
 
