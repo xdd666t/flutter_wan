@@ -6,12 +6,11 @@ import 'state.dart';
 Reducer<CollectState> buildReducer() {
   return asReducer(
     <Object, Reducer<CollectState>>{
-      CollectAction.action: _onAction,
+      CollectAction.onRefresh: _onRefresh,
     },
   );
 }
 
-CollectState _onAction(CollectState state, Action action) {
-  final CollectState newState = state.clone();
-  return newState;
+CollectState _onRefresh(CollectState state, Action action) {
+  return state.clone();
 }
