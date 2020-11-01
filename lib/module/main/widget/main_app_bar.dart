@@ -9,9 +9,7 @@ AppBar mainAppBar({ParamVoidCallback onTap}) {
     actions: [
       IconButton(
         icon: Icon(Icons.search),
-        onPressed: (){
-
-        },
+        onPressed: onTap,
       )
     ],
   );

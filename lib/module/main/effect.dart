@@ -21,9 +21,10 @@ Effect<MainState> buildEffect() {
   });
 }
 
-void _toSearch(Action action, Context<MainState> ctx) async {
-
+void _toSearch(Action action, Context<MainState> ctx) {
+  Navigator.pushNamed(ctx.context, RouteConfig.searchPage);
 }
+
 void _init(Action action, Context<MainState> ctx) async {
   await ViewUtil.initFinish();
   //需要等待SpUtil中对象初始化完成

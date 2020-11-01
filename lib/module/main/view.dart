@@ -16,9 +16,9 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     //顶部AppBar
     appBar: mainAppBar(
-      onTap: (){
-
-      }
+      onTap: () {
+        dispatch(MainActionCreator.toSearch());
+      },
     ),
     //侧边抽屉模块
     drawer: MainDrawer(

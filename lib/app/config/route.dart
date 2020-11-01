@@ -4,6 +4,7 @@ import 'package:flutter_wan/module/main/collect/page.dart';
 import 'package:flutter_wan/module/main/login/page.dart';
 import 'package:flutter_wan/module/main/page.dart';
 import 'package:flutter_wan/module/main/register/page.dart';
+import 'package:flutter_wan/module/main/search/page.dart';
 import 'package:flutter_wan/module/navi/page.dart';
 import 'package:flutter_wan/module/project/page.dart';
 import 'package:flutter_wan/module/tree/page.dart';
@@ -43,6 +44,9 @@ class RouteConfig {
   ///收藏主页
   static const String collectPage = 'page/main/collect';
 
+  ///搜索页面
+  static const String searchPage = 'page/main/search';
+
   ///将你的路由名称和页面映射在一起，比如：RouteConfig.homePage: HomePage(),
   static final AbstractRoutes routes = PageRoutes(
     pages: <String, Page<Object, dynamic>>{
@@ -56,6 +60,7 @@ class RouteConfig {
       RouteConfig.loginPage: LoginPage(),
       RouteConfig.registerPage: RegisterPage(),
       RouteConfig.collectPage: CollectPage(),
+      RouteConfig.searchPage: SearchPage(),
     },
   );
 }

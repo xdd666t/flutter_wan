@@ -14,7 +14,7 @@ enum MainAction {
 
 class MainActionCreator {
   static Action toSearch() {
-    return Action(MainAction.selectTab);
+    return Action(MainAction.toSearch);
   }
 
   static Action selectTab(int index) {
