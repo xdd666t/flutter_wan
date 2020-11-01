@@ -22,13 +22,11 @@ Effect<CollectState> buildEffect() {
 }
 
 void _onListLoad(Action action, Context<CollectState> ctx) async {
-  int index = ctx.state.index++;
-  _loadData(index, ctx);
+  _loadData(++ctx.state.index, ctx);
 }
 
 void _onListRefresh(Action action, Context<CollectState> ctx) async {
-  ctx.state.index = 0;
-  _loadData(ctx.state.index, ctx);
+  _loadData(ctx.state.index = 0, ctx);
 }
 
 void _init(Action action, Context<CollectState> ctx) async {
@@ -42,19 +40,24 @@ void _loadData(int index, Context<CollectState> ctx) async {
   );
   var bean = CollectListBean.fromJson(json.decode(result.toString()));
 
-  print(result.toString());
-
   var list = List.generate(bean.data.datas.length, (index) {
     return CollectItemState(item: bean.data.datas[index]);
   });
 
   if (index == 0) {
     ctx.state.items = list;
+
+    ctx.state.easyRefreshController.finishRefresh();
+    ctx.state.easyRefreshController.finishLoad(noMore: false);
   } else {
+    if (list.length == 0) {
+      ctx.state.easyRefreshController.finishLoad(noMore: true);
+    } else {
+      ctx.state.easyRefreshController.finishLoad(noMore: false);
+    }
+
     ctx.state.items.addAll(list);
   }
-  ctx.state.easyRefreshController.finishRefresh();
-  ctx.state.easyRefreshController.finishLoad();
 
   //刷新数据源
   ctx.dispatch(CollectActionCreator.onRefresh());

@@ -37,7 +37,6 @@ void _init(Action action, Context<HomeState> ctx) {
 
 //获取Banner数据
 void _getBannerData(Action action, Context<HomeState> ctx) async {
-  println("请求banner数据");
   try {
     Response response = await Dio().get(ApiUrl.GET_BANNER_URL); //获取banner数据
     BannerBean bannerBean =

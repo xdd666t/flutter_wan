@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
+import 'package:flutter_wan/module/main/widget/main_app_bar.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -13,7 +14,12 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   initUiAdapter(viewService.context);
 
   return Scaffold(
-    appBar: AppBar(title: Text("玩Android"), elevation: 0),
+    //顶部AppBar
+    appBar: mainAppBar(
+      onTap: (){
+
+      }
+    ),
     //侧边抽屉模块
     drawer: MainDrawer(
       data: state,

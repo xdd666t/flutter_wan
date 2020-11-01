@@ -1,8 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 
+import 'action.dart';
 import 'state.dart';
+import 'widget/collect_item_view.dart';
 
 Widget buildView(
     CollectItemState state, Dispatch dispatch, ViewService viewService) {
@@ -10,13 +11,10 @@ Widget buildView(
 }
 
 Widget _body(CollectItemState state, Dispatch dispatch) {
-  return Card(
-    child: Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: auto(20),
-        vertical: auto(15),
-      ),
-      child: Text(state.item.title),
-    ),
+  return CollectItemView(
+    data: state,
+    onTap: () {
+      dispatch(CollectItemActionCreator.toDetail());
+    },
   );
 }

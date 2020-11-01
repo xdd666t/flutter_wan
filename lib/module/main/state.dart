@@ -48,12 +48,11 @@ MainState initState(Map<String, dynamic> args) {
       keepAlivePage(HomePage().buildPage(null)),
       keepAlivePage(TreePage().buildPage(null)),
       keepAlivePage(NaviPage().buildPage(null)),
-          keepAlivePage(ProjectPage().buildPage(null))
+      keepAlivePage(ProjectPage().buildPage(null))
     ]
     ..drawerItems = [
       BtnInfo(title: '登录', tag: 'person', icon: Icon(Icons.person)),
       BtnInfo(title: '我的收藏', tag: 'myCollect', icon: Icon(Icons.favorite)),
-      BtnInfo(title: '设置', tag: 'setting', icon: Icon(Icons.settings)),
       BtnInfo(title: '关于', tag: 'about', icon: Icon(Icons.code)),
       BtnInfo(title: '反馈', tag: 'feedback', icon: Icon(Icons.announcement)),
     ];

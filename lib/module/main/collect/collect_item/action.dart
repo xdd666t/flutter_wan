@@ -1,10 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 
-//TODO replace with your own action
-enum CollectItemAction { action }
+enum CollectItemAction {
+  //跳转详情
+  toDetail,
+}
 
 class CollectItemActionCreator {
-  static Action onAction() {
-    return const Action(CollectItemAction.action);
+  static Action toDetail() {
+    return const Action(CollectItemAction.toDetail);
   }
 }

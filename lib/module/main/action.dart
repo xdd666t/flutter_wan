@@ -6,11 +6,17 @@ enum MainAction {
   selectTab,
   //侧边栏item点击
   clickDrawer,
+  //搜索
+  toSearch,
   //统一刷新事件
   onRefresh,
 }
 
 class MainActionCreator {
+  static Action toSearch() {
+    return Action(MainAction.selectTab);
+  }
+
   static Action selectTab(int index) {
     return Action(MainAction.selectTab, payload: index);
   }

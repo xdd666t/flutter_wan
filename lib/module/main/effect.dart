@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart' hide Action;
 import 'package:flutter_wan/app/config/route.dart';
 import 'package:flutter_wan/app/utils/cache/sp_util.dart';
 import 'package:flutter_wan/app/utils/ui/view_util.dart';
+import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -15,9 +16,14 @@ Effect<MainState> buildEffect() {
     MainAction.selectTab: _selectTab,
     //选择相应抽屉内部的item
     MainAction.clickDrawer: _clickDrawer,
+    //跳转搜索页面
+    MainAction.toSearch: _toSearch,
   });
 }
 
+void _toSearch(Action action, Context<MainState> ctx) async {
+
+}
 void _init(Action action, Context<MainState> ctx) async {
   await ViewUtil.initFinish();
   //需要等待SpUtil中对象初始化完成
@@ -46,15 +52,50 @@ void _clickDrawer(Action action, Context<MainState> ctx) async {
       }
       break;
     case 'myCollect':
+      //收藏
       Navigator.pushNamed(ctx.context, RouteConfig.collectPage);
       break;
-    case 'setting':
-      break;
     case 'about':
+      //关于
+      _toAbout(ctx);
       break;
     case 'feedback':
+      //反馈
+      _toFeedback(ctx);
       break;
   }
+}
+
+void _toAbout(Context<MainState> ctx) {
+  //传递过来的数据
+  ArticleDetailBean articleDetailBean = ArticleDetailBean(
+    url: 'https://github.com/CNAD666/flutter_wan',
+    title: 'fish_redux版玩android',
+  );
+
+  Navigator.pushNamed(
+    ctx.context,
+    RouteConfig.webViewPage,
+    arguments: {
+      "articleDetail": articleDetailBean,
+    },
+  );
+}
+
+void _toFeedback(Context<MainState> ctx) {
+  //传递过来的数据
+  ArticleDetailBean articleDetailBean = ArticleDetailBean(
+    url: 'https://github.com/CNAD666/flutter_wan/issues',
+    title: 'fish_redux版玩android',
+  );
+
+  Navigator.pushNamed(
+    ctx.context,
+    RouteConfig.webViewPage,
+    arguments: {
+      "articleDetail": articleDetailBean,
+    },
+  );
 }
 
 void _selectTab(Action action, Context<MainState> ctx) {
