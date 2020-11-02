@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_wan/app/typedef/function.dart';
 import 'package:flutter_wan/app/utils/ui/ui_adapter.dart';
 import 'package:flutter_wan/view/widget/input/input_actions.dart';
 
-///此控件基本都已相关元素减少依赖
+///此控件已减少相关依赖
 ///此控件进行少量导包修改即可移植其它项目使用
+typedef SearchParamSingleCallback<D> = dynamic Function(D data);
+
 class SearchBar extends StatefulWidget {
   SearchBar({
     this.inputFormatters,
@@ -17,6 +18,8 @@ class SearchBar extends StatefulWidget {
     this.autofocus,
     this.onChanged,
     this.iconColor = const Color(0xFFCCCCCC),
+    this.onComplete,
+    this.controller,
   });
 
   ///限制输入条件
@@ -39,7 +42,13 @@ class SearchBar extends StatefulWidget {
   final Color iconColor;
 
   ///回调输入的数据
-  final ParamSingleCallback<String> onChanged;
+  final SearchParamSingleCallback<String> onChanged;
+
+  ///输入完成  点击键盘上: 收缩,Ok等按钮
+  final SearchParamSingleCallback<String> onComplete;
+
+  ///输入框控制器
+  final TextEditingController controller;
 
   @override
   _SearchBarState createState() => _SearchBarState();
@@ -48,7 +57,7 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar>
     with SingleTickerProviderStateMixin {
   FocusNode focusNode;
-  TextEditingController inputController;
+  TextEditingController controller;
 
   ///动画
   AnimationController animationController;
@@ -59,7 +68,7 @@ class _SearchBarState extends State<SearchBar>
     super.initState();
 
     focusNode = FocusNode();
-    inputController = TextEditingController();
+    controller = widget.controller ?? TextEditingController();
     animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 500),
@@ -101,7 +110,8 @@ class _SearchBarState extends State<SearchBar>
         onTap: () {
           //处理下删除逻辑
           animationController.reverse();
-          inputController.clear();
+          controller.clear();
+          widget.onChanged(controller.text);
         },
         child: ScaleTransition(
           scale: animation,
@@ -127,7 +137,7 @@ class _SearchBarState extends State<SearchBar>
         focusNode: focusNode,
         child: TextField(
           focusNode: focusNode,
-          controller: inputController,
+          controller: controller,
           keyboardType: widget.keyboardType,
           autofocus: widget.autofocus ?? false,
           textAlign: TextAlign.start,
@@ -158,6 +168,10 @@ class _SearchBarState extends State<SearchBar>
 
             //监听输入的数值
             widget.onChanged(msg);
+          },
+          onEditingComplete: () {
+            widget.onComplete(controller.text);
+            FocusScope.of(context).requestFocus(FocusNode());
           },
         ),
       ),
