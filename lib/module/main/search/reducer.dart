@@ -6,12 +6,11 @@ import 'state.dart';
 Reducer<SearchState> buildReducer() {
   return asReducer(
     <Object, Reducer<SearchState>>{
-      SearchAction.action: _onAction,
+      SearchAction.onRefresh: _onRefresh,
     },
   );
 }
 
-SearchState _onAction(SearchState state, Action action) {
-  final SearchState newState = state.clone();
-  return newState;
+SearchState _onRefresh(SearchState state, Action action) {
+  return state.clone();
 }

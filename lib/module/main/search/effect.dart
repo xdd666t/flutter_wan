@@ -5,9 +5,10 @@ import 'state.dart';
 
 Effect<SearchState> buildEffect() {
   return combineEffects(<Object, Effect<SearchState>>{
-    SearchAction.action: _onAction,
+    SearchAction.search: _search,
   });
 }
 
-void _onAction(Action action, Context<SearchState> ctx) {
+void _search(Action action, Context<SearchState> ctx) {
+  //搜索
 }

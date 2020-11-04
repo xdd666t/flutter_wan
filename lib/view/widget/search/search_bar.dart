@@ -167,10 +167,15 @@ class _SearchBarState extends State<SearchBar>
             }
 
             //监听输入的数值
-            widget.onChanged(msg);
+            if (widget.onChanged != null) {
+              widget.onChanged(msg);
+            }
           },
           onEditingComplete: () {
-            widget.onComplete(controller.text);
+            if (widget.onComplete != null) {
+              widget.onComplete(controller.text);
+            }
+
             FocusScope.of(context).requestFocus(FocusNode());
           },
         ),
