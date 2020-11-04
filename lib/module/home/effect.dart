@@ -6,10 +6,7 @@ import 'package:flutter/material.dart' hide Action;
 import 'package:flutter_wan/app/config/route.dart';
 import 'package:flutter_wan/bean/common/article_detail_bean.dart';
 import 'package:flutter_wan/bean/home/banner_bean.dart';
-import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
-import 'package:flutter_wan/http/http.dart';
-import 'package:flutter_wan/view/component/article_list/item/state.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -32,7 +29,6 @@ void _switchBanner(Action action, Context<HomeState> ctx) {
 
 void _init(Action action, Context<HomeState> ctx) {
   _getBannerData(action, ctx);
-  _getArticleData(ctx);
 }
 
 //获取Banner数据
@@ -61,28 +57,6 @@ List<Widget> _getImageList(Context<HomeState> ctx) {
       ));
   }
   return imageList;
-}
-
-//获取首页文章数据
-void _getArticleData(Context<HomeState> ctx) async {
-  try {
-    Response response = await Dio().get(
-      ApiUrl.GET_HOME_ARTICLE + "0/json",
-      options: await getOptions(),
-    ); //获取首页文章
-    HomeArticleBean homeArticleBean =
-        HomeArticleBean.fromJson(json.decode(response.toString()));
-    List<Datas> items = homeArticleBean.data.datas;
-    var itemList = List.generate(items.length, (index) {
-      return ArticleItemState(itemDetail: items[index]);
-    });
-
-    //更新列表
-    ctx.state.subState.articleList = itemList;
-    ctx.dispatch(HomeActionCreator.onRefresh());
-  } catch (e) {
-    println("获取首页文章数据失败: " + e.toString());
-  }
 }
 
 //打开banner文章内容

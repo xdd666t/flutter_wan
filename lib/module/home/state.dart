@@ -32,7 +32,9 @@ class HomeState implements Cloneable<HomeState> {
 
 HomeState initState(Map<String, dynamic> args) {
   return HomeState()
-    ..subState = ArticleListState()
+    ..subState = ArticleListState(
+      type: 0,
+    )
     ..banners = []
     ..bannerImages = []
     ..bannerIndex = 0;
