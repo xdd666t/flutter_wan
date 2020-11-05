@@ -13,11 +13,11 @@ Widget buildView(
 Widget _body(
     ArticleListState state, Dispatch dispatch, ViewService viewService) {
   return EasyRefresh(
-    controller: state.easyRefreshController,
+    controller: state.controller,
     header: MaterialHeader(),
     footer: MaterialFooter(),
     child: _articleList(viewService),
-    firstRefresh: true,
+    firstRefresh: state.firstRefresh,
     enableControlFinishRefresh: true,
     enableControlFinishLoad: true,
     onRefresh: () async {

@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_wan/view/component/article_list/component.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -15,6 +16,7 @@ class SearchPage extends Page<SearchState, Map<String, dynamic>> {
             dependencies: Dependencies<SearchState>(
                 adapter: null,
                 slots: <String, Dependent<SearchState>>{
+                  "ArticleList": SearchArticleConnector() + ArticleListComponent(),
                 }),
             middleware: <Middleware<SearchState>>[
             ],);

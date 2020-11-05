@@ -33,6 +33,11 @@ class ApiUrl {
   static const String COLLECT = "$_BASE_URL/lg/collect/";
 
   ///取消收藏文章
-  static const String CANCEL_COLLECT =
-      "$_BASE_URL/lg/uncollect_originId/";
+  static const String CANCEL_COLLECT = "$_BASE_URL/lg/uncollect_originId/";
+
+  ///搜索热词
+  static const String SEARCH_HOT_WORD = "$_BASE_URL/hotkey/json";
+
+  ///搜索
+  static const String SEARCH = "$_BASE_URL/article/query/";
 }

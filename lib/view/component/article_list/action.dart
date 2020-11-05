@@ -9,9 +9,15 @@ enum ArticleListAction {
   onListRefresh,
   //界面刷新
   onRefresh,
+  //其他模块可以使用该使用刷新列表
+  onBoastRefresh,
 }
 
 class ArticleListActionCreator {
+  static Action onBoastRefresh() {
+    return Action(ArticleListAction.onBoastRefresh);
+  }
+
   static Action onRefresh() {
     return Action(ArticleListAction.onRefresh);
   }

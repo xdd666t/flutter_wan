@@ -31,5 +31,5 @@ void _openArticleContent(Action action, Context<ArticleItemState> ctx) async {
     },
   );
   //广播通知刷新数据
-  ctx.broadcast(ArticleListActionCreator.onListRefresh());
+  ctx.broadcast(ArticleListActionCreator.onBoastRefresh());
 }

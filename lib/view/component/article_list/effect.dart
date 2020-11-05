@@ -16,57 +16,84 @@ Effect<ArticleListState> buildEffect() {
     ArticleListAction.onListLoad: _onListLoad,
     //下拉刷新
     ArticleListAction.onListRefresh: _onListRefresh,
+    //刷新列表 - 其他模块使用广播来刷新列表,统一使用该方法
+    //与已有的刷新和加载方法区别开
+    ArticleListAction.onBoastRefresh: _onBoastRefresh,
   });
+}
+
+void _onBoastRefresh(Action action, Context<ArticleListState> ctx) {
+  _onListRefresh(action, ctx);
 }
 
 void _onListRefresh(Action action, Context<ArticleListState> ctx) {
   ctx.state.articleIndex = 0;
   if (ctx.state.type == 0) {
+    //首页
     _loadHomeArticle(ctx);
-  } else {
+  } else if (ctx.state.type == 1) {
+    //知识体系
     _loadAllArticle(ctx);
+  } else if (ctx.state.type == 2) {
+    //搜索模块
   }
 }
 
 void _onListLoad(Action action, Context<ArticleListState> ctx) async {
   ctx.state.articleIndex += 1;
   if (ctx.state.type == 0) {
+    //主页
     _loadHomeArticle(ctx);
+  } else if (ctx.state.type == 2) {
+    //搜索模块
+    _loadSearchArticle(ctx);
   }
 }
 
-//加载文章数据
+//加载搜索数据
+void _loadSearchArticle(Context<ArticleListState> ctx) async {
+  var query = {'k': ctx.state.searchMSg};
+
+  Response response = await Dio().post(
+    ApiUrl.SEARCH + ctx.state.articleIndex.toString() + "/json",
+    queryParameters: query,
+    options: await getOptions(),
+  );
+
+  _dealData(ctx, response);
+}
+
+//加载主页数据
 void _loadHomeArticle(Context<ArticleListState> ctx) async {
-  try {
-    int index = ctx.state.articleIndex;
-    //获取首页文章
-    Response response = await Dio().get(
-      ApiUrl.GET_HOME_ARTICLE + index.toString() + "/json",
-      options: await getOptions(),
-    );
-    //解析数据
-    HomeArticleBean homeArticleBean =
-        HomeArticleBean.fromJson(json.decode(response.toString()));
-    List<Datas> items = homeArticleBean.data.datas;
-    List<ArticleItemState> tempList = List.generate(items.length, (index) {
-      return ArticleItemState(itemDetail: items[index]);
-    });
-    if (index == 0) {
-      ctx.state.articleList = tempList;
-      //关闭刷新动画
-      ctx.state.easyRefreshController.finishRefresh();
-    } else {
-      ctx.state.articleList.addAll(tempList);
-      //关闭加载动画
-      await Future.delayed(Duration(milliseconds: 500));
-      ctx.state.easyRefreshController.finishLoad();
-    }
-    //更新列表
-    ctx.dispatch(ArticleListActionCreator.onRefresh());
-  } catch (e) {
-    ctx.state.easyRefreshController.finishRefresh();
-    println("获取首页文章数据失败: " + e.toString());
+  //获取首页文章
+  Response response = await Dio().get(
+    ApiUrl.GET_HOME_ARTICLE + ctx.state.articleIndex.toString() + "/json",
+    options: await getOptions(),
+  );
+
+  _dealData(ctx, response);
+}
+
+///解析数据
+void _dealData(Context<ArticleListState> ctx, Response response) async {
+  HomeArticleBean homeArticleBean =
+      HomeArticleBean.fromJson(json.decode(response.toString()));
+  List<Datas> items = homeArticleBean.data.datas;
+  List<ArticleItemState> tempList = List.generate(items.length, (index) {
+    return ArticleItemState(itemDetail: items[index]);
+  });
+  if (ctx.state.articleIndex == 0) {
+    ctx.state.items = tempList;
+    //关闭刷新动画
+    ctx.state.controller.finishRefresh();
+  } else {
+    ctx.state.items.addAll(tempList);
+    //关闭加载动画
+    await Future.delayed(Duration(milliseconds: 500));
+    ctx.state.controller.finishLoad();
   }
+  //更新列表
+  ctx.dispatch(ArticleListActionCreator.onRefresh());
 }
 
 //加载知识体系模块数据
@@ -76,7 +103,7 @@ void _loadAllArticle(Context<ArticleListState> ctx) async {
     queryParameters: {"cid": ctx.state.articleId},
     options: await getOptions(),
   );
-  ctx.state.easyRefreshController.finishRefresh();
+  ctx.state.controller.finishRefresh();
 
   HomeArticleBean homeArticleBean =
       HomeArticleBean.fromJson(json.decode(response.toString()));
@@ -86,7 +113,7 @@ void _loadAllArticle(Context<ArticleListState> ctx) async {
   });
 
   //更新列表
-  ctx.state.articleList = itemList;
+  ctx.state.items = itemList;
   //更新列表
   ctx.dispatch(ArticleListActionCreator.onRefresh());
 }

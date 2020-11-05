@@ -11,10 +11,10 @@ Widget buildView(
     appBar: searchAppBar(onSearch: (msg) {
       dispatch(SearchActionCreator.search(msg));
     }),
-    body: _body(),
+    body: _body(viewService),
   );
 }
 
-Widget _body() {
-  return Container();
+Widget _body(ViewService viewService) {
+  return viewService.buildComponent("ArticleList");
 }
