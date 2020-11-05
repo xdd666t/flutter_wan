@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter_wan/app/utils/tool/string_util.dart';
 import 'package:flutter_wan/bean/home/home_article_bean.dart';
 import 'package:flutter_wan/http/api.dart';
 import 'package:flutter_wan/http/http.dart';
@@ -36,6 +37,7 @@ void _onListRefresh(Action action, Context<ArticleListState> ctx) {
     _loadAllArticle(ctx);
   } else if (ctx.state.type == 2) {
     //搜索模块
+    _loadSearchArticle(ctx);
   }
 }
 
@@ -52,7 +54,13 @@ void _onListLoad(Action action, Context<ArticleListState> ctx) async {
 
 //加载搜索数据
 void _loadSearchArticle(Context<ArticleListState> ctx) async {
-  var query = {'k': ctx.state.searchMSg};
+  var searchMsg = ctx.state.searchMsg;
+
+  if (StringUtil.isEmpty(searchMsg)) {
+    return;
+  }
+
+  var query = {'k': searchMsg};
 
   Response response = await Dio().post(
     ApiUrl.SEARCH + ctx.state.articleIndex.toString() + "/json",

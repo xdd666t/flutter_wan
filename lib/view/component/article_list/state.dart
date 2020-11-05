@@ -18,7 +18,7 @@ class ArticleListState extends MutableSource
   bool firstRefresh;
 
   ///搜索内容
-  String searchMSg;
+  String searchMsg;
 
   ///刷新控制器
   EasyRefreshController controller = EasyRefreshController();
@@ -30,7 +30,7 @@ class ArticleListState extends MutableSource
   ArticleListState({
     this.articleId,
     this.firstRefresh = true,
-    this.searchMSg,
+    this.searchMsg,
     this.articleIndex = 0,
     this.items = const [],
     this.type = 0,
@@ -41,7 +41,7 @@ class ArticleListState extends MutableSource
     return ArticleListState()
       ..type = type
       ..firstRefresh = firstRefresh
-      ..searchMSg = searchMSg
+      ..searchMsg = searchMsg
       ..articleId = articleId
       ..articleIndex = articleIndex
       ..items = items
