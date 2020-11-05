@@ -31,9 +31,6 @@ void _onClear(Action action, Context<SearchState> ctx) async {
 
 void _searchHotWord(Action action, Context<SearchState> ctx) async {
   Data item = action.payload;
-
-  print(item.name);
-
   //填充数据源
   ctx.state.controller.text = item.name;
 
