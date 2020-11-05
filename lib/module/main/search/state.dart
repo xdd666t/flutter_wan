@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_wan/bean/user/hot_word_bean.dart';
 import 'package:flutter_wan/view/component/article_list/state.dart';
 
@@ -9,10 +10,14 @@ class SearchState implements Cloneable<SearchState> {
   //搜索热词
   List<Data> hotList;
 
+  //输入框控制器
+  TextEditingController controller;
+
   @override
   SearchState clone() {
     return SearchState()
       ..subState = subState
+      ..controller = controller
       ..hotList = hotList;
   }
 }
@@ -20,6 +25,7 @@ class SearchState implements Cloneable<SearchState> {
 SearchState initState(Map<String, dynamic> args) {
   return SearchState()
     ..hotList = []
+    ..controller = TextEditingController()
     ..subState = ArticleListState(
       type: 2,
       firstRefresh: false,

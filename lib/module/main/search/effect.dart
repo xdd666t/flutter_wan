@@ -12,9 +12,36 @@ import 'state.dart';
 
 Effect<SearchState> buildEffect() {
   return combineEffects(<Object, Effect<SearchState>>{
+    //初始化
     Lifecycle.initState: _init,
+    //点击键盘上的搜索从操作
     SearchAction.search: _search,
+    //点击搜索热词
+    SearchAction.searchHotWord: _searchHotWord,
+    //点击搜索框中删除按钮
+    SearchAction.onClear: _onClear,
   });
+}
+
+void _onClear(Action action, Context<SearchState> ctx) async {
+  ctx.state.subState.searchMsg = '';
+  ctx.state.subState.items = [];
+  ctx.dispatch(SearchActionCreator.onRefresh());
+}
+
+void _searchHotWord(Action action, Context<SearchState> ctx) async {
+  Data item = action.payload;
+
+  print(item.name);
+
+  //填充数据源
+  ctx.state.controller.text = item.name;
+
+  //请求列表
+  ctx.state.subState.searchMsg = item.name;
+  ctx.state.subState.controller.callRefresh();
+
+  ctx.dispatch(SearchActionCreator.onRefresh());
 }
 
 void _init(Action action, Context<SearchState> ctx) async {

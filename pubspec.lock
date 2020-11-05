@@ -585,7 +585,7 @@ packages:
       name: stack_trace
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.10.0-nullsafety.2"
+    version: "1.10.0-nullsafety.4"
   stream_channel:
     dependency: transitive
     description:
@@ -692,5 +692,5 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-  dart: ">=2.10.0-110 <=2.11.0-213.0.dev"
+  dart: ">=2.10.0-110 <=2.11.0-242.0.dev"
   flutter: ">=1.22.0 <2.0.0"

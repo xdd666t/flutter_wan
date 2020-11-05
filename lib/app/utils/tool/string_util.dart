@@ -3,8 +3,8 @@ class StringUtil {
   static bool isEmpty(String s) {
     if (s == null || s == '') {
       return true;
-    } else {
-      return false;
     }
+
+    return false;
   }
 }

@@ -7,6 +7,7 @@ import 'package:flutter_wan/view/widget/input/input_actions.dart';
 ///此控件已减少相关依赖
 ///此控件进行少量导包修改即可移植其它项目使用
 typedef SearchParamSingleCallback<D> = dynamic Function(D data);
+typedef SearchParamVoidCallback = dynamic Function();
 
 class SearchBar extends StatefulWidget {
   SearchBar({
@@ -20,6 +21,7 @@ class SearchBar extends StatefulWidget {
     this.iconColor = const Color(0xFFCCCCCC),
     this.onComplete,
     this.controller,
+    this.onClear,
   });
 
   ///限制输入条件
@@ -46,6 +48,9 @@ class SearchBar extends StatefulWidget {
 
   ///输入完成  点击键盘上: 收缩,Ok等按钮
   final SearchParamSingleCallback<String> onComplete;
+
+  ///删除监听
+  final SearchParamVoidCallback onClear;
 
   ///输入框控制器
   final TextEditingController controller;
@@ -76,6 +81,17 @@ class _SearchBarState extends State<SearchBar>
     animation = Tween(begin: 0.0, end: 1.0)
         .chain(CurveTween(curve: Curves.easeIn))
         .animate(animationController);
+
+    //监听输入框数值变化
+    controller.addListener(() {
+      //处理下删除图标的显示
+      String msg = controller.text;
+      if (msg.length != 0) {
+        animationController.forward();
+      } else {
+        animationController.reverse();
+      }
+    });
   }
 
   @override
@@ -111,7 +127,14 @@ class _SearchBarState extends State<SearchBar>
           //处理下删除逻辑
           animationController.reverse();
           controller.clear();
-          widget.onChanged(controller.text);
+
+          if (widget.onChanged != null) {
+            widget.onChanged(controller.text);
+          }
+
+          if (widget.onClear != null) {
+            widget.onClear();
+          }
         },
         child: ScaleTransition(
           scale: animation,
@@ -147,6 +170,7 @@ class _SearchBarState extends State<SearchBar>
           ),
           inputFormatters: widget.inputFormatters,
           maxLengthEnforced: true,
+          textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             ///较小空间时，使组件正常渲染，包括文本垂直居中
             isDense: true,
@@ -159,13 +183,6 @@ class _SearchBarState extends State<SearchBar>
             contentPadding: EdgeInsets.all(0.0),
           ),
           onChanged: (msg) {
-            //处理下删除图标的显示
-            if (msg.length != 0) {
-              animationController.forward();
-            } else {
-              animationController.reverse();
-            }
-
             //监听输入的数值
             if (widget.onChanged != null) {
               widget.onChanged(msg);
@@ -207,5 +224,6 @@ class _SearchBarState extends State<SearchBar>
   void dispose() {
     super.dispose();
     animationController.dispose();
+    controller.dispose();
   }
 }

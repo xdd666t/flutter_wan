@@ -56,7 +56,9 @@ void _onListLoad(Action action, Context<ArticleListState> ctx) async {
 void _loadSearchArticle(Context<ArticleListState> ctx) async {
   var searchMsg = ctx.state.searchMsg;
 
+  print('-----------$searchMsg');
   if (StringUtil.isEmpty(searchMsg)) {
+    ctx.state.controller.finishRefresh(success: true);
     return;
   }
 

@@ -9,9 +9,15 @@ import 'widget/search_app_bar.dart';
 Widget buildView(
     SearchState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
-    appBar: searchAppBar(onSearch: (msg) {
-      dispatch(SearchActionCreator.search(msg));
-    }),
+    appBar: searchAppBar(
+      data: state,
+      onSearch: (msg) {
+        dispatch(SearchActionCreator.search(msg));
+      },
+      onClear: (){
+        dispatch(SearchActionCreator.onClear());
+      },
+    ),
     body: _body(state, dispatch, viewService),
   );
 }
@@ -19,13 +25,19 @@ Widget buildView(
 Widget _body(SearchState state, Dispatch dispatch, ViewService viewService) {
   return Stack(
     children: [
-      //热搜词
-      SearchHotWord(
-        data: state,
-      ),
-
       //列表
       viewService.buildComponent("ArticleList"),
+
+      //热搜词
+      Visibility(
+        visible: state.subState.items.length == 0,
+        child: SearchHotWord(
+          data: state,
+          onHot: (item) {
+            dispatch(SearchActionCreator.searchHotWord(item));
+          },
+        ),
+      ),
     ],
   );
 }
