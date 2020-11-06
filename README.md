@@ -39,6 +39,14 @@
 - [x] ~~侧栏的一列功能填坑~~
 
 
+## 打包操作
+
+- android（关闭R8压缩）
+ - flutter build apk --no-shrink
+
+- ios（生成 .app ，然后 在 XCode 执行 打包 操作）
+ - flutter build ios --release --target=lib/app/main_dev.dart
+
 
 ## app安装地址
 

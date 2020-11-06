@@ -55,3 +55,12 @@ bool isMobile() {
     return false;
   }
 }
+
+
+extension dimensionsNum on num {
+  ///转为dp  ui适配
+  double get dp => auto(this.toDouble());
+
+  ///转为文本大小sp  文本适配
+  double get sp => setSp(this.toDouble());
+}
