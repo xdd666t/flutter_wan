@@ -58,9 +58,9 @@ bool isMobile() {
 
 
 extension dimensionsNum on num {
-  ///转为dp  ui适配
-  double get dp => auto(this.toDouble());
+  ///自动适配移动界面
+  num get dp => auto(this);
 
-  ///转为文本大小sp  文本适配
-  double get sp => setSp(this.toDouble());
+  ///配置文字,文字适配请用sp单位
+  num get sp => setSp(this);
 }
