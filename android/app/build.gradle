@@ -13,12 +13,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '1.1'
+    flutterVersionCode = '1.0'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.1'
+    flutterVersionName = '1.0'
 }
 
 apply plugin: 'com.android.application'
@@ -51,7 +51,7 @@ android {
 
         ndk {
             //设置支持的SO库架构
-            abiFilters 'arm64-v8a', 'x86', 'armeabi-v7a', 'x86_64'
+            abiFilters 'arm64-v8a'//, 'x86', 'armeabi-v7a', 'x86_64'
         }
     }
 

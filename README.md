@@ -1,6 +1,7 @@
 ## 说明
 
-**多谢铁子们给我点的小星星，为了对得起你们的支持，我重写了第一版所有模块，正在填坑第二版**
+**多谢铁子们给我点的小星星，为了对得起你们的支持，我重写了第一版所有模块，完成填坑第二版**
+
 - 初版的fish_redux的玩Android是我刚学flutter时写的，代码写的比较混乱，重构代码，
 也是为了让大家更清晰了解fish_redux结构，也给出TabBar控制器在fish_redux初始化的解决方案，大家可以看看
 - 重构的所有模块，无限弱化了reducer层作用
@@ -33,9 +34,11 @@
 
 ## 第二版
 
-- [ ] 搜索功能
+- [x] ~~搜索功能~~
+- [x] ~~热搜词~~
 - [x] ~~收藏，查看收藏功能~~
 - [x] ~~登录功能（这个实际就是登拿个参数，去请求收藏的信息等）~~
+- [x] ~~用户注册~~
 - [x] ~~侧栏的一列功能填坑~~
 
 
@@ -48,7 +51,7 @@
  - flutter build ios --release --target=lib/app/main_dev.dart
 
 
-## app安装地址
+## APP安装地址
 
 - android
 
@@ -58,14 +61,6 @@
 
   - 下载项目，直接跑吧。本人没iPhone也没Mac，没法打包呀
 
-## app界面
+## app效果
 
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322180926.jpg" width = "337" height = "650" div align=left />
-
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322180842.jpg"  width = "337" height = "650" />
-
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181013.jpg"  width = "337" height = "650" div align=left />
-
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181047.jpg"  width = "337" height = "650" />
-
-<img src="https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322181115.jpg"  width = "337" height = "650" div align=left /> 
+![玩android颜色](https://cdn.jsdelivr.net/gh/CNAD666/MyData/pic/flutter/project/20201107182040.gif)
