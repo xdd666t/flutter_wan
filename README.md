@@ -63,4 +63,4 @@
 
 ## app效果
 
-![玩android颜色](https://cdn.jsdelivr.net/gh/CNAD666/MyData/pic/flutter/project/20201107182040.gif)
+![玩android演示](https://cdn.jsdelivr.net/gh/CNAD666/MyData/pic/flutter/project/20201107214332.gif)
