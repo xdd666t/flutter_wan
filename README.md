@@ -55,7 +55,7 @@
 
 - android
 
-  ![](https://raw.githubusercontent.com/CNAD666/MyData/master/pic/study/20200322172901.png)
+  ![](https://cdn.jsdelivr.net/gh/CNAD666/MyData/pic/flutter/scan/20201111192005.png)
 
 - ios
 
