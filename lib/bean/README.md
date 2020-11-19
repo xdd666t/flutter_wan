@@ -1,4 +1,7 @@
 ## 实体命名生成
+json快捷生成bean文件网址：[https://caijinglong.github.io/json2dart/index_ch.html](https://caijinglong.github.io/json2dart/index_ch.html)
+
+## 生成实体附属文件命令
 
 ### 使用 build_runner 生成 .g.dart 文件
 flutter packages pub run build_runner build
