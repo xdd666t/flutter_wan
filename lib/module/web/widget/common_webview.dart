@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_wan/app/typedef/function.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -50,13 +51,22 @@ class CommonWebView extends StatelessWidget {
   Widget _body() {
     return Stack(
       children: <Widget>[
-        WebView(
-          initialUrl: data.detail.url,
-          javascriptMode: JavascriptMode.unrestricted,
-          onPageStarted: (url) {
+        // WebView(
+        //   initialUrl: data.detail.url,
+        //   javascriptMode: JavascriptMode.unrestricted,
+        //   onPageStarted: (url) {
+        //     onPageStart();
+        //   },
+        //   onPageFinished: (url) {
+        //     onPageEnd();
+        //   },
+        // ),
+        InAppWebView(
+          initialUrlRequest: URLRequest(url: Uri.parse(data.detail.url)),
+          onLoadStart: (controller, url) {
             onPageStart();
           },
-          onPageFinished: (url) {
+          onLoadStop: (controller, url) {
             onPageEnd();
           },
         ),
