@@ -6,17 +6,13 @@ import 'state.dart';
 Widget buildView(
     ProjectTabState state, Dispatch dispatch, ViewService viewService) {
   if (state.items != null) {
-    return _body(viewService);
+    return ListView.builder(
+      itemBuilder: viewService.buildAdapter().itemBuilder,
+      itemCount: viewService.buildAdapter().itemCount,
+    );
   } else {
     return Center(
       child: CircularProgressIndicator(),
     );
   }
-}
-
-Widget _body(ViewService viewService) {
-  return ListView.builder(
-    itemBuilder: viewService.buildAdapter().itemBuilder,
-    itemCount: viewService.buildAdapter().itemCount,
-  );
 }

@@ -12,29 +12,21 @@ Widget buildView(
       title: Text('收藏'),
       elevation: 0,
     ),
-    body: _body(state, dispatch, viewService),
-  );
-}
-
-Widget _body(CollectState state, Dispatch dispatch, ViewService viewService) {
-  return EasyRefresh(
-    controller: state.easyRefreshController,
-    header: MaterialHeader(),
-    footer: MaterialFooter(),
-    firstRefresh: true,
-    enableControlFinishRefresh: true,
-    enableControlFinishLoad: true,
-    onRefresh: () async {
+    body: EasyRefresh(
+      controller: state.easyRefreshController,
+      header: MaterialHeader(),
+      footer: MaterialFooter(),
+      firstRefresh: true,
+      enableControlFinishRefresh: true,
+      enableControlFinishLoad: true,
       //下拉刷新
-      dispatch(CollectActionCreator.onListRefresh());
-    },
-    onLoad: () async {
+      onRefresh: () async => dispatch(CollectActionCreator.onListRefresh()),
       //上拉加载
-      dispatch(CollectActionCreator.onListLoad());
-    },
-    child: ListView.builder(
-      itemBuilder: viewService.buildAdapter().itemBuilder,
-      itemCount: viewService.buildAdapter().itemCount,
+      onLoad: () async => dispatch(CollectActionCreator.onListLoad()),
+      child: ListView.builder(
+        itemBuilder: viewService.buildAdapter().itemBuilder,
+        itemCount: viewService.buildAdapter().itemCount,
+      ),
     ),
   );
 }

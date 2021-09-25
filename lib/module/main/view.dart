@@ -16,30 +16,22 @@ Widget buildView(MainState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     //顶部AppBar
     appBar: mainAppBar(
-      onTap: () {
-        dispatch(MainActionCreator.toSearch());
-      },
+      onTap: () => dispatch(MainActionCreator.toSearch()),
     ),
     //侧边抽屉模块
     drawer: MainDrawer(
       data: state,
-      onTap: (String tag) {
-        dispatch(MainActionCreator.clickDrawer(tag));
-      },
+      onTap: (String tag) => dispatch(MainActionCreator.clickDrawer(tag)),
     ),
     //页面主体
     body: MainBody(
       data: state,
-      onChanged: (int index) {
-        dispatch(MainActionCreator.selectTab(index));
-      },
+      onChanged: (int index) => dispatch(MainActionCreator.selectTab(index)),
     ),
     //底部导航
     bottomNavigationBar: MainBottomNavigation(
       data: state,
-      onTap: (int index) {
-        dispatch(MainActionCreator.selectTab(index));
-      },
+      onTap: (int index) => dispatch(MainActionCreator.selectTab(index)),
     ),
   );
 }

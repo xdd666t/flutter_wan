@@ -8,13 +8,9 @@ import 'widget/navi_detail_Item_view.dart';
 
 Widget buildView(
     NaviItemState state, Dispatch dispatch, ViewService viewService) {
-  return _body(state, dispatch);
-}
-
-Widget _body(NaviItemState state, Dispatch dispatch) {
   return NaviItemView(
     data: state,
-    onTap: (Articles item){
+    onTap: (Articles item) {
       dispatch(NaviItemActionCreator.openArticle(item));
     },
   );

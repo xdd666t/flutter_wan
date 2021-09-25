@@ -7,14 +7,7 @@ import 'widget/home_banner.dart';
 
 Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
-    body: _body(state, dispatch, viewService),
-  );
-}
-
-//首页widget组装
-Widget _body(HomeState state, Dispatch dispatch, ViewService viewService) {
-  return Column(
-    children: [
+    body: Column(children: [
       HomeBanner(
         data: state,
         onChanged: (int index) {
@@ -24,9 +17,7 @@ Widget _body(HomeState state, Dispatch dispatch, ViewService viewService) {
           dispatch(HomeActionCreator.openBannerContent(index));
         },
       ),
-      Expanded(
-        child: viewService.buildComponent("ArticleList"),
-      )
-    ],
+      Expanded(child: viewService.buildComponent("ArticleList"))
+    ]),
   );
 }

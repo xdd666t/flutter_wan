@@ -8,29 +8,17 @@ import 'widget/login_view.dart';
 Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(title: Text('登录')),
-    body: _body(state, dispatch),
-  );
-}
-
-Widget _body(LoginState state, Dispatch dispatch) {
-  return SingleChildScrollView(
-    child: LoginView(
-      onUserName: (String msg) {
+    body: SingleChildScrollView(
+      child: LoginView(
         //用户名
-        state.userName = msg;
-      },
-      onPassword: (String msg) {
+        onUserName: (String msg) => state.userName = msg,
         //密码
-        state.password = msg;
-      },
-      onRegister: () {
+        onPassword: (String msg) => state.password = msg,
         //注册
-        dispatch(LoginActionCreator.onRegister());
-      },
-      onLogin: () {
+        onRegister: () => dispatch(LoginActionCreator.onRegister()),
         //登录
-        dispatch(LoginActionCreator.onLogin());
-      },
+        onLogin: () => dispatch(LoginActionCreator.onLogin()),
+      ),
     ),
   );
 }

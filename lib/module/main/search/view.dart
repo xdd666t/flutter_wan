@@ -11,20 +11,12 @@ Widget buildView(
   return Scaffold(
     appBar: searchAppBar(
       data: state,
-      onSearch: (msg) {
-        dispatch(SearchActionCreator.search(msg));
-      },
-      onClear: (){
-        dispatch(SearchActionCreator.onClear());
-      },
+      //搜索
+      onSearch: (msg) => dispatch(SearchActionCreator.search(msg)),
+      //清除输入
+      onClear: () => dispatch(SearchActionCreator.onClear()),
     ),
-    body: _body(state, dispatch, viewService),
-  );
-}
-
-Widget _body(SearchState state, Dispatch dispatch, ViewService viewService) {
-  return Stack(
-    children: [
+    body: Stack(children: [
       //列表
       viewService.buildComponent("ArticleList"),
 
@@ -33,11 +25,9 @@ Widget _body(SearchState state, Dispatch dispatch, ViewService viewService) {
         visible: state.subState.items.length == 0,
         child: SearchHotWord(
           data: state,
-          onHot: (item) {
-            dispatch(SearchActionCreator.searchHotWord(item));
-          },
+          onHot: (item) => dispatch(SearchActionCreator.searchHotWord(item)),
         ),
       ),
-    ],
+    ]),
   );
 }
