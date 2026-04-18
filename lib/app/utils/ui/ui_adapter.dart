@@ -43,7 +43,11 @@ void initUiAdapter(BuildContext context) {
   if (!isMobile()) {
     return;
   }
-  ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+  ScreenUtil.init(
+    context,
+    designSize: const Size(750, 1334),
+    minTextAdapt: true,
+  );
 }
 
 

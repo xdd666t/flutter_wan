@@ -51,7 +51,7 @@ class RegisterView extends StatelessWidget {
   Widget _buildRegister() {
     return Container(
       height: auto(100),
-      width: ScreenUtil.screenWidth,
+      width: ScreenUtil().screenWidth,
       margin: EdgeInsets.symmetric(
         horizontal: auto(50),
         vertical: auto(160),

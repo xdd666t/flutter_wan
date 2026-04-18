@@ -25,38 +25,38 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
-  dio: ^3.0.9    #网络请求框架
+  cupertino_icons: ^1.0.5
+  dio: ^5.4.3+1    #网络请求框架
   fish_redux: ^0.3.4 # 状态管理用的
-  flutter_screenutil: ^1.0.2  # 界面适配
+  flutter_screenutil: ^5.7.0  # 界面适配
   flutter_swiper : ^1.1.6  #轮播图控件
-  permission_handler: ^3.2.0 #权限申请
+  permission_handler: ^11.0.1 #权限申请
   flutter_easyrefresh: ^2.1.6  #下拉刷新，下拉加载控件
   # 官方webview https://pub.flutter-io.cn/packages/webview_flutter
-  webview_flutter: ^2.0.2
+  webview_flutter: ^3.0.4
   # https://pub.flutter-io.cn/packages/flutter_inappwebview
   flutter_inappwebview: ^5.1.0+4
   # 解耦 https://pub.dev/packages/flutter_hooks
-  flutter_hooks: ^0.14.1
+  flutter_hooks: ^0.18.3
   # https://pub.dev/packages/shared_preferences
-  shared_preferences: ^0.5.12+2
+  shared_preferences: ^2.0.17
   # https://pub.dev/packages/fluttertoast
   fluttertoast: ^7.1.1
   # https://pub.dev/packages/json_serializable
-  json_serializable: ^3.5.0 #json库
-  json_annotation: ^3.1.0 # json序列化和反序列化用的
+  json_serializable: ^6.3.1 #json库
+  json_annotation: ^4.6.0 # json序列化和反序列化用的
   # 加载弹窗 https://pub.dev/packages/flutter_easyloading
-  flutter_easyloading: ^2.0.0
+  flutter_easyloading: ^3.0.5
   # 取消输入框焦点 https://pub.dev/packages/focus_widget/install
   focus_widget: ^1.0.2+2
   # iOS数字键盘添加收起按钮 https://pub.dev/packages/keyboard_actions
-  keyboard_actions: ^3.3.0
+  keyboard_actions: ^3.4.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build_runner: ^1.6.5 # 用于自动生成代码
+  build_runner: ^2.2.0 # 用于自动生成代码
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
